@@ -1,0 +1,12 @@
+ System.Management.Automation 6.1.7601.17515
+
+Versions 6.1.7601.* are unofficial packages for .Net 4.0 and are not supported by Microsoft.
+
+They will be replaced with an official copy for netstandard1.6 (CoreCLR) at 
+a later date.
+
+To install System.Management.Automation, run the following command in 
+the Package Manager Console  :
+
+
+Install-Package System.Management.Automation

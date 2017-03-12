@@ -1,66 +1,55 @@
 ﻿body {
       background-image:linear-gradient(to right, #0e2218, #aaffd8);
-      height: 100%;
-      margin: 50px;
-      font-size: 15px;
+      height:100%;
+      width:auto;
       position:center;
+      display:block; 
+      top:auto;
+      left:auto;
 }
-
 #banner{
       background:transparent;
       width:auto; 
-      display:block; 
       height:160px;
-      position:center;
 }
-
 #container{
        width:100%;
        position:center;
        margin:10px auto;
        max-width:initial;
+       background:transparent;
 }
-
 #navbar{
       width:500px; 
       display:block; 
       height:0px;
 }
-
 #main{
       width:100%; 
       display:block;
+      position:center;
 }
-
 #menu{
-    margin-top:0;
-    margin-left:50px;
-    width: 10%;
-    height: auto;
-    position: absolute;
-    outline: 0px solid;
+      left:100px;
+      height: auto;
+      position: absolute;
 }
-
 /*Back container*/
 #MainContent{
       width: 100%;
       height: 100%;
-      outline: 0px solid;
       position:absolute;
       left:550px;
       background:transparent;
 }
-
 /*
 div.spacer, permet de faire deux colonne dans #container
 */
-
 div.spacer{
       clear:both; 
       height:10px; 
       display:block;
 }
-
 /*Menu deroulant*/
 .menuClass{
       padding:0px;
@@ -69,7 +58,6 @@ div.spacer{
       text-align:center;
       width:400px;
 }
-
 /*Cellules principales du menu*/
 .menuClass ul {
       padding:0px;
@@ -77,16 +65,13 @@ div.spacer{
       list-style:none;
       text-align: left;
 }
-
 /*liste principale*/
 .menuClass li {
       background:#006333;
-
       margin-bottom:5px;
       border:solid 1px #333A40;
       border-color:azure;
 }
-
 /*Define the height of sub menu*/
 .menuClass li li {
       max-height:50px;
@@ -98,7 +83,6 @@ div.spacer{
       border:none;
       margin:0
 }
-
 .menuClass a {
       display:block;
       text-decoration: none;
@@ -107,39 +91,31 @@ div.spacer{
       font-family: verdana;
       font-size:1.2em
 }
-
 .menuClass ul li a, .menuClass li:hover li a {
       font-size:1em
 }
-
 .menuClass li:hover {
       background: #132c1a;
 }
-
 .menuClass li li:hover {
       background: #132c1a;
 }
-
 .menuClass ul li:last-child {
       border-radius: 0px 0 0px 0px;
       border:none;
 }
-
 .menuClass li:hover li {
       max-height: 20em;
 }
-
 /*LD consult page*/
-
 #content{
+      background:transparent;
       padding-top:15px;
       padding-left:25px;
       display:block;
-      background:transparent;
       width:1205px;
       height:100%;
 }
-
 #title_area{
       background:#006333;
       border:solid 1px #fff;
@@ -157,7 +133,6 @@ div.spacer{
       border-bottom-left-radius: 24px;
       border-bottom-right-radius: 24px;
 }
-
 #spacing_area{
       background:transparent;
       clear:both; 
@@ -165,7 +140,6 @@ div.spacer{
       display:block;
       margin-left: 10px;
 }
-
 #search_area{
       background:#006333;
       border:solid 1px #fff;
@@ -184,13 +158,11 @@ div.spacer{
       border-bottom-left-radius: 24px;
       border-bottom-right-radius: 24px;
 }
-
 #Search_table{
       margin-left:25px;
       width:37%;
       float:left;
 }
-
 #Go_table{
       margin-top:18px;
       margin-left:10px;
@@ -198,12 +170,10 @@ div.spacer{
       height:auto;
       float:left;
 }
-
 #List_table{
       width:50%;
       float:right;
 }
-
 /*Go button*/
 .Go{
       box-shadow:0px 0px 2px 0px #3dc21b;
@@ -220,13 +190,11 @@ div.spacer{
       padding:18px 6px;
       text-decoration:none;
 }
-
 /*Go button reacting on mouse over*/
 .Go:hover{
       filter:progid:DXImageTransform.Microsoft.gradient(start);
       background-color:#009550;
 }
-
 /*DropListBox Select Distrib List*/
 #listbox{ 
       margin-left:20px;
@@ -238,7 +206,6 @@ div.spacer{
       font-weight: bold;
       font-style:oblique; 
 }
-
 /*Space between Search Area and Result Area*/
 #spacing_area2{
       background:transparent;
@@ -247,7 +214,6 @@ div.spacer{
       display:block;
       margin-left: 10px;
 }
-
 /*Result Area of search process*/
 #result_area{
       background:transparent;
@@ -262,7 +228,6 @@ div.spacer{
       margin-left: 5px;
       overflow: hidden;
 }
-
 /*Gestion des effets pour l'affichage de la carte de visite--------------------------------------------*/
 .modalDialog {
 	position:fixed;	
@@ -272,13 +237,11 @@ div.spacer{
 	transition: opacity 400ms ease-in;
 	pointer-events:none;
 }
-
 /*Gère la petite croix pour fermer la carte de visite*/
 .modalDialog:target {
 	opacity:1;
 	pointer-events:auto;
 }
-
 .modalDialog > div{
       width:auto;
       position:relative;
@@ -288,10 +251,8 @@ div.spacer{
       background:transparent;
       transition:all 0.4s ease-in-out;
 }
-
 /*The Visit Card Owner Part---------------------------------------------------------------------------------------------------*/
 /*Title Owner*/
-
 #openModal{
       position:fixed;
       font-family: 'Trocchi', serif; 
@@ -333,9 +294,7 @@ div.spacer{
       margin-right:15px;
       width:auto;
 }
-
 /*----------------------------------------LIST ARRAY-----------------------------------------*/
-
 .table {
       font-family: 'Trocchi', serif;
 	color:#666;
@@ -424,90 +383,43 @@ tbody{
       width:auto;
 }
 /*-------------------------------------------------------------------------------------------------*/
-
 /*Owners List Button Area--------------------------------------------------------------------------*/
 /*Area which manage all the owners buttons*/
 .button_class_owners{
       position:absolute;
       background:transparent;
-      width:300px;
       height:auto;
-      margin:30px auto;
-      margin-left:125px;
       text-align:center;
+      margin-top:10px;
+      left:100px;
 }
 #add_button_owners{
       background:transparent;
-      margin-left:0px;
-      display:inline-block;  
-      width:25%;
-      float:left;
-      text-align:center;     
+      display:inline-block;   
 }
 #del_button_owners{
       background:transparent;
-      margin-left:0px;
       display:inline-block;  
-      width:25%;
-      float:left;
-      text-align:center;  
 }
-#new_button_owners{
-      background:transparent;
-      margin-left:0px;
-      display:inline-block;  
-      width:25%;
-      float:left;
-      text-align:center;  
-}
-#modify_button_owners{
-      background:transparent;
-      margin-left:0px;
-      display:inline-block;  
-      width:25%;
-      float:left;
-      text-align:center;  
-}
-
 /*Members List Button Area-------------------------------------------------------------------------*/
 /*Area which manage all the members buttons*/
 .button_class_members{
       position:absolute;
       background:transparent;
-      width:240px;
       height:auto;
-      margin:30px auto;
-      margin-left:165px;
-      text-align:center;
+      text-align:center;  
+      margin-top:10px; 
+      left:700px; 
 }
-
 #add_button_members{
       background:transparent;
-      margin-left:0px;
       display:inline-block;  
-      width:33.33%;
-      float:left;
-      text-align:center;
 }
-
 #del_button_members{
       background:transparent;
-      margin-left:0px;
       display:inline-block;  
-      width:33.33%;
-      float:left;
-      text-align:center;
 }
-
-#new_button_members{
-      background:transparent;
-      margin-left:0px;
-      display:inline-block;  
-      width:33.33%;
-      float:left;
-      text-align:center;
-}
-
+/*Members List column--------------------------------------------------------------------------------------------*/
 /*Title Members LD*/
 #title_members_LD{
       background:transparent;

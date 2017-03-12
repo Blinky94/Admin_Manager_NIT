@@ -12,7 +12,7 @@
            <div id="content">                
 
                  <div id="title_area">
-                       <p>View Distribution List</p>
+                       <p>View Mailing List</p>
                  </div>
                    
                  <div id="spacing_area"> 
@@ -40,8 +40,8 @@
                                     <p>
                                           <label>Result : </label>
                                           <select name="listbox" id="listbox">
-                                          <option>here exemple one</option>
-                                          <option>here exemple two</option>
+                                          <option></option>
+                                          <option></option>
                                           </select>  
                                     </p>             
                               </div>       
@@ -52,9 +52,126 @@
                         <!-- space between two block -->    
                  </div>                               
 
-                 <div id="result_area">                    
+                 <div id="result_area">                                        
+       <!--------------------------------------------------------OWNER LIST AREA------------------------------------------------------------------------->                            
+                       <div id="owners_list">                               
+                              <div id="title_owners_LD">
+                                    <p>Owners List</p>
+                              </div>                                                     
+                            
+                             <div id="owners_list_array">                                   
+                                   <table class="table"> <!-- cellspacing='0' is important, must stay -->
+	                                          <!-- Table Header -->	                                    
+                                         <thead>
+		                                    <tr>
+			                                    <th>ID</th>
+			                                    <th>Owner Email Adress</th>
+                                                      <th></th>
+		                                    </tr>
+	                                    </thead>
+	                                    <!-- Table Header -->
 
-                        <div id="members_list">                               
+	                                    <!-- Table Body -->
+	                                    <tbody>
+		                                    <tr>
+			                                    <td>1</td>
+			                                    <td>laurent.souesmes@neurones.net</td>
+			                                    <td>        
+                                                            <a href="#openModal"><img class="loupe" src="Images/loupe.png" width="20"/></a>
+                                                      
+                                                            <div id="openModal" class="modalDialog">
+                                                                  <div>
+                                                                        <a href="#close" title="Close" class="close">X</a>                                                                         
+                                    
+                                                                        <div id="owner_box">  
+                                                                              <div id="title_owner">
+                                                                                    <p>Owner</p>
+                                                                              </div>
+
+                                                                              <div id="photo_area">
+                                                                                    <img class="avatar" src="Images/CAZE-SULFOURT FREDERIC.JPG" width="150"/>
+                                                                              </div>
+
+                                                                              <div id="owner_description">
+                                                                                    <p>First Name : Frédéric</p>
+                                                                                    <p>Last Name : CAZE-SULFOURT</p>
+                                                                                    <p>Phone : 01 45 31 27 31</p>
+                                                                                    <p>Fonction : Dot Net Developer</p>
+                                                                                    <a href="mailto:frederic.caze-sulfourt@neurones.net" title="mail">Email : frederic.caze-sulfourt@neurones.net</a>                                                                              
+                                                                              </div>                                                                     
+                                                                        </div>                                                                   
+                                                                  </div>                                                           
+                                                            </div>	                                                     
+			                                    </td>
+		                                    </tr><!-- Table Row -->
+
+		                                    <tr>
+			                                    <td>2</td>
+			                                    <td>raphael.deluard@neurones.net</td>
+			                                    <td>
+                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
+			                                    </td>
+		                                    </tr><!-- Darker Table Row -->
+
+		                                    <tr>
+			                                    <td>3</td>
+			                                    <td>frederic.caze-sulfourt@neurones.net</td>
+			                                    <td>
+                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
+			                                    </td>
+		                                    </tr>	
+                                                
+                                                      <tr>
+			                                    <td>4</td>
+			                                    <td>frederic.caze-sulfourt@neurones.net</td>
+			                                    <td>
+                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
+			                                    </td>
+		                                    </tr>	
+                                                
+                                                      <tr>
+			                                    <td>5</td>
+			                                    <td>frederic.caze-sulfourt@neurones.net</td>
+			                                    <td>
+                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
+			                                    </td>
+		                                    </tr>		
+
+                                                   <tr>
+                  
+			                                    <td>6</td>
+			                                    <td>frederic.caze-sulfourthjjjjjjjjjjjjjjjjjjj@neurones.net</td>
+			                                    <td>
+                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
+			                                    </td>
+                                                   </tr>   
+                                                  
+                                                <tr>
+                  
+			                                    <td>7</td>
+			                                    <td>frederic.caze-sulfourthjjjjjjjjjjjjjjjjjjj@neurones.net</td>
+			                                    <td>
+                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
+			                                    </td>
+                                                   </tr> 
+					                                  
+	                                    </tbody>
+	                                    <!-- Table Body -->                                   
+                                   </table>                            
+                             </div>
+                                    
+                             <div class="button_class_owners">
+                                    <div id="add_button_owners">
+                                          <a href="#" class="Go">Add</a>
+                                    </div>
+
+                                    <div id="del_button_owners">
+                                          <a href="#" class="Go">Delete</a>
+                                    </div>                                                                            
+                             </div>  <!-- end button_class_owners -->                                                                             
+                       </div> <!-- end owners_list -->   
+    <!--------------------------------------------------------MEMBER LIST AREA------------------------------------------------------------------------->                   
+                       <div id="members_list">                               
 
                               <div id="title_members_LD">
                                     <p>Members List</p>
@@ -278,131 +395,9 @@
  
                               <div id="del_button_members">
                                     <a href="#" class="Go">Delete</a>
-                              </div>
-
-                              <div id="new_button_members">
-                                    <a href="#" class="Go">New</a>
-                              </div>                                    
+                              </div>                               
                        </div>  <!-- end button_class_members -->                                                                             
-                 </div> <!-- end members_list -->  
-                        
-                 <div id="owners_list">                               
-                        <div id="title_owners_LD">
-                              <p>Owners List</p>
-                        </div>                                                     
-                            
-                       <div id="owners_list_array">                                   
-                             <table class="table"> <!-- cellspacing='0' is important, must stay -->
-	                                    <!-- Table Header -->	                                    
-                                   <thead>
-		                              <tr>
-			                              <th>ID</th>
-			                              <th>Owner Email Adress</th>
-                                                <th></th>
-		                              </tr>
-	                              </thead>
-	                              <!-- Table Header -->
-
-	                              <!-- Table Body -->
-	                              <tbody>
-		                              <tr>
-			                              <td>1</td>
-			                              <td>laurent.souesmes@neurones.net</td>
-			                              <td>        
-                                                      <a href="#openModal"><img class="loupe" src="Images/loupe.png" width="20"/></a>
-                                                      
-                                                      <div id="openModal" class="modalDialog">
-                                                            <div>
-                                                                  <a href="#close" title="Close" class="close">X</a>                                                                         
-                                    
-                                                            <div id="owner_box">  
-                                                                  <div id="title_owner">
-                                                                        <p>Owner</p>
-                                                                  </div>
-
-                                                                  <div id="photo_area">
-                                                                        <img class="avatar" src="Images/CAZE-SULFOURT FREDERIC.JPG" width="150"/>
-                                                                  </div>
-
-                                                                  <div id="owner_description">
-                                                                        <p>First Name : Frédéric</p>
-                                                                        <p>Last Name : CAZE-SULFOURT</p>
-                                                                        <p>Phone : 01 45 31 27 31</p>
-                                                                        <p>Fonction : Dot Net Developer</p>
-                                                                        <p>Email : frederic.caze-sulfourt@neurones.net</p>
-                                                                  </div>     
-                                                            </div> 
-                                                            </div>
-                                                            
-                                                      </div>	                                                     
-			                              </td>
-		                              </tr><!-- Table Row -->
-
-		                              <tr>
-			                              <td>2</td>
-			                              <td>raphael.deluard@neurones.net</td>
-			                              <td>
-                                                      <img class="loupe" src="Images/loupe.png" width="20"/>
-			                              </td>
-		                              </tr><!-- Darker Table Row -->
-
-		                              <tr>
-			                              <td>3</td>
-			                              <td>frederic.caze-sulfourt@neurones.net</td>
-			                              <td>
-                                                      <img class="loupe" src="Images/loupe.png" width="20"/>
-			                              </td>
-		                              </tr>	
-                                                
-                                                <tr>
-			                              <td>4</td>
-			                              <td>frederic.caze-sulfourt@neurones.net</td>
-			                              <td>
-                                                      <img class="loupe" src="Images/loupe.png" width="20"/>
-			                              </td>
-		                              </tr>	
-                                                
-                                                <tr>
-			                              <td>4</td>
-			                              <td>frederic.caze-sulfourt@neurones.net</td>
-			                              <td>
-                                                      <img class="loupe" src="Images/loupe.png" width="20"/>
-			                              </td>
-		                              </tr>		
-
-                                             <tr>
-                  
-			                              <td>4</td>
-			                              <td>frederic.caze-sulfourthjjjjjjjjjjjjjjjjjjj@neurones.net</td>
-			                              <td>
-                                                      <img class="loupe" src="Images/loupe.png" width="20"/>
-			                              </td>
-                                             </tr>   
-                                               
-					                                  
-	                              </tbody>
-	                              <!-- Table Body -->                                   
-                             </table>                            
-                       </div>
-                                    
-                       <div class="button_class_owners">
-                              <div id="add_button_owners">
-                                    <a href="#" class="Go">Add</a>
-                              </div>
-
-                              <div id="del_button_owners">
-                                    <a href="#" class="Go">Delete</a>
-                              </div>
-
-                              <div id="new_button_owners">
-                                    <a href="#" class="Go">New</a>
-                              </div>
-
-                              <div id="modify_button_owners">
-                                    <a href="#" class="Go">Modify</a>                              
-                              </div>                                                                               
-                       </div>  <!-- end button_class_owners -->                                                                             
-                 </div> <!-- end owners_list -->                                                                                
+                 </div> <!-- end members_list -->                                                                               
             </div>  <!-- end result_area -->  
        </div>  <!-- end content --> 
 </asp:Content>
