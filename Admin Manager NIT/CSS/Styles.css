@@ -9,17 +9,11 @@
        height:auto;
        position:fixed;
 }
-#masterPageMContainer{
-      width:100%; 
-      height:100%;
-      display:block;
-      position:static;
-}
 #menu{
       float:left;
       height: auto;
       margin-top:10px;
-      position: absolute;
+      position: inherit;
 }
 /*Back container in MasterPage*/
 #MainContent{   
@@ -65,13 +59,9 @@ div.spacer{
       max-height:150px;
       overflow:auto;
       transition: all .5s;
-      background: #132c1a;
+      background: #369e3b;
       box-shadow:inset;
       margin:5.2px;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
 }
 .menuClass a {
       display:block;
