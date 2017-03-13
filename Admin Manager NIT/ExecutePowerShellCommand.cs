@@ -52,7 +52,7 @@ namespace Admin_Manager_NIT
             /// <param name="scriptText"></param>
             /// <returns></returns>
             public static string RunScript(string scriptText)
-            {                 
+            {                             
                   PowerShell ps = PowerShell.Create().AddCommand(scriptText);
                  
                   // Create the output buffer for the results.

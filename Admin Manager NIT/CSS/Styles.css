@@ -1,11 +1,8 @@
 ﻿body {
       background-image:linear-gradient(to right, #006333, #e0e0e0);
       height:100%;
-      width:100%;
-      position:fixed;
-      display:block; 
-      top:auto;
-      left:auto;
+      width:100%;  
+      position:center;
 }
 #container{
        width:auto;
@@ -17,7 +14,6 @@
       height:100%;
       display:block;
       position:static;
-      background:transparent;
 }
 #menu{
       float:left;
@@ -31,8 +27,7 @@
       height:auto;
       text-align:center;
       margin-left:460px;
-      margin-top:10px;
-      background:transparent;
+      margin-top:25px;
       position:absolute;
 }
 /*
@@ -70,7 +65,7 @@ div.spacer{
       max-height:150px;
       overflow:auto;
       transition: all .5s;
-      background: #009550;
+      background: #132c1a;
       box-shadow:inset;
       margin:5.2px;
       border-top-left-radius: 24px;
@@ -90,22 +85,15 @@ div.spacer{
       font-size:1.1em
 }
 .menuClass li:hover {
-      background: #132c1a;
+      background: #006333;
 }
 .menuClass li li:hover {
-      background: #132c1a;
+      background: #666;
 }
 .menuClass li:hover li {
       max-height: 20em;
 }
-/*LD consult page*/
-#content{
-      background:transparent;
-      padding-top:15px;
-      padding-left:25px;
-      display:block;
-      height:100%;
-}
+
 #title_area{
       background:#006333;
       border:solid 1px #fff;
@@ -358,7 +346,8 @@ tbody{
       max-height:430px;
       overflow-y:auto;
       overflow-x:hidden;
-      width:auto;
+      width:auto;     
+       background:#132c1a;
 }
 /*-------------------------------------------------------------------------------------------------*/
 /*Owners List Button Area--------------------------------------------------------------------------*/

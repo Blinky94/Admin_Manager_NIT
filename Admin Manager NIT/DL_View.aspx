@@ -8,7 +8,7 @@
             }
       </style>
 </asp:Content>
-<asp:Content ID="ContentPlaceHolder1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
            <div class="contentT" id="content">                
 
                  <div id="title_area">

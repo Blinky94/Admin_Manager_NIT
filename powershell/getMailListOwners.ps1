@@ -1,1 +1,2 @@
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 get-childItem E:\AdvancedC'#'\Admin_Manager_NIT\powershell\OwnerList -name | Out-File E:\AdvancedC'#'\Admin_Manager_NIT\powershell\tmp\outputowner.txt
