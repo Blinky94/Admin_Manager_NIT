@@ -66,3 +66,4 @@ E:\AdvancedC#\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.CodeDom.Provider
 E:\AdvancedC#\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.csprojResolveAssemblyReference.cache
 E:\AdvancedC#\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.dll
 E:\AdvancedC#\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.pdb
+E:\AdvancedC#\Admin_Manager_NIT\Admin Manager NIT\bin\System.Management.Automation.dll

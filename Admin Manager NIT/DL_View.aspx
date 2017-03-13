@@ -31,7 +31,7 @@
                         
                         <div id="Go_table">
                               <div id="Go_Button">
-                                    <a href="#" class="Go">GO !</a>
+                                    <a href="#" class="Go" id="ButtonGo" runat="server" onserverclick="Go_Search_LDClick">GO !</a>
                               </div>
                         </div>
                        
@@ -39,10 +39,7 @@
                               <div class="select_List">
                                     <p>
                                           <label>Result : </label>
-                                          <select name="listbox" id="listbox">
-                                          <option></option>
-                                          <option></option>
-                                          </select>  
+                                          <asp:DropDownList class="mailingList" ID="mailingList" runat="server"></asp:DropDownList>
                                     </p>             
                               </div>       
                        </div>                                                                                    
@@ -60,25 +57,16 @@
                               </div>                                                     
                             
                              <div id="owners_list_array">                                   
-                                   <table class="table"> <!-- cellspacing='0' is important, must stay -->
-	                                          <!-- Table Header -->	                                    
-                                         <thead>
-		                                    <tr>
-			                                    <th>ID</th>
-			                                    <th>Owner Email Adress</th>
-                                                      <th></th>
-		                                    </tr>
-	                                    </thead>
-	                                    <!-- Table Header -->
-
-	                                    <!-- Table Body -->
-	                                    <tbody>
-		                                    <tr>
-			                                    <td>1</td>
-			                                    <td>laurent.souesmes@neurones.net</td>
-			                                    <td>        
-                                                            <a href="#openModal"><img class="loupe" src="Images/loupe.png" width="20"/></a>
-                                                      
+                               
+                                   <asp:Table class="table" ID="OwnerTable" runat="server"> 
+                                          <asp:TableHeaderRow id="TableHeaderOwners" BackColor="LightBlue" runat="server">
+                                                <asp:TableHeaderCell Scope="Column" Text="ID" />
+                                                <asp:TableHeaderCell Scope="Column" Text="Owner Email Address" />
+                                                <asp:TableHeaderCell Scope="Column" Text="View" />                                                
+                                          </asp:TableHeaderRow>                                                                                                                                 
+                                   </asp:Table>                                 
+                             </div>
+                                      <!-- 
                                                             <div id="openModal" class="modalDialog">
                                                                   <div>
                                                                         <a href="#close" title="Close" class="close">X</a>                                                                         
@@ -102,63 +90,8 @@
                                                                         </div>                                                                   
                                                                   </div>                                                           
                                                             </div>	                                                     
-			                                    </td>
-		                                    </tr><!-- Table Row -->
-
-		                                    <tr>
-			                                    <td>2</td>
-			                                    <td>raphael.deluard@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr><!-- Darker Table Row -->
-
-		                                    <tr>
-			                                    <td>3</td>
-			                                    <td>frederic.caze-sulfourt@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                      <tr>
-			                                    <td>4</td>
-			                                    <td>frederic.caze-sulfourt@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                      <tr>
-			                                    <td>5</td>
-			                                    <td>frederic.caze-sulfourt@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-
-                                                   <tr>
-                  
-			                                    <td>6</td>
-			                                    <td>frederic.caze-sulfourthjjjjjjjjjjjjjjjjjjj@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-                                                   </tr>   
-                                                  
-                                                <tr>
-                  
-			                                    <td>7</td>
-			                                    <td>frederic.caze-sulfourthjjjjjjjjjjjjjjjjjjj@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-                                                   </tr> 
-					                                  
-	                                    </tbody>
-	                                    <!-- Table Body -->                                   
-                                   </table>                            
-                             </div>
+			                                    </td>  -->
+		                                <!--    </tr><!-- Table Row -->                                                                                                            
                                     
                              <div class="button_class_owners">
                                     <div id="add_button_owners">
@@ -177,216 +110,17 @@
                                     <p>Members List</p>
                               </div>
 
+                             
                              <div id="members_list_array">
-                                    <table class="table"> <!-- cellspacing='0' is important, must stay -->
-	                                    <!-- Table Header -->
-	                                    <thead>
-		                                    <tr>
-			                                    <th>ID</th>
-			                                    <th>Member Email Adress</th>
-                                                      <th></th>
-		                                    </tr>
-	                                    </thead>
-	                                    <!-- Table Header -->
 
-	                                    <!-- Table Body -->
-	                                    <tbody>
-		                                    <tr>
-			                                    <td>1</td>
-			                                    <td>laurent.souesmes@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr><!-- Table Row -->
-
-		                                    <tr>
-			                                    <td>2</td>
-			                                    <td>raphael.deluard@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr><!-- Darker Table Row -->
-
-		                                    <tr>
-			                                    <td>3</td>
-			                                    <td>frederic.caze-sulfourt@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>4</td>
-			                                    <td>jean-françois.martin@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>5</td>
-			                                    <td>jean-christophe.totte@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>6</td>
-			                                    <td>mike.tyson@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-                                                
-                                                <tr>
-			                                    <td>7</td>
-			                                    <td>philippe.tutute@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>8</td>
-			                                    <td>fernand.nathan@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-                                                 
-                                                <tr>
-			                                    <td>9</td>
-			                                    <td>philippe.tutute@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>10</td>
-			                                    <td>fernand.nathan@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-                                                
-                                                 <tr>
-			                                    <td>11</td>
-			                                    <td>mike.tyson@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-                                                
-                                                <tr>
-			                                    <td>12</td>
-			                                    <td>philippe.tutute@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>13</td>
-			                                    <td>fernand.nathan@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-                                                 
-                                                <tr>
-			                                    <td>14</td>
-			                                    <td>philippe.tutute@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>15</td>
-			                                    <td>fernand.nathan@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-                                                  <tr>
-			                                    <td>16</td>
-			                                    <td>mike.tyson@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-                                                
-                                                <tr>
-			                                    <td>17</td>
-			                                    <td>philippe.tutute@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>18</td>
-			                                    <td>fernand.nathan@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-                                                 
-                                                <tr>
-			                                    <td>19</td>
-			                                    <td>philippe.tutute@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>20</td>
-			                                    <td>fernand.nathan@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                 <tr>
-			                                    <td>21</td>
-			                                    <td>philippe.tutute@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>22</td>
-			                                    <td>fernand.nathan@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>		
-                                                 
-                                                <tr>
-			                                    <td>23</td>
-			                                    <td>philippe.tutute@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>	
-                                                
-                                                <tr>
-			                                    <td>24</td>
-			                                    <td>fernand.nathan@neurones.net</td>
-			                                    <td>
-                                                            <img class="loupe" src="Images/loupe.png" width="20"/>
-			                                    </td>
-		                                    </tr>									
-                                                							                                  
-	                                    </tbody>
-	                                    <!-- Table Body -->
-
-                                    </table>                                   
-                              </div> <!-- end list members_list_array -->
+                                     <asp:Table class="table" ID="MembersTable" runat="server"> 
+                                          <asp:TableHeaderRow id="TableHeaderMembers" BackColor="LightBlue" runat="server">
+                                                <asp:TableHeaderCell Scope="Column" Text="ID" />
+                                                <asp:TableHeaderCell Scope="Column" Text="Member Email Address" />
+                                                <asp:TableHeaderCell Scope="Column" Text="View" />                                                
+                                          </asp:TableHeaderRow>                                                                                                                                 
+                                   </asp:Table>  		                                                                                                                                  
+                             </div> <!-- end list members_list_array -->
                                         
                         <div class="button_class_members">                                   
                                <div id="add_button_members">
