@@ -22,28 +22,22 @@
                   <div id="search_area">   
                         <div id="Search_table">
                               <p>
-                                    <label>Search :</label>&nbsp;&nbsp;&nbsp;
-                                    <input type ="text"
-                                    id ="SearchLD"
-                                    value ="" class="auto-style1" />                           
+                                    <label>Search :</label>  
+                                    <asp:TextBox class="mailingList" id="SearchTextBox" runat="server" />                                       
+                                    <a href="#" class="Go" id="ButtonGo" runat="server" onserverclick="Go_Button_Search_DistributionList">GO !</a>                       
                               </p>
-                        </div>
-                        
-                        <div id="Go_table">
-                              <div id="Go_Button">
-                                    <a href="#" class="Go" id="ButtonGo" runat="server" onserverclick="Go_Search_LDClick">GO !</a>
-                              </div>
-                        </div>
+                        </div>                                              
                        
                         <div id="List_table">
                               <div class="select_List">
                                     <p>
-                                          <label>Result : </label>
-                                          <asp:DropDownList class="mailingList" ID="mailingList" runat="server"></asp:DropDownList>
+                                          <label>Result : </label>     
+                                          <asp:DropDownList class="mailingList" id="mailingList" runat="server"></asp:DropDownList>   
+                                           <a href="#" class="Go" id="ButtonDLList" runat="server" onserverclick="Select_Button_DistributionList">Select</a>                                                                     
                                     </p>             
                               </div>       
-                       </div>                                                                                    
-                  </div>    <!-- end search_area --> 
+                       </div>                                                                                 
+                  </div>
                  
                   <div id="spacing_area2"> 
                         <!-- space between two block -->    
@@ -66,31 +60,32 @@
                                           </asp:TableHeaderRow>                                                                                                                                 
                                    </asp:Table>                                 
                              </div>
-                                      <!-- 
-                                                            <div id="openModal" class="modalDialog">
-                                                                  <div>
-                                                                        <a href="#close" title="Close" class="close">X</a>                                                                         
+                                
+                             <!-- Popup Form to display informations on Owner -->
+                              <div id="openModal" class="modalDialog">
+                                    <div>
+                                          <a href="#close" title="Close" class="close">X</a>                                                                         
                                     
-                                                                        <div id="owner_box">  
-                                                                              <div id="title_owner">
-                                                                                    <p>Owner</p>
-                                                                              </div>
+                                          <div id="owner_box">  
+                                                <div id="title_owner">
+                                                      <p>Owner</p>
+                                                </div>
 
-                                                                              <div id="photo_area">
-                                                                                    <img class="avatar" src="Images/CAZE-SULFOURT FREDERIC.JPG" width="150"/>
-                                                                              </div>
+                                                <div id="photo_area">
+                                                      <img class="avatar" src="Images/CAZE-SULFOURT FREDERIC.JPG" width="150"/>
+                                                </div>
 
-                                                                              <div id="owner_description">
-                                                                                    <p>First Name : Frédéric</p>
-                                                                                    <p>Last Name : CAZE-SULFOURT</p>
-                                                                                    <p>Phone : 01 45 31 27 31</p>
-                                                                                    <p>Fonction : Dot Net Developer</p>
-                                                                                    <a href="mailto:frederic.caze-sulfourt@neurones.net" title="mail">Email : frederic.caze-sulfourt@neurones.net</a>                                                                              
-                                                                              </div>                                                                     
-                                                                        </div>                                                                   
-                                                                  </div>                                                           
-                                                            </div>	                                                     
-			                                    </td>  -->
+                                                <div id="owner_description">
+                                                      <p>First Name : Frédéric</p>
+                                                      <p>Last Name : CAZE-SULFOURT</p>
+                                                      <p>Phone : 01 45 31 27 31</p>
+                                                      <p>Fonction : Dot Net Developer</p>
+                                                      <a href="mailto:frederic.caze-sulfourt@neurones.net" title="mail">Email : frederic.caze-sulfourt@neurones.net</a>                                                                              
+                                                </div>                                                                     
+                                          </div>                                                                   
+                                    </div>                                                           
+                              </div>	                                                     
+			                                    
 		                                <!--    </tr><!-- Table Row -->                                                                                                            
                                     
                              <div class="button_class_owners">

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.IO;
+using System.Threading;
 
 namespace Admin_Manager_NIT
 {
@@ -51,26 +52,27 @@ namespace Admin_Manager_NIT
             /// <param name="scriptText"></param>
             /// <returns></returns>
             public static string RunScript(string scriptText)
-            {
-                  Runspace runspace = RunspaceFactory.CreateRunspace();
+            {                 
+                  PowerShell ps = PowerShell.Create().AddCommand(scriptText);
+                 
+                  // Create the output buffer for the results.
+                  PSDataCollection<PSObject> output = new PSDataCollection<PSObject>();
 
-                  runspace.Open();
-
-                  Pipeline pipeline = runspace.CreatePipeline();
-                  pipeline.Commands.AddScript(scriptText);
-
-                  pipeline.Commands.Add("Out-String");
-                  Collection<PSObject> results = pipeline.Invoke();
-
-                  runspace.Close();
+                  // Create an IAsyncResult object and call the
+                  // BeginInvoke method to start running the 
+                  // command pipeline asynchronously.
+                  IAsyncResult async = ps.BeginInvoke<int, PSObject>(null, output);
 
                   StringBuilder stringBuilder = new StringBuilder();
 
-                  foreach (PSObject obj in results)                  
-                        stringBuilder.AppendLine(obj.ToString());
-                  
+                  // Using the PowerShell.EndInvoke method, run the command
+                  // pipeline using the default runspace.
+                  foreach (PSObject result in output)
+                  {
+                        stringBuilder.Append(result);
+                  } // End foreach.
 
-                  return stringBuilder.ToString();
+                  return stringBuilder.ToString();                 
             }
       }
 }

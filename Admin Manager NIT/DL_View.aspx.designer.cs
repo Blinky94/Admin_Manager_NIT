@@ -13,6 +13,15 @@ namespace Admin_Manager_NIT {
     public partial class WebForm1 {
         
         /// <summary>
+        /// SearchTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox SearchTextBox;
+        
+        /// <summary>
         /// ButtonGo control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace Admin_Manager_NIT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList mailingList;
+        
+        /// <summary>
+        /// ButtonDLList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ButtonDLList;
         
         /// <summary>
         /// OwnerTable control.

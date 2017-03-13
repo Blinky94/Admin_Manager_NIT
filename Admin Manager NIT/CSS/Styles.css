@@ -127,7 +127,7 @@ div.spacer{
       font-size: 30px; 
       font-weight: normal; 
       line-height: 5px; 
-      margin-left: 10px;
+      margin-left: 0;
       border-top-left-radius: 24px;
       border-top-right-radius: 24px;
       border-bottom-left-radius: 24px;
@@ -151,7 +151,7 @@ div.spacer{
       font-size: 20px; 
       font-weight: normal; 
       line-height: 5px; 
-      margin-left: 10px;
+      margin-left: 0;
       overflow: hidden;
       border-top-left-radius: 24px;
       border-top-right-radius: 24px;
@@ -159,19 +159,11 @@ div.spacer{
       border-bottom-right-radius: 24px;
 }
 #Search_table{
-      margin-left:25px;
-      width:37%;
-      float:left;
-}
-#Go_table{
-      margin-top:18px;
-      margin-left:10px;
-      width:5%;
-      height:auto;
+      width:auto;
       float:left;
 }
 #List_table{
-      width:50%;
+      width:auto;
       float:right;
 }
 /*Go button*/
@@ -197,8 +189,7 @@ div.spacer{
 }
 /*DropListBox Select Distrib List*/
 .mailingList{ 
-      margin-left:20px;
-      width:480px;   
+      width:462px;
       height:40px;
       text-align:left;
       font-family: 'Trocchi', serif; 
@@ -225,7 +216,7 @@ div.spacer{
       font-size: 30px; 
       font-weight: normal; 
       line-height: 5px; 
-      margin-left: 5px;
+      margin-left: 0;
       overflow: hidden;
 }
 /*Gestion des effets pour l'affichage de la carte de visite--------------------------------------------*/
