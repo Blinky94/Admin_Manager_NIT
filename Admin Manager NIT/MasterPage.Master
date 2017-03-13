@@ -24,7 +24,7 @@
                         <!-- empty area -->
                   </div>
 
-                  <div id="main">
+                  <div id="masterPageMContainer">
                         <div id="menu">
                                 <ul class="menuClass">                                                              
                                     <li><a href="#">Mailing List</a>
@@ -63,8 +63,7 @@
                         </div>
 
                         <div id="MainContent">
-                               <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-                              </asp:ContentPlaceHolder>
+                               <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
                         </div>
            
                         <div class="spacer">
