@@ -1,35 +1,33 @@
 ﻿body {
-      background-image:linear-gradient(to right, #006333, #e0e0e0);
-      height:100%;
+      background-image:linear-gradient(to right, #021a08, #aefbb1);
       width:100%;  
-      position:center;
+      position:relative;
+      pointer-events:auto;
+      cursor:auto;
 }
 #container{
-       width:auto;
-       height:auto;
-       position:fixed;
+      position:relative;
+      background:transparent;
 }
 #menu{
+      background:transparent;
       float:left;
-      height: auto;
-      margin-top:10px;
-      position: inherit;
+      margin-left:40px;
+      position:relative;
 }
 /*Back container in MasterPage*/
 #MainContent{   
-      width:73%;
-      height:auto;
+      background:transparent;
+      width:70%;
       text-align:center;
-      margin-left:460px;
-      margin-top:25px;
+      margin-left:500px;
+      margin-top:15px;
       position:absolute;
 }
-/*
-div.spacer, permet de faire deux colonne dans #container
-*/
+/*div.spacer, permet de faire deux colonne dans #container*/
 div.spacer{
       clear:both; 
-      height:auto; 
+      height:100%; 
       display:block;
 }
 /*Menu - principal titles*/
@@ -68,7 +66,7 @@ div.spacer{
       text-decoration: none;
       color: #fff;
       padding: 2px 10px;
-      font-family: verdana;
+      font-family: 'Trocchi', serif; 
       font-size:1.1em;
 }
 .menuClass ul li a, .menuClass li:hover li a {
@@ -83,21 +81,16 @@ div.spacer{
 .menuClass li:hover li {
       max-height: 20em;
 }
-
 #title_area{
       background:#006333;
       border:solid 1px #fff;
-      position:inherit;
+      position:relative;
       text-align:center;
       height:auto;
       color: #fff; 
       font-family: 'Trocchi', serif; 
       font-size: 1.5em; 
       font-weight: normal; 
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
 }
 #spacing_area{
       background:transparent;
@@ -105,11 +98,12 @@ div.spacer{
       height:10px; 
       display:block;
       margin-left: 10px;
+      position:relative;
 }
 #search_area{
       background:#006333;
       border:solid 1px #fff;
-      position:inherit;
+      position:relative;
       text-align:left;
       height:auto;
       color: #fff; 
@@ -119,10 +113,7 @@ div.spacer{
       line-height: 5px; 
       margin-left: 0px;
       overflow: hidden;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
+      width:auto;
 }
 #Search_table{
       width:auto;
@@ -149,7 +140,6 @@ div.spacer{
       font-style:normal; 
       padding:18px 6px;
       text-decoration:none;
-      position:static;
 }
 /*Go button reacting on mouse over*/
 .Go:hover{
@@ -165,6 +155,7 @@ div.spacer{
       font-size: 20px; 
       font-weight: bold;
       font-style:oblique; 
+      position:relative;
 }
 /*Space between Search Area and Result Area*/
 #spacing_area2{
@@ -177,7 +168,7 @@ div.spacer{
 /*Result Area of search process*/
 #result_area{
       background:transparent; 
-      position:inherit;
+      position:relative;
       height:750px;
       color: #fff; 
       font-family: 'Trocchi', serif; 
@@ -186,41 +177,63 @@ div.spacer{
       line-height: 2px; 
       overflow: hidden;
 }
-/*Gestion des effets pour l'affichage de la carte de visite--------------------------------------------*/
-.modalDialog {
-      background:#1e1010;
-      margin-left:500px;
-	z-index: 99999;
-      opacity:1;
-	opacity:0;
-	transition: opacity 400ms ease-in;
-}
-/*Gère la petite croix pour fermer la carte de visite*/
-.modalDialog:target {
-	opacity:0;
-	pointer-events:auto;
-}
-.modalDialog > div{ 
-      border-radius:10px;
-      background:transparent;
-      transition:all 0.4s ease-in-out;
-}
 /*The Visit Card Owner Part---------------------------------------------------------------------------------------------------*/
 /*Title Owner*/
-#openModal{
-      position:fixed;
-      font-family: 'Trocchi', serif; 
-      font-size: 17px; 
-      color:white;
-      border:double;
-      border-color:azure;
-      background:transparent;
-      background-image:url(../Images/visit_card_texture.jpg); 
-      margin-left:500px;
-      border-radius:24px;
-      text-align:left;
-      width:auto;
-      height:auto;
+.overlay {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  visibility:visible;
+  opacity: 0;
+  position:absolute;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+.popup {
+  margin: 300px auto;
+  padding: 20px;
+  background: white;
+  background-image:url(../Images/visit_card_texture.jpg);
+  border-radius: 5px;
+  width: 30%;
+  position:relative;
+  transition: all 5s ease-in-out;
+}
+.popup h2 {
+      margin-top: 0;
+      color: #fff;
+      font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+}
+.popup .close:hover {
+      color: #06D85F;
+}
+.popup .content {
+      max-height: 30%;
+      overflow: auto;
+}
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
 }
 #title_owner{
       text-align:center;
@@ -229,7 +242,6 @@ div.spacer{
 #photo_area{
       background:transparent;
       border:double;
-      border-color:azure;
       float:left;
       width:auto;
       margin-left:10px;
@@ -238,18 +250,13 @@ div.spacer{
 }
 /*Description dans la carte de visite*/
 #owner_description {
-      margin-top: 15%;
-      margin-left: 40%;
-      width:100%;
-}
-/*carte de visite*/
-#owner_box{
-      margin-right:15px;
+      float:right;
+      background:transparent;
+      margin-top:10px;
+      color:white;
+      text-align:left;
+      margin-right:70px;
       width:auto;
-}
-.tableheader{
-      width:100px;
-      margin:550px;
 }
 /*----------------------------------------LIST ARRAY-----------------------------------------*/
 .table {
@@ -259,7 +266,6 @@ div.spacer{
 	text-shadow: 1px 1px 0px #fff;
 	background:#eaebec;
 	border:#ccc 1px solid;
-	border-radius:3px;
 	box-shadow: 0 1px 2px #d1d1d1;
       position:center;
       width:550px;
@@ -328,44 +334,47 @@ tbody{
       overflow-y:auto;
       overflow-x:hidden;
       width:auto;     
-     background:#132c1a;
+      background:#132c1a;
 }
-/*-------------------------------------------------------------------------------------------------*/
 /*Owners List Button Area--------------------------------------------------------------------------*/
 /*Area which manage all the owners buttons*/
 .button_class_owners{
-      position:fixed;
-      background:transparent;
+  background:transparent;
       height:auto;
-      text-align:center;
-      margin-top:7px;
-      left:850px;
+      width:100%;
+      margin-top: 7px;
 }
 #add_button_owners{
       background:transparent;
-      display:inline-block;   
+      float:left;
+      width:50%;
+      text-align:right;  
 }
 #del_button_owners{
-      background:transparent;
-      display:inline-block;  
+      background:transparent; 
+      float:right;
+      width:50%;
+      text-align:left;  
 }
 /*Members List Button Area-------------------------------------------------------------------------*/
 /*Area which manage all the members buttons*/
 .button_class_members{
-      position:absolute;
       background:transparent;
       height:auto;
-      text-align:center;  
+      width:100%;
       margin-top: 7px;
-      left:1000px;
 }
 #add_button_members{
       background:transparent;
-      display:inline-block;  
+      float:left;
+      width:50%;
+      text-align:right;  
 }
 #del_button_members{
-      background:transparent;
-      display:inline-block;  
+      background:transparent; 
+      float:right;
+      width:50%;
+      text-align:left;  
 }
 /*Members List column--------------------------------------------------------------------------------------------*/
 /*Title Members LD*/
@@ -385,12 +394,9 @@ tbody{
       height:77%;
       width:49%;
       float:right;
-      border:double;
+      border:solid 1px #fff;
       border-color:azure;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
+
 }
 
 /*Title Owner LD*/
@@ -410,10 +416,6 @@ tbody{
       height:77%;
       width:49%;
       float:left;
-      border:double;
+      border:solid 1px #fff;
       border-color:azure;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
-      border-bottom-left-radius: 24px;
-      border-bottom-right-radius: 24px;
 }

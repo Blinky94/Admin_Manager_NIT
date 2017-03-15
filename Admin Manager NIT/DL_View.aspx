@@ -11,7 +11,31 @@
       </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-           <div class="contentT" id="content">                
+           <div class="contentT" id="content">     
+                                
+                <!--Popup Owner info -->
+                <div class="box">                                    
+                      <div id="popup1" class="overlay" runat="server">
+                            <div class="popup">
+                                   		<h2>Owner Details</h2>
+                                    		<a class="close" href="#">&times;</a>
+                                  <div class="content">
+                                  
+                                          <div id="photo_area">
+                                                <img class="avatar" src="Images/CAZE-SULFOURT FREDERIC.JPG" width="150"/>
+                                          </div>
+
+                                          <div id="owner_description">
+                                                <p>First Name : Frédéric</p>
+                                                <p>Last Name : CAZE-SULFOURT</p>
+                                                <p>Phone : 01 45 31 27 31</p>
+                                                <p>Fonction : Dot Net Developer</p>
+                                                <a href="mailto:frederic.caze-sulfourt@neurones.net" title="mail">Email : frederic.caze-sulfourt@neurones.net</a>                                                                              
+                                          </div>                            
+                                  </div>                                                                                                                                     
+                            </div>                                         
+                      </div>                       
+                </div>                                                
 
                  <div id="title_area">
                        <p>View Mailing List</p>
@@ -63,42 +87,17 @@
                                     <asp:TableHeaderRow id="TableHeaderOwners" BackColor="LightBlue" runat="server">                                                                               
                                     </asp:TableHeaderRow>                                                                                                                                 
                               </asp:Table>                                 
-                        </div>
+                        </div>                              
+                <div class="button_class_owners">
+                      <div id="add_button_owners">
+                              <a href="#" class="Go">Add</a>
+                       </div>
 
-                        <div id="openModal" class="modalDialog">
-                              <div>
-                                    <a href="#close" title="Close" class="close">X</a>                                                                         
-
-                                    <div id="owner_box">  
-                                          <div id="title_owner">
-                                                <p>Owner</p>
-                                          </div>
-
-                                          <div id="photo_area">
-                                                <img class="avatar" src="Images/CAZE-SULFOURT FREDERIC.JPG" width="150"/>
-                                          </div>
-
-                                          <div id="owner_description">
-                                                <p>First Name : Frédéric</p>
-                                                <p>Last Name : CAZE-SULFOURT</p>
-                                                <p>Phone : 01 45 31 27 31</p>
-                                                <p>Fonction : Dot Net Developer</p>
-                                                <a href="mailto:frederic.caze-sulfourt@neurones.net" title="mail">Email : frederic.caze-sulfourt@neurones.net</a>                                                                              
-                                          </div>                                                                                                                                       
-                                    </div>                                                           
-                              </div>	                                                     			                                                                                           
-                        </div>    
-                                         
-                        <div class="button_class_owners">
-                              <div id="add_button_owners">
-                                    <a href="#" class="Go">Add</a>
-                              </div>
-
-                              <div id="del_button_owners">
-                                    <a href="#" class="Go">Delete</a>
-                              </div>                                                                            
-                        </div>  <!-- end button_class_owners -->                                                                             
-                  </div> <!-- end owners_list -->   
+                        <div id="del_button_owners">
+                              <a href="#" class="Go">Delete</a>
+                        </div>                                                                            
+                       </div>  <!-- end button_class_owners -->                                                                             
+                 </div> <!-- end owners_list -->   
     <!--------------------------------------------------------MEMBER LIST AREA------------------------------------------------------------------------->                   
                        <div id="members_list">                               
 
@@ -108,9 +107,9 @@
 
                              
                              <div id="members_list_array">
-                                     <asp:Table class="tableheader" ID="tableMemberHeader" runat="server"> 
+                                     <asp:Table class="table" ID="HeaderMember" runat="server"> 
                                           <asp:TableHeaderRow id="headermembers" BackColor="LightBlue" runat="server">
-                                                <asp:TableHeaderCell Scope="Column" Text="Member Email Address"/>
+                                                <asp:TableHeaderCell Scope="Column" Text="Member Email Address" width="500"/>
                                                 <asp:TableHeaderCell Scope="Column" Text="View" />                                                
                                           </asp:TableHeaderRow>                                                                                                                                 
                                    </asp:Table>  

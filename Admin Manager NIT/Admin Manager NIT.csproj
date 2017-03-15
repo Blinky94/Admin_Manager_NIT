@@ -101,6 +101,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\computer-564136_1280.jpg" />
     <Content Include="Images\loupe.png" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">

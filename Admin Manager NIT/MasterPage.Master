@@ -15,9 +15,8 @@
       <body>  
          <form id="form1" runat="server">
             <div id="container">
-                 
-                   <div id="banner">
-                       <img style="margin:0px auto;display:block" src="/Images/Neurones_banner.png"  alt="HTML5 Icon"/>
+                  <div class="banner">
+                       <img class="resize_fit_center" style="margin:0px auto;display:block" src="/Images/Neurones_banner.png"  alt="HTML5 Icon"/>
                   </div>
       
                   <div id="navbar"> 

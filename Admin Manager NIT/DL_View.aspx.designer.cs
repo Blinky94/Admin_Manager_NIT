@@ -13,6 +13,15 @@ namespace Admin_Manager_NIT {
     public partial class WebForm1 {
         
         /// <summary>
+        /// popup1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl popup1;
+        
+        /// <summary>
         /// SearchTextBox control.
         /// </summary>
         /// <remarks>
@@ -85,13 +94,13 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderOwners;
         
         /// <summary>
-        /// tableMemberHeader control.
+        /// HeaderMember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tableMemberHeader;
+        protected global::System.Web.UI.WebControls.Table HeaderMember;
         
         /// <summary>
         /// headermembers control.

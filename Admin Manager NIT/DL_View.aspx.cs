@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 
 namespace Admin_Manager_NIT
 {
@@ -41,6 +42,41 @@ namespace Admin_Manager_NIT
             }
 
             /// <summary>
+            /// Method to open new Visit Card Details on Click in Loup icon
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            protected void OpenOwnerVisitCard_OnClick(object sender, EventArgs e)
+            {
+
+                  ExecutePowerShellCommand.RunScript(ExecutePowerShellCommand.LoadScript(getMailListMembers));
+
+                  listOutPutMember = ReadFileOutPut.GetLineFromFile(outputmember);
+                  int Id2 = 1;
+                  int countList2 = listOutPutMember.Count;
+
+                  for (int i = Id2; i <= countList2; i++)
+                  {
+                        TableRow tr = new TableRow();
+                        // TableCell idCell = new TableCell();
+                        TableCell adressCell = new TableCell();
+                        TableCell imageCell = new TableCell();
+
+                        MembersTable.Rows.Add(tr);
+                        //MembersTable.Rows.Add(tr);
+
+                        //idCell.Text = Convert.ToString(i);
+                        adressCell.Text = listOutPutMember[i - 1];
+                        imageCell.Text = string.Format("<a href=\"#openModal\"><img class=\"loupe\" src=\"Images/loupe.png\" width=\"20\"/></a>");
+                        // Add the TableCells to the TableRow
+                        //tr.Cells.Add(idCell);
+                        tr.Cells.Add(adressCell);
+                        tr.Cells.Add(imageCell);
+                  }
+
+            }
+
+            /// <summary>
             /// Method Event Handler when click on "Go!" Button
             /// Generate Owners List in the result DropDownList
             /// Generate Members List in the result DropDownList
@@ -58,46 +94,21 @@ namespace Admin_Manager_NIT
                   for (int i = Id; i <= countList; i++)
                   {
                         TableRow tr = new TableRow();
-                       // TableCell idCell = new TableCell();
                         TableCell adressCell = new TableCell();
                         TableCell imageCell = new TableCell();
-
                         OwnerTable.Rows.Add(tr);
-                        //MembersTable.Rows.Add(tr);
-
-                        //idCell.Text = Convert.ToString(i);
-                        adressCell.Text = listOutPutOwner[i - 1];
-                        imageCell.Text = string.Format("<a href=\"#openModal\"><img class=\"loupe\" src=\"Images/loupe.png\" width=\"20\"/></a>");
-                        // Add the TableCell to the TableRow
-                       // tr.Cells.Add(idCell);
+                        LinkButton lnkPost = new LinkButton();
+                        lnkPost.Click += new EventHandler(this.OpenOwnerVisitCard_OnClick);
+                        adressCell.Text = listOutPutOwner[i - 1];                     
+                        lnkPost.Attributes.Add("runat", "server");
+                        lnkPost.Controls.Add(new Image { ImageUrl = "Images/loupe.png" });
+                        imageCell.Controls.Add(lnkPost);
+                        //   imageCell.Text = string.Format("<a href=\"#\"><img class=\"loupe\" src=\"Images/loupe.png\" width=\"20\" onClick=\"OpenOwnerVisitCard_OnClick\" runat=\"server\"/></a>");      
                         tr.Cells.Add(adressCell);
                         tr.Cells.Add(imageCell);
                   }
 
-                  ExecutePowerShellCommand.RunScript(ExecutePowerShellCommand.LoadScript(getMailListMembers));
-
-                  listOutPutMember = ReadFileOutPut.GetLineFromFile(outputmember);
-                  int Id2 = 1;
-                  int countList2 = listOutPutMember.Count;
-
-                  for (int i = Id2; i <= countList2; i++)
-                  {
-                        TableRow tr = new TableRow();
-                       // TableCell idCell = new TableCell();
-                        TableCell adressCell = new TableCell();
-                        TableCell imageCell = new TableCell();
-
-                        MembersTable.Rows.Add(tr);
-                        //MembersTable.Rows.Add(tr);
-
-                        //idCell.Text = Convert.ToString(i);
-                        adressCell.Text = listOutPutMember[i - 1];
-                        imageCell.Text = string.Format("<a href=\"#openModal\"><img class=\"loupe\" src=\"Images/loupe.png\" width=\"20\"/></a>");
-                        // Add the TableCells to the TableRow
-                        //tr.Cells.Add(idCell);
-                        tr.Cells.Add(adressCell);
-                        tr.Cells.Add(imageCell);
-                  }
+               
             }
       }
 }
