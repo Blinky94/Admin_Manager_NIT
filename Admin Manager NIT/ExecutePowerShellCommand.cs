@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.IO;
-using System.Threading;
+using System.Collections.ObjectModel;
+using System.Management.Automation.Runspaces;
 
 namespace Admin_Manager_NIT
 {
@@ -53,26 +49,25 @@ namespace Admin_Manager_NIT
             /// <returns></returns>
             public static string RunScript(string scriptText)
             {                             
-                  PowerShell ps = PowerShell.Create().AddCommand(scriptText);
-                 
-                  // Create the output buffer for the results.
-                  PSDataCollection<PSObject> output = new PSDataCollection<PSObject>();
+                  Runspace runspace = RunspaceFactory.CreateRunspace();
 
-                  // Create an IAsyncResult object and call the
-                  // BeginInvoke method to start running the 
-                  // command pipeline asynchronously.
-                  IAsyncResult async = ps.BeginInvoke<int, PSObject>(null, output);
+                  runspace.Open();
+
+                  Pipeline pipeline = runspace.CreatePipeline();
+                  pipeline.Commands.AddScript(scriptText);
+
+                  pipeline.Commands.Add("Out-String");
+                  Collection<PSObject> results = pipeline.Invoke();
+
+                  runspace.Close();
 
                   StringBuilder stringBuilder = new StringBuilder();
-
-                  // Using the PowerShell.EndInvoke method, run the command
-                  // pipeline using the default runspace.
-                  foreach (PSObject result in output)
+                  foreach (PSObject obj in results)
                   {
-                        stringBuilder.Append(result);
-                  } // End foreach.
+                        stringBuilder.AppendLine(obj.ToString());
+                  }
 
-                  return stringBuilder.ToString();                 
+                  return stringBuilder.ToString();
             }
       }
 }

@@ -117,7 +117,7 @@ div.spacer{
       font-size: 20px; 
       font-weight: normal; 
       line-height: 5px; 
-      margin-left: 0;
+      margin-left: 0px;
       overflow: hidden;
       border-top-left-radius: 24px;
       border-top-right-radius: 24px;
@@ -127,10 +127,12 @@ div.spacer{
 #Search_table{
       width:auto;
       float:left;
+      margin-left:10px;
 }
 #List_table{
       width:auto;
       float:right;
+      margin-right:10px;
 }
 /*Go button*/
 .Go{
@@ -156,7 +158,7 @@ div.spacer{
 }
 /*DropListBox Select Distrib List*/
 .mailingList{ 
-      width:462px;
+      width:450px;
       height:40px;
       text-align:left;
       font-family: 'Trocchi', serif; 
@@ -186,23 +188,19 @@ div.spacer{
 }
 /*Gestion des effets pour l'affichage de la carte de visite--------------------------------------------*/
 .modalDialog {
-	position:fixed;	
       background:#1e1010;
+      margin-left:500px;
 	z-index: 99999;
+      opacity:1;
 	opacity:0;
 	transition: opacity 400ms ease-in;
-	pointer-events:none;
 }
 /*Gère la petite croix pour fermer la carte de visite*/
 .modalDialog:target {
-	opacity:1;
+	opacity:0;
 	pointer-events:auto;
 }
-.modalDialog > div{
-      width:auto;
-      position:relative;
-      margin:0% auto;
-      padding:0px 0px 0px 0px;
+.modalDialog > div{ 
       border-radius:10px;
       background:transparent;
       transition:all 0.4s ease-in-out;
@@ -217,9 +215,8 @@ div.spacer{
       border:double;
       border-color:azure;
       background:transparent;
-      background-image:url(../Images/visit_card_texture.jpg);
-      margin-top:-100px;
-      margin-left:-500px;
+      background-image:url(../Images/visit_card_texture.jpg); 
+      margin-left:500px;
       border-radius:24px;
       text-align:left;
       width:auto;
@@ -250,6 +247,10 @@ div.spacer{
       margin-right:15px;
       width:auto;
 }
+.tableheader{
+      width:100px;
+      margin:550px;
+}
 /*----------------------------------------LIST ARRAY-----------------------------------------*/
 .table {
       font-family: 'Trocchi', serif;
@@ -261,7 +262,7 @@ div.spacer{
 	border-radius:3px;
 	box-shadow: 0 1px 2px #d1d1d1;
       position:center;
-      width:500px;
+      width:550px;
       margin: auto;
 }
 /*Container page table*/
@@ -271,32 +272,22 @@ div.spacer{
 	border-bottom:1px solid #e0e0e0;
 	background: #ededed;
       text-align:center;
-      width:500px;
 }
 .table th:first-child {
 	text-align: center;
 }
 .table tr:first-child th:first-child {
       text-align: center;
-	border-top-left-radius:3px;
-      width:auto;
+	border-top-left-radius:5px;
 }
 .table tr:first-child th:last-child {
-	border-top-right-radius:3px;
-      width:70px;
-}
-.table tr {
-	text-align: left;
+	border-top-right-radius:5px;
+      text-align:left;
 }
 /*ID column*/
 .table td:first-child {
 	text-align: center;
-      width:60px;
-}
-/*Owner Email Adress column*/
-.table td:nth-child(2) {
-	text-align: center;
-      width:400px;
+      width:500px;
 }
 /*View Column*/
 .table td:last-child {
@@ -337,7 +328,7 @@ tbody{
       overflow-y:auto;
       overflow-x:hidden;
       width:auto;     
-       background:#132c1a;
+     background:#132c1a;
 }
 /*-------------------------------------------------------------------------------------------------*/
 /*Owners List Button Area--------------------------------------------------------------------------*/
@@ -347,7 +338,7 @@ tbody{
       background:transparent;
       height:auto;
       text-align:center;
-      margin-top:auto;
+      margin-top:7px;
       left:850px;
 }
 #add_button_owners{
@@ -365,7 +356,7 @@ tbody{
       background:transparent;
       height:auto;
       text-align:center;  
-      margin-top: 10px auto;
+      margin-top: 7px;
       left:1000px;
 }
 #add_button_members{
@@ -391,7 +382,7 @@ tbody{
 /*Members's List LD*/
 #members_list{
       background:#006333;
-      height:70%;
+      height:77%;
       width:49%;
       float:right;
       border:double;
@@ -416,7 +407,7 @@ tbody{
 /*Owner's List LD*/
 #owners_list{
       background:#006333;
-      height:70%;
+      height:77%;
       width:49%;
       float:left;
       border:double;

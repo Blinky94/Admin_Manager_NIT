@@ -49,6 +49,24 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ButtonDLList;
         
         /// <summary>
+        /// HeaderOwner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table HeaderOwner;
+        
+        /// <summary>
+        /// TableHeaderRow1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderRow1;
+        
+        /// <summary>
         /// OwnerTable control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,24 @@ namespace Admin_Manager_NIT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderOwners;
+        
+        /// <summary>
+        /// tableMemberHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tableMemberHeader;
+        
+        /// <summary>
+        /// headermembers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableHeaderRow headermembers;
         
         /// <summary>
         /// MembersTable control.

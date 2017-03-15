@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
+using System.Web.UI;
 
 namespace Admin_Manager_NIT
 {
@@ -16,8 +17,8 @@ namespace Admin_Manager_NIT
 
             List<string> listOutPutOwner = new List<string>();
             List<string> listOutPutMember = new List<string>();
-            List<string> listOutPutDL = new List<string>();              
-
+            List<string> listOutPutDL = new List<string>();
+        
             /// <summary>
             /// Method Event Handler when click on "Go" Button
             /// Generate Distribution List in the DropDownList Box area
@@ -26,6 +27,7 @@ namespace Admin_Manager_NIT
             /// <param name="e"></param>
             protected void Go_Button_Search_DistributionList(object sender,EventArgs e)
             {
+                  mailingList.Items.Clear();
                   ExecutePowerShellCommand.RunScript(ExecutePowerShellCommand.LoadScript(getMailListDL));
 
                   listOutPutDL = ReadFileOutPut.GetLineFromFile(outputDistribution);
@@ -56,18 +58,18 @@ namespace Admin_Manager_NIT
                   for (int i = Id; i <= countList; i++)
                   {
                         TableRow tr = new TableRow();
-                        TableCell idCell = new TableCell();
+                       // TableCell idCell = new TableCell();
                         TableCell adressCell = new TableCell();
                         TableCell imageCell = new TableCell();
 
                         OwnerTable.Rows.Add(tr);
                         //MembersTable.Rows.Add(tr);
 
-                        idCell.Text = Convert.ToString(i);
+                        //idCell.Text = Convert.ToString(i);
                         adressCell.Text = listOutPutOwner[i - 1];
                         imageCell.Text = string.Format("<a href=\"#openModal\"><img class=\"loupe\" src=\"Images/loupe.png\" width=\"20\"/></a>");
                         // Add the TableCell to the TableRow
-                        tr.Cells.Add(idCell);
+                       // tr.Cells.Add(idCell);
                         tr.Cells.Add(adressCell);
                         tr.Cells.Add(imageCell);
                   }
@@ -81,18 +83,18 @@ namespace Admin_Manager_NIT
                   for (int i = Id2; i <= countList2; i++)
                   {
                         TableRow tr = new TableRow();
-                        TableCell idCell = new TableCell();
+                       // TableCell idCell = new TableCell();
                         TableCell adressCell = new TableCell();
                         TableCell imageCell = new TableCell();
 
                         MembersTable.Rows.Add(tr);
                         //MembersTable.Rows.Add(tr);
 
-                        idCell.Text = Convert.ToString(i);
+                        //idCell.Text = Convert.ToString(i);
                         adressCell.Text = listOutPutMember[i - 1];
                         imageCell.Text = string.Format("<a href=\"#openModal\"><img class=\"loupe\" src=\"Images/loupe.png\" width=\"20\"/></a>");
-                        // Add the TableCell to the TableRow
-                        tr.Cells.Add(idCell);
+                        // Add the TableCells to the TableRow
+                        //tr.Cells.Add(idCell);
                         tr.Cells.Add(adressCell);
                         tr.Cells.Add(imageCell);
                   }
