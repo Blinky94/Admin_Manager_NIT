@@ -49,7 +49,7 @@
                         <div id="Search_table">
                               <p>
                                     <label>Search :</label>  
-                                    <asp:TextBox class="mailingList" id="SearchTextBox" runat="server" />                                       
+                                    <asp:TextBox class="mailingList" id="SearchDLTextBox" runat="server" OnTextChanged="SearchTextBox_TextChanged" />                                       
                                     <a href="#" class="Go" id="ButtonGo" runat="server" onserverclick="Go_Button_Search_DistributionList">GO !</a>                       
                               </p>
                         </div>                                              

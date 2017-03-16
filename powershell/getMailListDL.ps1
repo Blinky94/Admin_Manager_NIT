@@ -1,1 +1,1 @@
-get-childItem E:\AdvancedC'#'\Admin_Manager_NIT\powershell\DistributionList -name | Out-File E:\AdvancedC'#'\Admin_Manager_NIT\powershell\tmp\outputDistribution.txt
+get-childItem C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\DistributionList -name | Out-File C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputDistribution.txt

@@ -67,3 +67,71 @@ E:\AdvancedC#\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.CodeDom.Provider
 E:\AdvancedC#\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.csprojResolveAssemblyReference.cache
 E:\AdvancedC#\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.dll
 E:\AdvancedC#\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.pdb
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\ApplicationInsights.config
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\csc.exe
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\vbc.exe
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\VBCSCompiler.exe
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Admin Manager NIT.dll.config
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Admin Manager NIT.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Admin Manager NIT.pdb
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.Web.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.ApplicationInsights.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\System.Management.Automation.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.Web.xml
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.ApplicationInsights.xml
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.csprojResolveAssemblyReference.cache
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.dll
+C:\Users\FCazesulfourt\Documents\Visual Studio 2017\Projects\NIT 2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.pdb
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\ApplicationInsights.config
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\csc.exe
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\vbc.exe
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\VBCSCompiler.exe
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Admin Manager NIT.dll.config
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Admin Manager NIT.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Admin Manager NIT.pdb
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.Web.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.ApplicationInsights.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\System.Management.Automation.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.Web.xml
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.ApplicationInsights.xml
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.csprojResolveAssemblyReference.cache
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.dll
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.pdb
