@@ -23,8 +23,10 @@ namespace Admin_Manager_NIT
                   while ((_line = _fileToRead.ReadLine()) != null)
                   {
                         _listLine.Add(_line);
-                  }                
-                
+                  }
+            //Close the opened file to be released to the next call
+            _fileToRead.Close();
+
                   return _listLine;
             }
       }

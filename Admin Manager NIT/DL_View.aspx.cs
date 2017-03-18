@@ -20,6 +20,15 @@ namespace Admin_Manager_NIT
         List<string> listOutPutMember = new List<string>();
         List<string> listOutPutDL = new List<string>();
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Convert.ToString(ViewState["Generated"]) == "true")
+            {
+                GenerateTableOwner();
+                GenerateTableMember();
+            }
+        }
+
         /// <summary>
         /// Method Event Handler when click on "Go" Button
         /// Generate Distribution List in the DropDownList Box area
@@ -49,8 +58,59 @@ namespace Admin_Manager_NIT
         protected void OpenOwnerVisitCard_OnClick(object sender, EventArgs e)
         {
 
+            ClientScriptManager cs = Page.ClientScript;
+            Type csType = this.GetType();
+            cs.RegisterStartupScript(csType, "myAlert", "<script language=JavaScript>window.alert('Welcome toto !');</script>");           
+        }
 
+        private void GenerateTableOwner()
+        {
+            ExecutePowerShellCommand.RunScript(ExecutePowerShellCommand.LoadScript(getMailListOwners));
 
+            listOutPutOwner = ReadFileOutPut.GetLineFromFile(outputowner);
+            int countList = listOutPutOwner.Count;
+
+            for (int i = 1; i <= countList; i++)
+            {
+                TableRow tr = new TableRow();
+                TableCell adressCell = new TableCell();
+                TableCell imageCell = new TableCell();
+                OwnerTable.Rows.Add(tr);
+                adressCell.Text = listOutPutOwner[i - 1];
+                LinkButton img = new LinkButton();
+                img.ID = adressCell.Text;
+                img.Click += new EventHandler(OpenOwnerVisitCard_OnClick);
+                img.Controls.Add(new Image { ImageUrl = "Images/loupe.png", Width = 20 });
+
+                imageCell.Controls.Add(img);
+                tr.Cells.Add(adressCell);
+                tr.Cells.Add(imageCell);
+            }
+        }
+
+        private void GenerateTableMember()
+        {
+            ExecutePowerShellCommand.RunScript(ExecutePowerShellCommand.LoadScript(getMailListMembers));
+
+            listOutPutMember = ReadFileOutPut.GetLineFromFile(outputmember);
+            int countList = listOutPutMember.Count;
+
+            for (int i = 1; i <= countList; i++)
+            {
+                TableRow tr = new TableRow();
+                TableCell adressCell = new TableCell();
+                TableCell imageCell = new TableCell();
+                MembersTable.Rows.Add(tr);
+                adressCell.Text = listOutPutMember[i - 1];
+                LinkButton img = new LinkButton();
+                img.ID = adressCell.Text;
+                img.Click += new EventHandler(OpenOwnerVisitCard_OnClick);
+                img.Controls.Add(new Image { ImageUrl = "Images/loupe.png", Width = 20 });
+
+                imageCell.Controls.Add(img);
+                tr.Cells.Add(adressCell);
+                tr.Cells.Add(imageCell);
+            }
         }
 
         /// <summary>
@@ -62,63 +122,17 @@ namespace Admin_Manager_NIT
         /// <param name="e"></param>
         protected void Select_Button_DistributionList(object sender, EventArgs e)
         {
-            ExecutePowerShellCommand.RunScript(ExecutePowerShellCommand.LoadScript(getMailListOwners));
-
-            listOutPutOwner = ReadFileOutPut.GetLineFromFile(outputowner);
-            int Id = 1;
-            int countList = listOutPutOwner.Count;
-
-            for (int i = Id; i <= countList; i++)
+            if (Convert.ToString(ViewState["Generated"]) != "true")
             {
-                TableRow tr = new TableRow();
-                TableCell adressCell = new TableCell();
-                TableCell imageCell = new TableCell();
-                OwnerTable.Rows.Add(tr);
-                LinkButton lnkPost = new LinkButton();
-                lnkPost.Click += new EventHandler(this.LoupeOnClick);
-                adressCell.Text = listOutPutOwner[i - 1];
-                lnkPost.Attributes.Add("runat", "server");
-                lnkPost.Controls.Add(new Image { ImageUrl = "Images/loupe.png", Width = 20 });
-                imageCell.Controls.Add(lnkPost);
-                //   imageCell.Text = string.Format("<a href=\"#\"><img class=\"loupe\" src=\"Images/loupe.png\" width=\"20\" onClick=\"OpenOwnerVisitCard_OnClick\" runat=\"server\"/></a>");      
-                tr.Cells.Add(adressCell);
-                tr.Cells.Add(imageCell);
+                GenerateTableMember();
+                GenerateTableOwner();
+                ViewState["Generated"] = "true";
             }
-            Response.Write(" is Clicked");
-        }
-
-
-        protected void LoupeOnClick(object sender, EventArgs e)
-        {
-            ExecutePowerShellCommand.RunScript(ExecutePowerShellCommand.LoadScript(getMailListMembers));
-
-            listOutPutMember = ReadFileOutPut.GetLineFromFile(outputmember);
-            int Id2 = 1;
-            int countList2 = listOutPutMember.Count;
-
-            for (int i = Id2; i <= countList2; i++)
-            {
-                TableRow tr = new TableRow();
-                // TableCell idCell = new TableCell();
-                TableCell adressCell = new TableCell();
-                TableCell imageCell = new TableCell();
-                MembersTable.Rows.Add(tr);
-
-                LinkButton lnkPost = new LinkButton();
-
-                adressCell.Text = listOutPutMember[i - 1];
-                lnkPost.Attributes.Add("runat", "server");
-                lnkPost.Controls.Add(new Image { ImageUrl = "Images/loupe.png", Width = 20 });
-                imageCell.Controls.Add(lnkPost);
-                /*  adressCell.Text = listOutPutMember[i - 1];
-                  imageCell.Text = string.Format("<a href=\"#openModal\"><img class=\"loupe\" src=\"Images/loupe.png\" width=\"20\"/></a>");*/
-                tr.Cells.Add(adressCell);
-                tr.Cells.Add(imageCell);
-            }
-        }
+        }  
 
         protected void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
+
         }
     }
 }
