@@ -4,30 +4,51 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
            <div class="contentT" id="content">     
-                                
-                <!--Popup Owner info -->
-                <div class="box">                                    
-                      <div id="popup1" class="overlay" runat="server">
-                            <div class="popup">
-                                   		<h2>Owner Details</h2>
-                                    		<a class="close" href="#">&times;</a>
-                                  <div class="content">
-                                  
-                                          <div id="photo_area">
-                                                <img class="avatar" src="Images/CAZE-SULFOURT FREDERIC.JPG" width="150"/>
-                                          </div>
-
-                                          <div id="owner_description">
-                                                <p>First Name : Frédéric</p>
-                                                <p>Last Name : CAZE-SULFOURT</p>
-                                                <p>Phone : 01 45 31 27 31</p>
-                                                <p>Fonction : Dot Net Developer</p>
-                                                <a href="mailto:frederic.caze-sulfourt@neurones.net" title="mail">Email : frederic.caze-sulfourt@neurones.net</a>                                                                              
-                                          </div>                            
-                                  </div>                                                                                                                                     
-                            </div>                                         
-                      </div>                       
-                </div>                                                
+                    
+<!-- Bootstrap Modal Dialog -->
+               <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <div class="popup" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <div class="content">
+                                <div class="Title">
+                                    <h2 class="owner-title">
+                                        <asp:Label ID="title" runat="server" Text=""></asp:Label></h2>
+                                </div>   
+                                  <div id="photo_area">                                   
+                                      <asp:Image class="avatar" ID="imageowner" runat="server" width="150" ImageUrl="" />                                          
+                                  </div>
+                                <div class="owner_description">
+                                    <h4 class="description">
+                                            <asp:Label ID="firstname" runat="server" Text=""></asp:Label>                                       
+                                        <br />
+                                        <br />
+                                            <asp:Label ID="lastname" runat="server" Text=""></asp:Label>
+                                        <br />
+                                        <br />
+                                            <asp:Label ID="fonction" runat="server" Text=""></asp:Label>                                                                              
+                                        <br />
+                                        <br />
+                                            <asp:Label ID="phone" runat="server" Text=""></asp:Label>                                                                               
+                                        <br />
+                                        <br />
+                                            <asp:Label ID="email" runat="server" Text=""></asp:Label>                                                                               
+                                        <br />
+                                        </h4>
+                                </div>                                    
+                             
+                                <div class="close">
+                                    <button id="buttoncloseowner" runat="server" onclick="OnCloseButton_Owner_Event" class="buttonCloseOwner" data-dismiss="modal" aria-hidden="true">Close</button>
+                                </div>                             
+                            </div>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:asyncpostbacktrigger ControlID="buttoncloseowner" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>
+            </div>                                                      
 
                  <div id="title_area">
                        <p>View Mailing List</p>
@@ -78,12 +99,13 @@
                               <asp:Table class="table" ID="OwnerTable" runat="server"> 
                                     <asp:TableHeaderRow id="TableHeaderOwners" BackColor="LightBlue" runat="server">                                                                               
                                     </asp:TableHeaderRow>                                                                                                                                 
-                              </asp:Table>                                 
+                              </asp:Table>                                                           
                         </div>                              
-                <div class="button_class_owners">
-                      <div id="add_button_owners">
-                              <a href="#" class="Go">Add</a>
-                       </div>
+             
+                      <div class="button_class_owners">                  
+                          <div id="add_button_owners">
+                              <a href="#" class="Go">Add</a>                    
+                          </div>
 
                         <div id="del_button_owners">
                               <a href="#" class="Go">Delete</a>
@@ -96,7 +118,6 @@
                               <div id="title_members_LD">
                                     <p>Members List</p>
                               </div>
-
                              
                              <div id="members_list_array">
                                      <asp:Table class="table" ID="HeaderMember" runat="server"> 

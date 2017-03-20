@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.UI.WebControls;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 
 namespace Admin_Manager_NIT
 {
@@ -20,10 +19,16 @@ namespace Admin_Manager_NIT
         List<string> listOutPutMember = new List<string>();
         List<string> listOutPutDL = new List<string>();
 
+        /// <summary>
+        /// Load_Page to load the page with or without dynamic controls
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Convert.ToString(ViewState["Generated"]) == "true")
             {
+                upModal.Visible = false;
                 GenerateTableOwner();
                 GenerateTableMember();
             }
@@ -51,18 +56,45 @@ namespace Admin_Manager_NIT
         }
 
         /// <summary>
-        /// Method to open new Visit Card Details on Click in Loup icon
+        /// Button Event Close Owner Popup
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void OpenOwnerVisitCard_OnClick(object sender, EventArgs e)
+        protected void OnCloseButton_Owner_Event(object sender, EventArgs e)
         {
-
             ClientScriptManager cs = Page.ClientScript;
             Type csType = this.GetType();
             cs.RegisterStartupScript(csType, "myAlert", "<script language=JavaScript>window.alert('Welcome toto !');</script>");           
+       }
+
+       /// <summary>
+       /// Method to open new Visit Card Details on Click in Loup icon
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
+       protected void OpenOwnerVisitCard_OnClick(object sender, EventArgs e)
+       {
+           upModal.Visible = true;
+           imageowner.ImageUrl = "Images/CAZE-SULFOURT FREDERIC.jpg";
+           title.Text = "Owner Description";
+           firstname.Text = "First Name : " + "Frédéric";
+           lastname.Text = "Last Name : " + "CAZE-SULFOURT";
+           fonction.Text = "Fonction : " + "Developer";
+           phone.Text = "Phone : " +  "01 42 05 87 99";
+           email.Text = "Email : " + "frederic.caze-sulfourt@neurones.net";
+
+           ScriptManager.RegisterStartupScript(Page, Page.GetType(), "myModal", "$('#myModal').modal();", true);
+           upModal.Update();
+
+           /*ClientScriptManager cs = Page.ClientScript;
+           Type csType = this.GetType();
+           cs.RegisterStartupScript(csType, "myAlert", "<script language=JavaScript>window.alert('Welcome toto !');</script>");           
+       */
         }
 
+        /// <summary>
+        /// Generate the table dynamically with the powerShell scripts for the Owners
+        /// </summary>
         private void GenerateTableOwner()
         {
             ExecutePowerShellCommand.RunScript(ExecutePowerShellCommand.LoadScript(getMailListOwners));
@@ -88,6 +120,9 @@ namespace Admin_Manager_NIT
             }
         }
 
+        /// <summary>
+        /// Generate the table dynamically with the powerShell scripts for the Members
+        /// </summary>
         private void GenerateTableMember()
         {
             ExecutePowerShellCommand.RunScript(ExecutePowerShellCommand.LoadScript(getMailListMembers));

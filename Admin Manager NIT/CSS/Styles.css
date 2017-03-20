@@ -179,41 +179,32 @@ div.spacer{
 }
 /*The Visit Card Owner Part---------------------------------------------------------------------------------------------------*/
 /*Title Owner*/
-.overlay {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  visibility:visible;
-  opacity: 0;
-  position:absolute;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
 .popup {
-  margin: 300px auto;
-  padding: 20px;
-  background: white;
-  background-image:url(../Images/visit_card_texture.jpg);
-  border-radius: 5px;
-  width: 30%;
-  position:relative;
-  transition: all 5s ease-in-out;
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    background-image: url(../Images/visit_card_texture.jpg);
+    border-radius: 25px;
+    width: auto;
+    max-width: 40%;
+    transition: all 5s ease-in-out;
 }
-.popup h2 {
+.popup h2 {       
+    margin-top: 0;      
+    color: #fff;      
+    font-family: Tahoma, Arial, sans-serif;
+    font-size:30px;
+    }
+.popup h4 {
       margin-top: 0;
       color: #fff;
       font-family: Tahoma, Arial, sans-serif;
 }
 .popup .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
+      position:absolute;
+      top: 85%;
+      right: 46%;
       transition: all 200ms;
       font-size: 30px;
       font-weight: bold;
@@ -224,38 +215,26 @@ div.spacer{
       color: #06D85F;
 }
 .popup .content {
-      max-height: 30%;
+      max-height: 50%;
       overflow: auto;
+      margin-bottom:7%;
 }
-@media screen and (max-width: 700px){
-  .box{
-    width: 70%;
-  }
-  .popup{
-    width: 70%;
-  }
-}
-#title_owner{
-      text-align:center;
-}
+
 /*Photo area Owner*/
 #photo_area{
       background:transparent;
-      border:double;
       float:left;
       width:auto;
-      margin-left:10px;
-      margin-top:auto;
-      margin-bottom:60px;
+      margin-left:2%; 
 }
 /*Description dans la carte de visite*/
-#owner_description {
-      float:right;
+.owner_description {
+      float:left;
       background:transparent;
-      margin-top:10px;
+      margin-top:2%;
+      margin-left:5%;
       color:white;
       text-align:left;
-      margin-right:70px;
       width:auto;
 }
 /*----------------------------------------LIST ARRAY-----------------------------------------*/
