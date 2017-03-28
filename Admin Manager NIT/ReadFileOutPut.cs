@@ -16,7 +16,7 @@ namespace Admin_Manager_NIT
             {
                   List<string> _listLine = new List<string>();
 
-                  StreamReader _fileToRead = new StreamReader(@filename);
+                  StreamReader _fileToRead = new StreamReader(@filename,System.Text.Encoding.Default);
 
                   string _line;
                   

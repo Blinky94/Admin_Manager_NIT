@@ -3,54 +3,11 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-           <div class="contentT" id="content">     
-                    
-<!-- Bootstrap Modal Dialog -->
-               <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <div class="popup" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <asp:UpdatePanel ID="upModal" runat="server" ChildrenAsTriggers="false" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <div class="content">
-                                <div class="Title">
-                                    <h2 class="owner-title">
-                                        <asp:Label ID="title" runat="server" Text=""></asp:Label></h2>
-                                </div>   
-                                  <div id="photo_area">                                   
-                                      <asp:Image class="avatar" ID="imageowner" runat="server" width="150" ImageUrl="" />                                          
-                                  </div>
-                                <div class="owner_description">
-                                    <h4 class="description">
-                                            <asp:Label ID="firstname" runat="server" Text=""></asp:Label>                                       
-                                        <br />
-                                        <br />
-                                            <asp:Label ID="lastname" runat="server" Text=""></asp:Label>
-                                        <br />
-                                        <br />
-                                            <asp:Label ID="fonction" runat="server" Text=""></asp:Label>                                                                              
-                                        <br />
-                                        <br />
-                                            <asp:Label ID="phone" runat="server" Text=""></asp:Label>                                                                               
-                                        <br />
-                                        <br />
-                                            <asp:Label ID="email" runat="server" Text=""></asp:Label>                                                                               
-                                        <br />
-                                        </h4>
-                                </div>                                    
-                             
-                                <div class="close">
-                                    <button id="buttoncloseowner" runat="server" onclick="OnCloseButton_Owner_Event" class="buttonCloseOwner" data-dismiss="modal" aria-hidden="true">Close</button>
-                                </div>                             
-                            </div>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:asyncpostbacktrigger ControlID="buttoncloseowner" />
-                        </Triggers>
-                    </asp:UpdatePanel>
-                </div>
-            </div>                                                      
 
-                 <div id="title_area">
+     <p><asp:Label ID="lblSecret" runat="server" style="font-weight: 700"></asp:Label></p>
+        
+           <div class="contentT" id="content">     
+                 <div id="title_area" class="title">
                        <p>View Mailing List</p>
                  </div>
                    
@@ -63,7 +20,7 @@
                               <p>
                                     <label>Search :</label>  
                                     <asp:TextBox class="mailingList" id="SearchDLTextBox" runat="server" OnTextChanged="SearchTextBox_TextChanged" />                                       
-                                    <a href="#" class="Go" id="ButtonGo" runat="server" onserverclick="Go_Button_Search_DistributionList">GO !</a>                       
+                                    <a href="#" class="search_area_buttons" id="ButtonGo" runat="server" onserverclick="Go_Button_Search_DistributionList">GO !</a>                       
                               </p>
                         </div>                                              
                        
@@ -72,7 +29,7 @@
                                     <p>
                                           <label>Result : </label>     
                                           <asp:DropDownList class="mailingList" id="mailingList" runat="server"></asp:DropDownList>   
-                                           <a href="#" class="Go" id="ButtonDLList" runat="server" onserverclick="Select_Button_DistributionList">Select</a>                                                                     
+                                           <a href="#" class="search_area_buttons" id="ButtonDLList" runat="server" onserverclick="Select_Button_DistributionList">Select</a>                                                                     
                                     </p>             
                               </div>       
                        </div>                                                                                 
@@ -82,67 +39,135 @@
                         <!-- space between two block -->    
                  </div>                               
 
-                 <div id="result_area">                                        
-       <!--------------------------------------------------------OWNER LIST AREA------------------------------------------------------------------------->                            
-                  <div id="owners_list">                               
-                        <div id="title_owners_LD">
+                 <div id="result_area">                                                     
+                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>  
+                     
+<!--------------------------------------------------------OWNER LIST AREA------------------------------------------------------------------------->                                                                  
+                                                            
+                     <div id="owners_list">       
+                                                      
+                         <div id="title_owners" class="title" runat="server">   
                               <p>Owners List</p>
-                        </div>                                                     
-                            
-                        <div id="owners_list_array">                                   
-                                <asp:Table class="table" ID="HeaderOwner" runat="server"> 
-                                    <asp:TableHeaderRow id="TableHeaderRow1" BackColor="LightBlue" runat="server">
-                                          <asp:TableHeaderCell Scope="Column" Text="Owner Email Address" width="500"/>
-                                          <asp:TableHeaderCell Scope="Column" Text="View" />                                                
-                                    </asp:TableHeaderRow>                                                                                                                                 
-                              </asp:Table>       
-                              <asp:Table class="table" ID="OwnerTable" runat="server"> 
-                                    <asp:TableHeaderRow id="TableHeaderOwners" BackColor="LightBlue" runat="server">                                                                               
-                                    </asp:TableHeaderRow>                                                                                                                                 
-                              </asp:Table>                                                           
-                        </div>                              
-             
-                      <div class="button_class_owners">                  
-                          <div id="add_button_owners">
-                              <a href="#" class="Go">Add</a>                    
-                          </div>
-
-                        <div id="del_button_owners">
-                              <a href="#" class="Go">Delete</a>
-                        </div>                                                                            
-                       </div>  <!-- end button_class_owners -->                                                                             
-                 </div> <!-- end owners_list -->   
-    <!--------------------------------------------------------MEMBER LIST AREA------------------------------------------------------------------------->                   
-                       <div id="members_list">                               
-
-                              <div id="title_members_LD">
-                                    <p>Members List</p>
-                              </div>
+                        </div>                                                                                                      
+               
+                        <div id="owners_list_array">                                                                  
+                            <asp:Table class="headertable" ID="HeaderOwner" runat="server">                                
+                                <asp:TableHeaderRow id="TableHeaderRow1" BackColor="LightBlue" runat="server">                                                                           
+                                    <asp:TableHeaderCell Scope="Column" Text="Owner Email Address" width="500"/>                                        
+                                    <asp:TableHeaderCell Scope="Column" Text="View"/>                                                
+                                </asp:TableHeaderRow>                                                                                                                                 
+                            </asp:Table>       
+                              
+                            <asp:Table class="table" ID="OwnerTable" runat="server">                                     
+                                <asp:TableHeaderRow id="TableHeaderOwners" BackColor="LightBlue" runat="server">                          
+                                </asp:TableHeaderRow>                                                                                                                                                               
+                            </asp:Table>                                                                                                                                 
+                        </div>                                                
+                         
+                         <div class="button_class">                                           
+                             <div id="add_button_owners">                                                               
+                                 <a href="#" class="Go">Add</a>                                                                           
+                             </div>
+                        
+                             <div id="del_button_owners">                                                          
+                                 <a href="#" class="Go">Delete</a>                        
+                             </div>     
                              
-                             <div id="members_list_array">
-                                     <asp:Table class="table" ID="HeaderMember" runat="server"> 
-                                          <asp:TableHeaderRow id="headermembers" BackColor="LightBlue" runat="server">
-                                                <asp:TableHeaderCell Scope="Column" Text="Member Email Address" width="500"/>
-                                                <asp:TableHeaderCell Scope="Column" Text="View" />                                                
-                                          </asp:TableHeaderRow>                                                                                                                                 
-                                   </asp:Table>  
-                                   <asp:Table class="table" ID="MembersTable" runat="server"> 
-                                          <asp:TableHeaderRow id="TableHeaderMembers" BackColor="LightBlue" runat="server">                                          
-                                          </asp:TableHeaderRow>                                                                                                                                 
-                                   </asp:Table>  
-                                   		                                                                                                                                  
-                             </div> <!-- end list members_list_array -->
-                                        
-                        <div class="button_class_members">                                   
-                               <div id="add_button_members">
-                                    <a href="#" class="Go">Add</a>
-                              </div>
- 
-                              <div id="del_button_members">
-                                    <a href="#" class="Go">Delete</a>
-                              </div>                               
-                       </div>  <!-- end button_class_members -->                                                                             
-                 </div> <!-- end members_list -->                                                                               
-            </div>  <!-- end result_area -->  
-       </div>  <!-- end content --> 
+                             <div id="Request_button_OwnerShip">
+                                 <a href="#" class="Go"  runat="server" onserverclick="GenerateEmailToSend_Click">Request OwnerShip</a>
+                             </div>
+                         </div>  <!-- end button_class_owners -->     
+                         
+                          <div id="title_owner" class="title" runat="server">
+                              <p>Owner Details</p>
+                        </div>   
+
+                        <div id="owner_details_area" class="details" runat="server">
+                            <!-- photo zone area -->
+                            <div id="owner_photo_area" class="photo_area" runat="server"></div>
+                            <!-- details zone area -->
+                            <div class="textbox_area" runat="server">
+                                <div class="titles_descriptions" runat="server">
+                                    <p>First Name : </p>
+                                    <p>Last Name : </p>
+                                    <p>Job : </p>
+                                    <p>Phone : </p>                                                                       
+                                    <p>Email : </p>
+                                </div>  
+                                 
+                                <asp:TextBox ID="owner_details" class="txtbox_details" runat="server" TextMode="MultiLine">                          
+                                </asp:TextBox>                              
+                            </div>                            
+                             
+                            <div id="email_link_owner" class="email">
+                                <asp:LinkButton ID="LinkButtonOwner" class="email_css"  runat="server"></asp:LinkButton>                                        
+                            </div>                            
+                        </div>                   
+                                    
+                     </div> <!-- end owners_list --> 
+                     
+<!--------------------------------------------------------MEMBER LIST AREA------------------------------------------------------------------------->                                         
+                     
+                     <div id="members_list"> 
+                         
+                          <div id="title_members" class="title" runat="server">                             
+                             <p>Members List</p>                              
+                         </div>
+                                                          
+                         <div id="members_list_array">                                    
+                             <asp:Table class="headertable" ID="HeaderMember" runat="server">                                           
+                                 <asp:TableHeaderRow id="headermembers" BackColor="LightBlue" runat="server">                                                
+                                     <asp:TableHeaderCell Scope="Column" Text="Member Email Address" width="500"/>                                              
+                                     <asp:TableHeaderCell Scope="Column" Text="View" />                                                                                          
+                                 </asp:TableHeaderRow>                                                                                                                                                                    
+                             </asp:Table>  
+                             
+                             <asp:Table class="table" ID="MembersTable" runat="server">                                         
+                                 <asp:TableHeaderRow id="TableHeaderMembers" BackColor="LightBlue" runat="server">                                                                                                                        
+                                 </asp:TableHeaderRow>                                                                                                                                                                    
+                             </asp:Table>                                     		                                                                                                                                                               
+                         </div> <!-- end list members_list_array -->
+                                                                
+                         <div class="button_class">                                                                  
+                             <div id="add_button_members">                                   
+                                 <a href="#" class="Go">Add</a>                              
+                             </div> 
+                              
+                             <div id="del_button_members">                                    
+                                 <a href="#" class="Go">Delete</a>                             
+                             </div>                                                     
+                         </div>  <!-- end button_class_members -->                                                        
+               
+                        <div id="title_member" class="title" runat="server">                             
+                             <p>Member Details</p>            
+                         </div>                                                                                                         
+                 
+                            <div id="member_details_area" class="details" runat="server">
+                             
+                                <!-- photo zone area -->
+                             
+                                <div id="member_photo_area" class="photo_area" runat="server"></div>
+                             
+                                <!-- details zone area -->                        
+                                <div class="textbox_area" runat="server">
+                                 
+                                    <div class="titles_descriptions" runat="server">                                                               
+                                        <p>First Name : </p> 
+                                        <p>Last Name : </p>
+                                        <p>Job : </p>
+                                        <p>Phone : </p>
+                                        <p>Email : </p>
+                                    </div>
+                                  
+                                    <asp:TextBox ID="member_details" class="txtbox_details" runat="server" TextMode="MultiLine">                                                              
+                                    </asp:TextBox>                                                                         
+                                </div> 
+                                   
+                                <div id="email_link_member" class="email">                                      
+                                     <asp:LinkButton ID="LinkButtonMember" class="email_css" runat="server"></asp:LinkButton>                                        
+                                </div>                                                    
+                         </div>                  
+                     </div>  <!-- end result_area -->                        
+                 </div> <!-- End contentT -->
+           </div>  <!-- end content --> 
 </asp:Content>

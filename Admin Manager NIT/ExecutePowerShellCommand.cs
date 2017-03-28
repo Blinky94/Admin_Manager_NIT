@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Text;
-using System.Management.Automation;
-using System.IO;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Management.Automation;
 using System.Management.Automation.Runspaces;
+using System.Text;
 
 namespace Admin_Manager_NIT
 {
@@ -48,16 +48,17 @@ namespace Admin_Manager_NIT
         /// </summary>
         /// <param name="scriptText"></param>
         /// <returns></returns>
-        public static string RunScript(string scriptText)
+        public static string RunScriptWithNoArgument(string scriptText)
         {      
             Runspace runspace = RunspaceFactory.CreateRunspace();
 
             runspace.Open();
 
             Pipeline pipeline = runspace.CreatePipeline();
+ 
             pipeline.Commands.AddScript(scriptText);
-
             pipeline.Commands.Add("Out-String");
+
             Collection<PSObject> results = pipeline.Invoke();
 
             runspace.Close();
@@ -68,6 +69,31 @@ namespace Admin_Manager_NIT
                 stringBuilder.AppendLine(obj.ToString());
            
             return stringBuilder.ToString();
-        }     
+        }
+
+        /// <summary>
+        /// Method to run the powerShellScript
+        /// </summary>
+        /// <param name="scriptText"></param>
+        /// <returns></returns>
+        public static string RunScriptWithArgument(string scriptText,string arg)
+        {
+            Runspace runspace = RunspaceFactory.CreateRunspace();
+
+            runspace.Open();
+
+            PowerShell ps = PowerShell.Create();
+            ps.AddScript(scriptText).AddArgument(arg);
+            Collection<PSObject> results = ps.Invoke();
+
+            runspace.Close();
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (PSObject obj in results)
+                stringBuilder.AppendLine(obj.ToString());
+
+            return stringBuilder.ToString();
+        }
     }
 }

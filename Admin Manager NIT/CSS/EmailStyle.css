@@ -1,0 +1,127 @@
+﻿body {
+    background-image: linear-gradient(to right, #021a08, #aefbb1);
+    width: 100%;
+    position: relative;
+    pointer-events: auto;
+    cursor: auto;
+    color: white;
+}
+
+.main {
+    background: transparent;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    margin-top: 50px;
+}
+
+.title {
+    background: transparent;
+    text-align: center;
+    font-family: 'Trocchi', serif;
+    font-size: 30px;
+}
+
+.ref_zone {
+    text-align: right;
+    background: transparent;
+    float: left;
+    width: 25%;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+}
+
+.text_zone {
+    background: transparent;
+    float: right;
+    width: 75%;
+    margin-top:10px;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+}
+
+.mailFrom_zone {
+    margin-top: 15px;
+    margin-left: 10px;
+    background: transparent;
+    float: left;
+    width: 100%;
+}
+
+#mailFrom {
+    width: 300px;
+    text-align: left;
+}
+
+.mailTo_zone {
+    margin-top: 15px;
+    margin-left: 10px;
+    background: transparent;
+    float: left;
+    width: 100%;
+}
+
+#mailTo {
+    width: 300px;
+    text-align: left;
+}
+/*for the linkbutton to send email*/
+.subject_zone {
+    background: transparent;
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+#subject {
+    width: 600px;
+    text-align: left;
+}
+
+.body_zone {
+    background: transparent;
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-family: 'Trocchi', serif;
+    font-size: 30px;
+}
+
+#email_text {
+    width: 600px;
+    height: 800px;
+    max-height:250px;
+    text-align: left;
+}
+
+.sendbutton {
+    background: transparent;
+    margin-top: 400px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+}
+
+#ButtonSend {
+    box-shadow: 0px 0px 2px 0px #3dc21b;
+    background: #0c3b19;
+    border-radius: 5px;
+    border: 2px solid azure;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: 'Trocchi', serif;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 10px 6px;
+    text-decoration: none;
+    position: relative;
+}
+
+#ButtonSend:hover {
+    filter: progid:DXImageTransform.Microsoft.gradient(start);
+    background-color: #009550;
+}

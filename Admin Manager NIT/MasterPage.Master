@@ -7,9 +7,8 @@
       <head runat="server">
             <title>Master Admin Manager Page</title>
             <asp:ContentPlaceHolder ID="head" runat="server">
-            </asp:ContentPlaceHolder>
-            <link rel="stylesheet" type="text/css" href="../CSS/Styles.css" />
-         
+            </asp:ContentPlaceHolder>         
+               <link rel="stylesheet" type="text/css" href="../CSS/Styles.css" />
       </head>
 
       <body>  
