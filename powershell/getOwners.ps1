@@ -1,16 +1,8 @@
-#Frédéric CAZE-SULFOURT
-#Mars 2017
-#Neurones IT
-#Programme Powershell pour lister les "owners" contenu dans un groupe de distribution spécifique
 #--------------------------------------------------------------------------
 # MODULE ACTIVE DIRECTORY
 #--------------------------------------------------------------------------
  Import-Module ActiveDirectory -ErrorAction Stop
-#--------------------------------------------------------------------------
-#VARIABLES
-#--------------------------------------------------------------------------
-$KeyWordsForSearch = $args[0]
-$Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "outputowner.txt"
+ $KeyWordsForSearch = $args[0]
 #--------------------------------------------------------------------------
 #FONCTION DE LANCEMENT DU PROGRAMME
 #--------------------------------------------------------------------------
@@ -20,21 +12,22 @@ Function Start-Commands{List_Owners}
 #--------------------------------------------------------------------------
 Function List_Owners
 {			
-	Clear-Content $Sortie
-
 	$KeyWordsForSearch = "*$KeyWordsForSearch*"
-
-	Get-ADGroup -Filter {(GroupCategory -eq "Distribution") -and (Name -like $KeyWordsForSearch)} `
+	
+	$outPut = get-adgroup -Filter {(GroupCategory -eq "Distribution") } `
 	-SearchBase "OU=GroupesDistributions,OU=Messagerie,DC=Neuronesit,DC=priv" `
-	-Properties name,managedby `	 
-	| select name,managedby `
-	| Sort -Property Name `
-	| format-table -autosize -hidetableheaders `
-	| Out-File $Sortie
-}
+	-property ManagedBy `
+	| select ManagedBy
 
-get-adgroup -Filter {(GroupCategory -eq "Distribution")} -SearchBase "OU=GroupesDistributions,OU=Messagerie,DC=Neuronesit,DC=priv" -property ManagedBy | %{(($_.ManagedBy -replace "\\,","~").split(",")[0] -replace "~",",").SubString(3)} | select $_.ManagedBy
+	foreach($Item in $outPut)
+	{	
+		$arr = $Item -split ','
+		$arr2 = $arr[0] -split '='
+		write $arr2[2]
+	}
+}
 #--------------------------------------------------------------------------
 #PROGRAMME PRINCIPAL
 #--------------------------------------------------------------------------
+clear
 Start-Commands

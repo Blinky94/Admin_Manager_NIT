@@ -42,8 +42,8 @@ namespace Admin_Manager_NIT
 
             if (Convert.ToString(ViewState["Generated"]) == "true")
             {             
-                GenerateTableOwner();             
-                GenerateTableMember();
+                GenerateTableOwner(_DL_Selected);             
+                //GenerateTableMember(_DL_Selected);
 
                 if(Page.IsPostBack)
                 {
@@ -66,6 +66,7 @@ namespace Admin_Manager_NIT
         {           
             //ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + wordsToSearch + "');", true);
             mailingList.Items.Clear();
+
             if (SearchDLTextBox.Text.Length != 0)     
                 ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(getMailListDL),wordsToSearch);
             else
@@ -206,10 +207,10 @@ namespace Admin_Manager_NIT
         /// <summary>
         /// Generate the table dynamically with the powerShell scripts for the Owners
         /// </summary>
-        private void GenerateTableOwner()
+        private void GenerateTableOwner(string LD_selected)
         {
-            ExecutePowerShellCommand.RunScriptWithNoArgument(ExecutePowerShellCommand.LoadScript(getMailListOwners));
-
+            //ExecutePowerShellCommand.RunScriptWithNoArgument(ExecutePowerShellCommand.LoadScript(getMailListOwners));
+            ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(getMailListMembers), LD_selected);
             listOutPutOwner = ReadFileOutPut.GetLineFromFile(outputowner);
             int countList = listOutPutOwner.Count;
 
@@ -234,9 +235,9 @@ namespace Admin_Manager_NIT
         /// <summary>
         /// Generate the table dynamically with the powerShell scripts for the Members
         /// </summary>
-        private void GenerateTableMember()
+        private void GenerateTableMember(string LD_selected)
         {
-            ExecutePowerShellCommand.RunScriptWithNoArgument(ExecutePowerShellCommand.LoadScript(getMailListMembers));
+            ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(getMailListMembers),LD_selected);
 
             listOutPutMember = ReadFileOutPut.GetLineFromFile(outputmember);
             int countList = listOutPutMember.Count;
@@ -259,6 +260,8 @@ namespace Admin_Manager_NIT
             }
         }
 
+        string _DL_Selected;
+
         /// <summary>
         /// Method Event Handler when click on "Go!" Button
         /// Generate Owners List in the result DropDownList
@@ -270,8 +273,11 @@ namespace Admin_Manager_NIT
         {
             if (Convert.ToString(ViewState["Generated"]) != "true")
             {
-                GenerateTableMember();
-                GenerateTableOwner();
+                _DL_Selected = mailingList.Text;
+                //ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + _DL_Selected + "');", true);
+
+                //GenerateTableMember(_DL_Selected);
+                GenerateTableOwner(_DL_Selected);
                 ViewState["Generated"] = "true";
             }
         }  

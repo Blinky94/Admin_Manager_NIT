@@ -24,7 +24,7 @@ Function List_Distribution
 
 	$KeyWordsForSearch = "*$KeyWordsForSearch*"
 
-	Get-ADGroup -Filter {(GroupCategory -eq "Distribution") -and (Name -like $KeyWordsForSearch)} `
+	Get-ADGroup -Filter {(GroupCategory -eq "Distribution") -and (Name -like $KeyWordsForSearch)} -SearchBase "OU=GroupesDistributions,OU=Messagerie,DC=Neuronesit,DC=priv" `
 	| sort name `
 	| select Name -expandproperty name `
 	| format-table -autosize -hidetableheaders `
