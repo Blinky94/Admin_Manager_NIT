@@ -1,7 +1,7 @@
 #Frédéric CAZE-SULFOURT
 #Mars 2017
 #Neurones IT
-#Programme Powershell pour lister les Owners d'un Groupe Distribution en paramètre
+#Programme Powershell pour lister les details d'un Owner en paramètre
 #--------------------------------------------------------------------------
 # MODULE ACTIVE DIRECTORY
 #--------------------------------------------------------------------------
@@ -11,7 +11,6 @@
 #--------------------------------------------------------------------------
  $KeyWordsForSearch = $args[0]
  $Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "outputowner.txt"
- $tmp = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "tmp.txt"
 #--------------------------------------------------------------------------
 #FONCTION DE LANCEMENT DU PROGRAMME
 #--------------------------------------------------------------------------
@@ -22,27 +21,20 @@ Function Start-Commands{List_Owners}
 Function List_Owners
 {			
 	Clear-Content $Sortie
-
+	
 	$KeyWordsForSearch = "*$KeyWordsForSearch*"
 	
 	$outPut = get-adgroup -Filter {(GroupCategory -eq "Distribution") -and (Name -like $KeyWordsForSearch)} `
 	-SearchBase "OU=GroupesDistributions,OU=Messagerie,DC=Neuronesit,DC=priv" `
-	-property ManagedBy, MsExchCoManagedByLink `
-	| select ManagedBy,MsExchCoManagedByLink
+	-property ManagedBy `
+	| select ManagedBy
 
 	foreach($Item in $outPut)
 	{	
-		$Item.ManagedBy -replace ',',"`r`n" | Out-File $Sortie		
+		$arr = $Item -split ','
+		$arr2 = $arr[0] -split '='
+		$arr2[2] | Out-File $Sortie
 	}
-	$output2 = select-string $Sortie -pattern "CN=" | foreach {($_.Line)}	
-	$output2 = $output2 -split "CN=" | ? {$_.trim() -ne "" } | out-file $Sortie		
-	
-	foreach($Item in $outPut)
-	{	
-		$Item.MsExchCoManagedByLink -replace ',',"`r`n" | Out-File $tmp		
-	}
-	$output2 = select-string $tmp -pattern "CN=" | foreach {($_.Line)}	
-	$output2 = $output2 -split "CN=" | ? {$_.trim() -ne "" } | Sort-Object $_ | out-file -append $Sortie		
 }
 #--------------------------------------------------------------------------
 #PROGRAMME PRINCIPAL

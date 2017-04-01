@@ -103,6 +103,7 @@
   <ItemGroup>
     <Content Include="CSS\Authentification.css" />
     <Content Include="CSS\EmailStyle.css" />
+    <Content Include="CSS\VisitCardStyles.css" />
     <Content Include="Email.aspx" />
     <Content Include="Images\computer-564136_1280.jpg" />
     <Content Include="Images\lhermitte.jpg" />
@@ -126,6 +127,7 @@
     <Content Include="Images\CAZE-SULFOURT FREDERIC.JPG" />
     <Content Include="Images\Neurones_banner.png" />
     <Content Include="Images\visit_card_texture.jpg" />
+    <Content Include="VisitCard.aspx" />
     <Content Include="Web.config" />
     <Content Include="DL_View.aspx" />
   </ItemGroup>
@@ -160,6 +162,13 @@
     </Compile>
     <Compile Include="Authentification.aspx.designer.cs">
       <DependentUpon>Authentification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VisitCard.aspx.cs">
+      <DependentUpon>VisitCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VisitCard.aspx.designer.cs">
+      <DependentUpon>VisitCard.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

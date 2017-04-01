@@ -6,22 +6,23 @@
     cursor:auto;
 }
 #container{
-    position:relative;
+    position:absolute;
     background:transparent;
 }
 #menu{
     background:transparent;
     float:left;
-    margin-left:40px;
+    margin-left:0px;
     position:relative;
 }
 /*Back container in MasterPage*/
 #MainContent{   
     background:transparent;
-    width:70%;
+    width:1250px;
+    height:auto;
     text-align:center;
-    margin-left:500px;
-    margin-top:15px;
+    margin-left:450px;
+    margin-top:0px;
     position:absolute;
 }
 /*div.spacer, permet de faire deux colonne dans #container*/
@@ -100,32 +101,34 @@ div.spacer{
     margin-left: 10px;
     position:relative;
 }
-#search_area{
-    background:#006333;
-    border:solid 1px #fff;
-    position:relative;
-    text-align:left;
-    height:auto;
-    color: #fff; 
-    font-family: 'Trocchi', serif; 
-    font-size: 20px; 
-    font-weight: normal; 
-    line-height: 5px; 
+#search_area {
+    background: #006333;
+    border: solid 1px #fff;
+    position: relative;
+    text-align: left;
+    width: auto;
+    height: auto;
+    color: #fff;
+    font-family: 'Trocchi', serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    line-height: 5px;
     margin-left: 0px;
     overflow: hidden;
-    width:auto;
 }
 #Search_table{
     background:transparent;
-    width:48%;
+    width:51%;
+    height:80px;
     float:left;
-    margin-left:22px;
+    margin-left:5px;
 }
 #List_table {
     background: transparent;
-    width: 46%;
-    float: right;
-    margin-right: 17px;
+    width: 48%;
+    height: 80px;
+    float: left;
+    margin-right: 5px;
 }
 /*Go and Select buttons in search area*/
 .search_area_buttons {
@@ -137,10 +140,10 @@ div.spacer{
     cursor: pointer;
     color: #ffffff;
     font-family: 'Trocchi', serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     font-style: normal;
-    padding: 19px 6px;
+    padding: 15px 7px;
     text-decoration: none;
     position: relative;
     margin-left:460px;
@@ -174,15 +177,14 @@ div.spacer{
     background-color: #009550;
 }
 /*DropListBox Select Distrib List*/
-.mailingList{ 
-    width:450px;
-    height:40px;
-    text-align:left;
-    font-family: 'Trocchi', serif; 
-    font-size: 20px; 
-    font-weight: bold;
-    font-style:oblique; 
-    position:absolute;
+.mailingList {
+    width: 430px;
+    height: 30px;
+    text-align: left;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+    position: absolute;
+    margin-left: 5px;
 }
 /*Space between Search Area and Result Area*/
 #spacing_area2{
@@ -357,21 +359,18 @@ thead, tbody {
     height: auto;
     width: 49%;
     float: left;
-    margin-bottom:50px;
-    border: solid 1px #fff;
-    border-color: azure;
 }
 
 /*Members's List LD*/
 #members_list {
     background: #006333;
     border: solid 1px #fff;
-    height: 77%;
+    height: auto;
     width: 49%;
     float: right;
-    border: solid 1px #fff;
-    border-color: azure;
+    margin-bottom: 50px;
 }
+
 /*Details area DL-----------------------------------------------------------------------------------------------------*/
 .details {
     width: 100%;

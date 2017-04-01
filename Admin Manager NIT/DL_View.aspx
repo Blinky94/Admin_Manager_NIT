@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
      <p><asp:Label ID="lblSecret" runat="server" style="font-weight: 700"></asp:Label></p>
-        
+
            <div class="contentT" id="content">     
                  <div id="title_area" class="title">
                        <p>View Mailing List</p>
@@ -76,38 +76,11 @@
                              <div id="Request_button_OwnerShip">
                                  <a href="#" class="Go"  runat="server" onserverclick="GenerateEmailToSend_Click">Request OwnerShip</a>
                              </div>
-                         </div>  <!-- end button_class_owners -->     
-                         
-                          <div id="title_owner" class="title" runat="server">
-                              <p>Owner Details</p>
-                        </div>   
-
-                        <div id="owner_details_area" class="details" runat="server">
-                            <!-- photo zone area -->
-                            <div id="owner_photo_area" class="photo_area" runat="server"></div>
-                            <!-- details zone area -->
-                            <div class="textbox_area" runat="server">
-                                <div class="titles_descriptions" runat="server">
-                                    <p>First Name : </p>
-                                    <p>Last Name : </p>
-                                    <p>Job : </p>
-                                    <p>Phone : </p>                                                                       
-                                    <p>Email : </p>
-                                </div>  
-                                 
-                                <asp:TextBox ID="owner_details" class="txtbox_details" runat="server" TextMode="MultiLine">                          
-                                </asp:TextBox>                              
-                            </div>                            
-                             
-                            <div id="email_link_owner" class="email">
-                                <asp:LinkButton ID="LinkButtonOwner" class="email_css"  runat="server"></asp:LinkButton>                                        
-                            </div>                            
-                        </div>                   
-                                    
-                     </div> <!-- end owners_list --> 
+                         </div>  <!-- end button_class_owners -->                                                            
+                     </div> <!-- end owners_list -->  
                      
-<!--------------------------------------------------------MEMBER LIST AREA------------------------------------------------------------------------->                                         
-                     
+<!--------------------------------------------------------MEMBER LIST AREA------------------------------------------------------------------------->                                                             
+                    
                      <div id="members_list"> 
                          
                           <div id="title_members" class="title" runat="server">                             
@@ -136,38 +109,9 @@
                              <div id="del_button_members">                                    
                                  <a href="#" class="Go">Delete</a>                             
                              </div>                                                     
-                         </div>  <!-- end button_class_members -->                                                        
-               
-                        <div id="title_member" class="title" runat="server">                             
-                             <p>Member Details</p>            
-                         </div>                                                                                                         
-                 
-                            <div id="member_details_area" class="details" runat="server">
-                             
-                                <!-- photo zone area -->
-                             
-                                <div id="member_photo_area" class="photo_area" runat="server"></div>
-                             
-                                <!-- details zone area -->                        
-                                <div class="textbox_area" runat="server">
-                                 
-                                    <div class="titles_descriptions" runat="server">                                                               
-                                        <p>First Name : </p> 
-                                        <p>Last Name : </p>
-                                        <p>Job : </p>
-                                        <p>Phone : </p>
-                                        <p>Email : </p>
-                                    </div>
-                                  
-                                    <asp:TextBox ID="member_details" class="txtbox_details" runat="server" TextMode="MultiLine">                                                              
-                                    </asp:TextBox>                                                                         
-                                </div> 
-                                   
-                                <div id="email_link_member" class="email">                                      
-                                     <asp:LinkButton ID="LinkButtonMember" class="email_css" runat="server"></asp:LinkButton>                                        
-                                </div>                                                    
-                         </div>                  
+                         </div>  <!-- end button_class_members -->                                                                                            
                      </div>  <!-- end result_area -->                        
                  </div> <!-- End contentT -->
            </div>  <!-- end content --> 
+
 </asp:Content>

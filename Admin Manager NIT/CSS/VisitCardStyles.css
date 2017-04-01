@@ -1,0 +1,64 @@
+﻿body {
+    background-image: linear-gradient(to right, #021a08, #aefbb1);
+    width: 100%;
+    position: relative;
+    pointer-events: auto;
+    cursor: auto;
+    color: white;
+}
+
+/*Details area DL-----------------------------------------------------------------------------------------------------*/
+.details {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    background-image: url(../Images/visit_card_texture.jpg);
+    margin-top: 140px;
+    text-align: center;
+    position: relative;
+    visibility: visible;
+}
+
+.photo_area {
+    background: transparent;
+    float: left;
+    border: double;
+    border-color: transparent;
+    width: 20%;
+    height: 140px;
+}
+
+.textbox_area {
+    background: transparent;
+    float: right;
+    width: 78%;
+    height: 143px;
+    border: none;
+}
+
+.titles_descriptions {
+    background: transparent;
+    height: 180px;
+    width: 25%;
+    float: left;
+    text-align: right;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+    line-height: 10px;
+}
+
+.txtbox_details {
+    background: transparent;
+    width: 72%;
+    float: right;
+    height: 150px;
+    resize: none;
+    text-align: left;
+    margin-top: 10px;
+    color: white;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+    line-height: 30.5px;
+    border-style: none;
+}
+
