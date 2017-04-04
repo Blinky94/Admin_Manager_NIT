@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,6 +16,9 @@ namespace Admin_Manager_NIT
         string fileWithMembers = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputmember.txt";
         string outputDistribution = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputDistribution.txt";
         string emailType = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\EmailType\Email_To_Member.txt";
+        string fileWithOwnersMail = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\getOwnerMail.txt";
+        string scriptgetOwnerMail = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getOwnerMail.ps1";
+        string scriptToClearFile = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\ClearFileContent.ps1";
 
         List<string> listOutPutDL = new List<string>(); 
         string memberPhoto = string.Empty;
@@ -33,8 +37,7 @@ namespace Admin_Manager_NIT
             if (Session["login"] == null)
                 Response.Redirect("Authentification.aspx?erreur=1");
 
-            if (!IsPostBack)
-            {  }
+            if (!IsPostBack){}
             else
                 SelectButton_OnClick(sender, e);     
         }
@@ -73,24 +76,41 @@ namespace Admin_Manager_NIT
         /// <param name="e"></param>
         protected void RequestOwnerShipButton_OnClick(object sender,EventArgs e)
         {
-            List<String> list = new List<string>();
-            list = ReadFileOutPut.GetLineFromFile(fileWithOwners);
-            int countList = list.Count;
+            //Variables
+            string _subjectToOwner = "Request to Owner NAM/NIT";
+            string _finalListMailOwners = string.Empty;       
 
-            string toDest = string.Empty;
+            try
+            {
+                //Clear file with owners mail list
+                ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptToClearFile), fileWithOwnersMail);
 
-            for (int i = 1; i <= countList; i++)
-                toDest += list[i - 1] + ";";
-            
-            //Send info to Email.aspx page
-            Session.Add("fromEmail", "frederic.caze-sulfourt@neurones.net");
-            string subjectToOwner = "Request to Owner NAM/NIT";         
-            Session.Add("toDest", toDest);
-            Session.Add("subjectEmail", subjectToOwner);
-            Session.Add("body", ReadFileOutPut.GetLineFromFile(emailType));
+                //Find mail in AD with owners names in file
+                foreach (string elem in ReadFileOutPut.GetLineFromFile(fileWithOwners))
+                    ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptgetOwnerMail), elem);
 
-            // open a pop up window at the center of the page.
-            ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'Email.aspx', null, 'height=700,width=1000,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
+                List<string> _listMailOwners = ReadFileOutPut.GetLineFromFile(fileWithOwnersMail);
+
+                //Remove duplicated mails
+                _listMailOwners = _listMailOwners.Distinct().ToList<string>();
+
+                //Presentation of mails with ";" like in mail
+                foreach (string elem in _listMailOwners)
+                    _finalListMailOwners += elem + ";";
+
+                //Send info to Email.aspx page
+                Session.Add("fromEmail", "frederic.caze-sulfourt@neurones.net");
+                Session.Add("_listMailOwners", _finalListMailOwners);
+                Session.Add("subjectEmail", _subjectToOwner);
+                Session.Add("body", ReadFileOutPut.GetLineFromFile(emailType));
+
+                // open a pop up window at the center of the page.
+                ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'Email.aspx', null, 'height=700,width=1000,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
+            }
+            catch (Exception error)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
+            }                  
         }
 
         /// <summary>

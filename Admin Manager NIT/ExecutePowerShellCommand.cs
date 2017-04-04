@@ -49,25 +49,21 @@ namespace Admin_Manager_NIT
         /// <param name="scriptText"></param>
         /// <returns></returns>
         public static string RunScriptWithNoArgument(string scriptText)
-        {      
+        {
             Runspace runspace = RunspaceFactory.CreateRunspace();
-
             runspace.Open();
 
             Pipeline pipeline = runspace.CreatePipeline();
- 
             pipeline.Commands.AddScript(scriptText);
             pipeline.Commands.Add("Out-String");
 
             Collection<PSObject> results = pipeline.Invoke();
-
             runspace.Close();
 
             StringBuilder stringBuilder = new StringBuilder();
-
-            foreach (PSObject obj in results)          
+            foreach (PSObject obj in results)
                 stringBuilder.AppendLine(obj.ToString());
-           
+                    
             return stringBuilder.ToString();
         }
 

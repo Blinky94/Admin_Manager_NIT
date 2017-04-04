@@ -21,8 +21,6 @@ Function Start-Commands{Get_Mail}
 #--------------------------------------------------------------------------
 Function Get_Mail
 {			
-	Clear-Content $Sortie
-
 	$KeyWordsForSearch = "*$KeyWordsForSearch*"
 	
 	$outPut = get-aduser -Filter {(Name -like $KeyWordsForSearch)} `
@@ -34,7 +32,7 @@ Function Get_Mail
 	{
 		$outPut = $DefaultMail
 	}
-	
+	write-host $outPut
 	$output | out-file -append $Sortie		
 }
 #--------------------------------------------------------------------------
