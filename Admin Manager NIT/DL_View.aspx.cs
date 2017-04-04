@@ -7,24 +7,20 @@ namespace Admin_Manager_NIT
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        string getMembers_script = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getMembers.ps1";
-        string getOwners_script = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getOwners.ps1";
+        string scriptGetMembers = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getMembers.ps1";
+        string scriptGetOwners = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getOwners.ps1";
         string getMailListDL = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getDistributionList.ps1";
         string getMailListDL_NoArg = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getDistributionList_no_arg.ps1";
-
-        string outputowner = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputowner.txt";
-        string outputmember = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputmember.txt";
+        string fileWithOwners = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputowner.txt";
+        string fileWithMembers = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputmember.txt";
         string outputDistribution = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputDistribution.txt";
         string emailType = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\EmailType\Email_To_Member.txt";
 
-        List<string> listOutPutOwner = new List<string>();
-        List<string> listOutPutMember = new List<string>();
-        List<string> listOutPutDL = new List<string>();
-  
+        List<string> listOutPutDL = new List<string>(); 
         string memberPhoto = string.Empty;
         string ownerPhoto = string.Empty;
-
         string wordsToSearch;
+        GenerateTableMailingList genOwners, genMembers;
         string _DL_Selected;
 
         /// <summary>
@@ -38,13 +34,9 @@ namespace Admin_Manager_NIT
                 Response.Redirect("Authentification.aspx?erreur=1");
 
             if (!IsPostBack)
-            {
-                //MembersTable.Controls.Clear();
-                //OwnerTable.Controls.Clear();
-                Select_Button_DistributionList(sender, e);
-            }   
+            {  }
             else
-                mailingList.Items.Clear();
+                SelectButton_OnClick(sender, e);     
         }
 
         /// <summary>
@@ -53,7 +45,7 @@ namespace Admin_Manager_NIT
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void Go_Button_Search_DistributionList(object sender, EventArgs e)
+        protected void GoButton_OnClick(object sender, EventArgs e)
         {           
             //ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + wordsToSearch + "');", true);
             mailingList.Items.Clear();
@@ -79,95 +71,26 @@ namespace Admin_Manager_NIT
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void GenerateEmailToSend_Click(object sender,EventArgs e)
+        protected void RequestOwnerShipButton_OnClick(object sender,EventArgs e)
         {
-            listOutPutOwner = ReadFileOutPut.GetLineFromFile(outputowner);
-            int countList = listOutPutOwner.Count;
+            List<String> list = new List<string>();
+            list = ReadFileOutPut.GetLineFromFile(fileWithOwners);
+            int countList = list.Count;
 
             string toDest = string.Empty;
 
             for (int i = 1; i <= countList; i++)
-                toDest += listOutPutOwner[i - 1] + ";";
+                toDest += list[i - 1] + ";";
             
             //Send info to Email.aspx page
             Session.Add("fromEmail", "frederic.caze-sulfourt@neurones.net");
             string subjectToOwner = "Request to Owner NAM/NIT";         
-            Session.Add("toEmail", toDest);
+            Session.Add("toDest", toDest);
             Session.Add("subjectEmail", subjectToOwner);
             Session.Add("body", ReadFileOutPut.GetLineFromFile(emailType));
 
             // open a pop up window at the center of the page.
             ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'Email.aspx', null, 'height=700,width=1000,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
-        } 
-
-        /// <summary>
-        /// Generate the table dynamically with the powerShell scripts for the Owners
-        /// </summary>
-        private void GenerateTableOwner(string LD_selected)
-        {
-            ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(getOwners_script), LD_selected);
-            listOutPutOwner = ReadFileOutPut.GetLineFromFile(outputowner);
-            int countList = listOutPutOwner.Count;
-
-            for (int i = 1; i <= countList; i++)
-            {
-                TableRow tr = new TableRow();
-                TableCell identityCell = new TableCell();
-                TableCell imageCell = new TableCell();
-                OwnerTable.Rows.Add(tr);
-                identityCell.Text = listOutPutOwner[i - 1];
-                LinkButton img = new LinkButton();
-                img.ID = identityCell.Text;
-                img.Click += new EventHandler(OpenVisitCardWindow_OnClick);
-                img.Controls.Add(new System.Web.UI.WebControls.Image { ImageUrl = "Images/loupe.png", Width = 20 });
-                imageCell.Controls.Add(img);
-                tr.Cells.Add(identityCell);
-                tr.Cells.Add(imageCell);
-            }
-        }
-
-        /// <summary>
-        /// Generate the table dynamically with the powerShell scripts for the Members
-        /// </summary>
-        private void GenerateTableMember(string LD_selected)
-        {
-            ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(getMembers_script), _DL_Selected);
-
-            listOutPutMember = ReadFileOutPut.GetLineFromFile(outputmember);
-            int countList = listOutPutMember.Count;
-
-            for (int i = 1; i <= countList; i++)
-            {
-                TableRow tr = new TableRow();
-                TableCell identityCell = new TableCell();
-                TableCell imageCell = new TableCell();
-                MembersTable.Rows.Add(tr);
-                identityCell.Text = listOutPutMember[i - 1];
-                LinkButton img = new LinkButton();
-                img.ID = identityCell.Text;            
-                img.Click += new EventHandler(OpenVisitCardWindow_OnClick);
-                img.Controls.Add(new System.Web.UI.WebControls.Image { ImageUrl = "Images/loupe.png", Width = 20 });
-                imageCell.Controls.Add(img);               
-                tr.Cells.Add(identityCell);
-                tr.Cells.Add(imageCell);
-            }
-        }
-
-        /// <summary>
-        /// Method to open new Window and send selected line in Owner List or Member List
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void OpenVisitCardWindow_OnClick(object sender, EventArgs e)
-        {
-            string opendWindow = "It's Open !";
-            ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + opendWindow + "');", true);
-            
-            //info of the selected line in Owner or Member list exported to VisitCard.aspx.cs
-            Session.Add("nameSelected", "frederic caze-sulfourt");
-            
-            // open a pop up window at the center of the page.
-            ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'VisitCard.aspx', null, 'height=700,width=1000,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
         }
 
         /// <summary>
@@ -177,13 +100,24 @@ namespace Admin_Manager_NIT
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void Select_Button_DistributionList(object sender, EventArgs e)
+        protected void SelectButton_OnClick(object sender, EventArgs e)
         {
-            OwnerTable.Controls.Clear();
-            MembersTable.Controls.Clear();
-            _DL_Selected = mailingList.Text;
-            GenerateTableMember(_DL_Selected);
-            GenerateTableOwner(_DL_Selected);
+            try
+            {
+                int _ID = 1;
+                genOwners = new GenerateTableMailingList();
+                genMembers = new GenerateTableMailingList();
+                tableMembersControl.Controls.Clear();
+                tablOwnersControl.Controls.Clear();
+                _DL_Selected = mailingList.Text;
+                genMembers.GenerateTable(scriptGetMembers, _DL_Selected, fileWithMembers, tableMembersControl,_ID);
+                _ID = 999;
+                genOwners.GenerateTable(scriptGetOwners, _DL_Selected, fileWithOwners, tablOwnersControl,_ID);
+            }
+            catch (Exception error)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
+            }
         }  
 
         /// <summary>

@@ -131,7 +131,7 @@ div.spacer{
     margin-right: 5px;
 }
 /*Go and Select buttons in search area*/
-.search_area_buttons {
+.Seachbutton {
     box-shadow: 0px 0px 2px 0px #3dc21b;
     background: #0c3b19;
     border-radius: 5px;
@@ -146,16 +146,17 @@ div.spacer{
     padding: 15px 7px;
     text-decoration: none;
     position: relative;
-    margin-left:460px;
+    margin-left: 460px;
 }
+
 /*Go button reacting on mouse over*/
-.search_area_buttons:hover {
+.Seachbutton:hover {
     filter: progid:DXImageTransform.Microsoft.gradient(start);
     background-color: #009550;
 }
 
-/*Add and Delete buttons in result area*/
-.Go {
+/*Add,Del, Request OwnerShipbuttons in result area*/
+.button {
     box-shadow: 0px 0px 2px 0px #3dc21b;
     background: #0c3b19;
     border-radius: 5px;
@@ -164,15 +165,16 @@ div.spacer{
     cursor: pointer;
     color: #ffffff;
     font-family: 'Trocchi', serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     font-style: normal;
-    padding: 15px 5px;
+    padding: 15px 7px;
     text-decoration: none;
     position: relative;
 }
-/*Go button reacting on mouse over*/
-.Go:hover {
+
+/*Add,Del, Request OwnerShipbuttons in result reacting on mouse over*/
+.button:hover {
     filter: progid:DXImageTransform.Microsoft.gradient(start);
     background-color: #009550;
 }
@@ -290,32 +292,36 @@ thead, tbody {
 }
 /*Owners List Button Area--------------------------------------------------------------------------*/
 /*Area which manage all the owners buttons*/
-.button_class{
-    background:transparent;
-    height:auto;
-    width:100%;
-    margin-top: 20px;
-    position:relative;
+
+.button_class_owners {
+    background: transparent;
+    height: auto;
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
 }
 
 #add_button_owners {
     background: transparent;
     float: left;
-    width: 33.33%;
+    width: 33.34%;
+    position: relative;
     text-align: center;
 }
 
 #del_button_owners {
     background: transparent;
-    float: right;
-    width: 33.33%;
+    float: left;
+    width: 33.34%;
+    position: relative;
     text-align: center;
 }
 
 #Request_button_OwnerShip {
     background: transparent;
     float: left;
-    width: 33.33%;
+    width: 33.32%;
+    position: relative;
     text-align: center;
 }
 /*Members List Button Area-------------------------------------------------------------------------*/
@@ -324,21 +330,22 @@ thead, tbody {
     background: transparent;
     height: auto;
     width: 100%;
-    margin-top: 7px;
+    margin-top: 15px;
+    position: relative;
 }
 
-#add_button_members{
-    background:transparent;
-    float:left;
-    width:48.3%;
-    text-align:center;  
+#add_button_members {
+    background: transparent;
+    float: left;
+    width: 50%;
+    text-align: center;
 }
 
-#del_button_members{
-    background:transparent; 
-    float:right;
-    width:48.3%;
-    text-align:center;  
+#del_button_members {
+    background: transparent;
+    float: right;
+    width: 50%;
+    text-align: center;
 }
 
 /*Members List column--------------------------------------------------------------------------------------------*/

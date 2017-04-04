@@ -1,7 +1,7 @@
-#FrÈdÈric CAZE-SULFOURT
+#Fr√©d√©ric CAZE-SULFOURT
 #Mars 2017
 #Neurones IT
-#Programme Powershell pour lister les Members d'un Groupe Distribution en paramËtre
+#Programme Powershell pour r√©cup√©rer l'adresse mail d'un utilisateur de l'AD
 #--------------------------------------------------------------------------
 # MODULE ACTIVE DIRECTORY
 #--------------------------------------------------------------------------
@@ -10,31 +10,32 @@
 #VARIABLES
 #--------------------------------------------------------------------------
  $KeyWordsForSearch = $args[0]
- $Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "outputmember.txt"
+ $DefaultMail = "NITSupport@neurones.net"
+ $Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "getOwnerMail.txt"
 #--------------------------------------------------------------------------
 #FONCTION DE LANCEMENT DU PROGRAMME
 #--------------------------------------------------------------------------
-Function Start-Commands{List_Members}
+Function Start-Commands{Get_Mail}
 #--------------------------------------------------------------------------
-#FONCTION DE LISTAGE DES OWNERS D'UNE LISTE DE DIFFUSION DE L'ACTIVE DIRECTORY
+#FONCTION DE RECUPERATION DES MAILS DES OWNERS D'UNE LISTE EN PARAMETRE
 #--------------------------------------------------------------------------
-Function List_Members
-{	
+Function Get_Mail
+{			
 	Clear-Content $Sortie
-	
+
 	$KeyWordsForSearch = "*$KeyWordsForSearch*"
 	
-	$Groups = Get-ADGroup -Filter {(GroupCategory -eq "Distribution")-and (Name -like $KeyWordsForSearch)} `
-	-SearchBase "OU=GroupesDistributions,OU=Messagerie,DC=Neuronesit,DC=priv" `
-	-property members `
-	| Select members
-	
-	foreach($Item in $Groups)
-	{	
-		$Item.members -replace ',',"`r`n" | Out-File $Sortie		
+	$outPut = get-aduser -Filter {(Name -like $KeyWordsForSearch)} `
+	-SearchBase "OU=Utilisateurs,DC=Neuronesit,DC=priv" `
+	-properties mail `
+	| select -ExpandProperty mail
+
+	if($outPut -eq $null)
+	{
+		$outPut = $DefaultMail
 	}
-	$output = select-string $Sortie -pattern "CN=" | foreach {($_.Line)}	
-	$output = $output -split "CN=" | ? {$_.trim() -ne "" } | Sort-Object $_ | out-file $Sortie	
+	
+	$output | out-file -append $Sortie		
 }
 #--------------------------------------------------------------------------
 #PROGRAMME PRINCIPAL

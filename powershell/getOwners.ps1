@@ -22,6 +22,7 @@ Function Start-Commands{List_Owners}
 Function List_Owners
 {			
 	Clear-Content $Sortie
+	Clear-Content $tmp	
 
 	$KeyWordsForSearch = "*$KeyWordsForSearch*"
 	

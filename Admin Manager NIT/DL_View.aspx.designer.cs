@@ -31,13 +31,13 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.WebControls.TextBox SearchDLTextBox;
         
         /// <summary>
-        /// Contrôle ButtonGo.
+        /// Contrôle GoButton.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ButtonGo;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor GoButton;
         
         /// <summary>
         /// Contrôle mailingList.
@@ -49,13 +49,13 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.WebControls.DropDownList mailingList;
         
         /// <summary>
-        /// Contrôle ButtonDLList.
+        /// Contrôle SelectButton.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ButtonDLList;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor SelectButton;
         
         /// <summary>
         /// Contrôle ScriptManager1.
@@ -85,22 +85,22 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.WebControls.Table HeaderOwner;
         
         /// <summary>
-        /// Contrôle TableHeaderRow1.
+        /// Contrôle headerowners.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderRow1;
+        protected global::System.Web.UI.WebControls.TableHeaderRow headerowners;
         
         /// <summary>
-        /// Contrôle OwnerTable.
+        /// Contrôle tablOwnersControl.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table OwnerTable;
+        protected global::System.Web.UI.WebControls.Table tablOwnersControl;
         
         /// <summary>
         /// Contrôle TableHeaderOwners.
@@ -139,13 +139,13 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.WebControls.TableHeaderRow headermembers;
         
         /// <summary>
-        /// Contrôle MembersTable.
+        /// Contrôle tableMembersControl.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table MembersTable;
+        protected global::System.Web.UI.WebControls.Table tableMembersControl;
         
         /// <summary>
         /// Contrôle TableHeaderMembers.
