@@ -33,30 +33,11 @@ Function Get_User_Details
 
 	foreach($item in $outPut)
 	{	
-		if($item.GivenName -eq $null)
-		{
-			$item.GivenName = "N/A"
-		}
-		
-		if($item.Surname -eq $null)
-		{
-			$item.Surname = "N/A"
-		}
-		
-		if($item.OfficePhone -eq $null)
-		{
-			$item.OfficePhone = "N/A"
-		}
-		
-		if($item.UserPrincipalName -eq $null)
-		{
-			$item.UserPrincipalName = "N/A"
-		}
-		
-		if($item.Title -eq $null)
-		{
-			$item.Title = "N/A"
-		}		
+		if($item.GivenName -eq $null){$item.GivenName = "N/A"}
+		if($item.Surname -eq $null){$item.Surname = "N/A"}
+		if($item.OfficePhone -eq $null){$item.OfficePhone = "N/A"}
+		if($item.UserPrincipalName -eq $null){$item.UserPrincipalName = "N/A"}
+		if($item.Title -eq $null){$item.Title = "N/A"}		
 				
 		$item.GivenName|out-file -append $Sortie 
 		$item.Surname|out-file -append $Sortie 
