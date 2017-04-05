@@ -282,12 +282,13 @@ div.spacer{
 thead, tbody {
     display: block;
     width: auto;
+    overflow-y: auto;
 }
 .table tbody {
-    height: 260px;
-    max-height: 260px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: 435px;
+    max-height: 427px;
+    overflow-y:auto;
+    overflow-x:hidden;
     width: auto;
 }
 /*Owners List Button Area--------------------------------------------------------------------------*/

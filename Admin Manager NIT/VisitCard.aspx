@@ -26,11 +26,7 @@
                                  
                     <asp:TextBox ID="details" class="txtbox_details" runat="server" TextMode="MultiLine">                          
                     </asp:TextBox>                              
-                </div>                            
-                             
-                <div id="email_link" class="email">
-                    <asp:LinkButton ID="LinkButton" class="email_css"  runat="server"></asp:LinkButton>                                        
-                </div>                            
+                </div>                                                           
             </div>             
         </div>
     </form>

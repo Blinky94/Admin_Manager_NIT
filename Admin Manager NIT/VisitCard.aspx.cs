@@ -9,6 +9,12 @@ namespace Admin_Manager_NIT
 {
     public partial class VisitCard : System.Web.UI.Page
     {
+        private string surName;
+        private string givenName;
+        private string title;
+        private string officePhone;
+        private string mail;
+
         string memberPhoto = string.Empty;
         string ownerPhoto = string.Empty;
         int index = 0;
@@ -16,26 +22,13 @@ namespace Admin_Manager_NIT
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-            {
-                if (ViewState["AddedControl"] != null)
-                {
-                    if (details.Text.Length > 0)
-                        OpenVisitCard_OnClick(sender, e);                
-                }
-            }
-        }
+            surName = (string)(Session["Surname"]);
+            givenName = (string)(Session["GivenName"]); 
+            title= (string)(Session["Title"]);
+            officePhone = (string)(Session["OfficePhone"]);
+            mail = (string)(Session["Mail"]);
 
-        /// <summary>
-        /// Set Visit Card for Owners visible or invisible to the DL_View.aspx page
-        /// in specific case with bool factor
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void SetVisitCard_Visible(bool _IsVisible)
-        {
-            details.Visible = _IsVisible;
-            photo_area.Visible = _IsVisible;
+            OpenVisitCard();                          
         }
 
         /// <summary>
@@ -59,26 +52,18 @@ namespace Admin_Manager_NIT
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void OpenVisitCard_OnClick(object sender, EventArgs e)
+        protected void OpenVisitCard()
         {
-            nameSelected = (string)(Session["toEmail"]);
             ownerPhoto = "~/Images/CAZE-SULFOURT FREDERIC.jpg";
             PhotosLoading(ownerPhoto, photo_area);
 
             details.Text = string.Empty;//Empty textbox for refreshing the information
-            details.Text += "Frédéric" + "\n";
-            details.Text += "CAZE-SULFOURT" + "\n";
-            details.Text += "Developer" + "\n";
-            details.Text += "01 42 05 87 99";
-            details.ReadOnly = true;
-
-            //LinkButton definition with current owner email adress
-            LinkButton.Text = "frederic.caze-sulfourt@neurones.net";
-            LinkButton.ForeColor = System.Drawing.Color.White;
-            LinkButton.Font.Name = "Trocchi";
-            LinkButton.Font.Size = 15;
-
-            SetVisitCard_Visible(true);
+            details.Text += givenName + "\n";
+            details.Text += surName +  "\n";
+            details.Text += title + "\n";
+            details.Text += officePhone + "\n";
+            details.Text += mail;
+            details.ReadOnly = true;    
         }
     }
 }

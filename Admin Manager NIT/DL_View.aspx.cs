@@ -10,21 +10,23 @@ namespace Admin_Manager_NIT
     {
         string scriptGetMembers = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getMembers.ps1";
         string scriptGetOwners = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getOwners.ps1";
-        string getMailListDL = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getDistributionList.ps1";
-        string getMailListDL_NoArg = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getDistributionList_no_arg.ps1";
+        string scriptGetMailListDL = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getDistributionList.ps1";
+        string scriptGetMailListDL_NoArg = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getDistributionList_no_arg.ps1";
+        string scriptToClearFile = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\ClearFileContent.ps1";
+        string scripGetUserDetails = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getUserDetails.ps1";
+
         string fileWithOwners = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputowner.txt";
         string fileWithMembers = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputmember.txt";
-        string outputDistribution = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputDistribution.txt";
+        string fileoutputDistribution = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputDistribution.txt";
         string emailType = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\EmailType\Email_To_Member.txt";
         string fileWithOwnersMail = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\getOwnerMail.txt";
         string scriptgetOwnerMail = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getOwnerMail.ps1";
-        string scriptToClearFile = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\ClearFileContent.ps1";
-
+        string fileWithUserDetails = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outPutUserDetails.txt";
+       
         List<string> listOutPutDL = new List<string>(); 
         string memberPhoto = string.Empty;
         string ownerPhoto = string.Empty;
         string wordsToSearch;
-        GenerateTableMailingList genOwners, genMembers;
         string _DL_Selected;
 
         /// <summary>
@@ -54,14 +56,14 @@ namespace Admin_Manager_NIT
             mailingList.Items.Clear();
 
             if (SearchDLTextBox.Text.Length != 0)     
-                ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(getMailListDL),wordsToSearch);
+                ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptGetMailListDL),wordsToSearch);
             else
-                ExecutePowerShellCommand.RunScriptWithNoArgument(ExecutePowerShellCommand.LoadScript(getMailListDL_NoArg));
+                ExecutePowerShellCommand.RunScriptWithNoArgument(ExecutePowerShellCommand.LoadScript(scriptGetMailListDL_NoArg));
 
            foreach(ListItem item in mailingList.Items)
                 item.Attributes.Add("style", "font-family:Trocchi 15");
                       
-            listOutPutDL = ReadFileOutPut.GetLineFromFile(outputDistribution);
+            listOutPutDL = ReadFileOutPut.GetLineFromFile(fileoutputDistribution);
             int Id = 1;
             int countList = listOutPutDL.Count;
 
@@ -103,7 +105,7 @@ namespace Admin_Manager_NIT
                 Session.Add("_listMailOwners", _finalListMailOwners);
                 Session.Add("subjectEmail", _subjectToOwner);
                 Session.Add("body", ReadFileOutPut.GetLineFromFile(emailType));
-
+                
                 // open a pop up window at the center of the page.
                 ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'Email.aspx', null, 'height=700,width=1000,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
             }
@@ -125,20 +127,105 @@ namespace Admin_Manager_NIT
             try
             {
                 int _ID = 1;
-                genOwners = new GenerateTableMailingList();
-                genMembers = new GenerateTableMailingList();
                 tableMembersControl.Controls.Clear();
                 tablOwnersControl.Controls.Clear();
                 _DL_Selected = mailingList.Text;
-                genMembers.GenerateTable(scriptGetMembers, _DL_Selected, fileWithMembers, tableMembersControl,_ID);
+                GenerateTable(scriptGetMembers, _DL_Selected, fileWithMembers, tableMembersControl,_ID);
                 _ID = 999;
-                genOwners.GenerateTable(scriptGetOwners, _DL_Selected, fileWithOwners, tablOwnersControl,_ID);
+                GenerateTable(scriptGetOwners, _DL_Selected, fileWithOwners, tablOwnersControl,_ID);
             }
             catch (Exception error)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
             }
-        }  
+        }
+
+        /// <summary>
+        /// Method to open new Window and send selected line in Owner List or Member List
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void VisitCard_OnClick(object sender, EventArgs e)
+        {
+            LinkButton _btn = (LinkButton)(sender);
+            string _value = _btn.Text;
+            ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scripGetUserDetails), _value);
+
+            List<string> _listDetailsUser = ReadFileOutPut.GetLineFromFile(fileWithUserDetails);
+            //Send info to VisitCard.aspx page         
+            if(_listDetailsUser[0] != null)
+                Session.Add("GivenName", _listDetailsUser[0]);
+            else
+                Session.Add("GivenName","N/A");
+
+            if (_listDetailsUser[1] != null)
+                Session.Add("Surname", _listDetailsUser[1]);
+            else
+                Session.Add("Surname", "N/A");
+
+            if (_listDetailsUser[2] != null)
+                Session.Add("Title", _listDetailsUser[2]);
+            else
+                Session.Add("Title", "N/A");
+
+            if (_listDetailsUser[3] != null)
+                Session.Add("OfficePhone", _listDetailsUser[3]);
+            else
+                Session.Add("OfficePhone", "N/A");
+
+            if (_listDetailsUser[4] != null)
+                Session.Add("Mail", _listDetailsUser[4]);
+            else
+                Session.Add("Mail", "N/A");
+                              
+            ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'VisitCard.aspx', null, 'height=700,width=1000,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
+            // open a pop up window at the center of the page.
+        }
+
+        /// <summary>
+        /// Generate the table dynamically with the powerShell scripts for the Owners
+        /// </summary>
+        public void GenerateTable(string script, string listSelected, string fileWith_, Table table, int _ID)
+        {
+            List<string> list = new List<string>();
+
+            try
+            {
+                ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(script), listSelected);
+
+                list = ReadFileOutPut.GetLineFromFile(fileWith_);
+                int countList = list.Count;
+
+                for (int i = 1; i <= countList; i++)
+                {
+                    TableRow tr = new TableRow();
+                    table.Rows.Add(tr);
+
+                    TableCell identityCell = new TableCell();
+
+                    identityCell.Text = list[i - 1];
+                    _ID++;
+                    identityCell.ID = _ID.ToString();
+
+                    LinkButton img = new LinkButton();
+                    _ID++;
+                    img.Text = list[i - 1];
+                    img.ID = _ID.ToString();
+                    img.Click += new EventHandler(VisitCard_OnClick);
+                    img.Controls.Add(new System.Web.UI.WebControls.Image { ImageUrl = "Images/loupe.png", Width = 20 });
+
+                    TableCell imageCell = new TableCell();
+                    imageCell.Controls.Add(img);
+
+                    tr.Cells.Add(identityCell);
+                    tr.Cells.Add(imageCell);
+                }
+            }
+            catch (Exception error)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
+            }
+        }
 
         /// <summary>
         /// Get input user string to search words in Distribution List 
