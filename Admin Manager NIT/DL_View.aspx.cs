@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -21,7 +22,7 @@ namespace Admin_Manager_NIT
         string emailType = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\EmailType\Email_To_Member.txt";
         string fileWithOwnersMail = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\getOwnerMail.txt";
         string scriptgetOwnerMail = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getOwnerMail.ps1";
-        string fileWithUserDetails = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outPutUserDetails.txt";
+        string fileWithUserDetails = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outPutUserDetails.csv";
        
         List<string> listOutPutDL = new List<string>(); 
         string memberPhoto = string.Empty;
@@ -151,34 +152,24 @@ namespace Admin_Manager_NIT
             string _value = _btn.Text;
             ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scripGetUserDetails), _value);
 
-            List<string> _listDetailsUser = ReadFileOutPut.GetLineFromFile(fileWithUserDetails);
+            List<string> _listDetailsUser = File.ReadAllLines(fileWithUserDetails).ToList<string>();
+            List<string> lineAr = new List<string>();
+            foreach (string line in _listDetailsUser)
+            {
+                string[] tmpp = line.Split(';');
+
+                foreach(string i in tmpp)
+                    lineAr.Add(i);
+            }
+
             //Send info to VisitCard.aspx page         
-            if(_listDetailsUser[0] != null)
-                Session.Add("GivenName", _listDetailsUser[0]);
-            else
-                Session.Add("GivenName","N/A");
+            Session.Add("GivenName", lineAr[7].Trim('\"'));         
+            Session.Add("Surname", lineAr[8].Trim('\"'));
+            Session.Add("Title", lineAr[9].Trim('\"'));
+            Session.Add("OfficePhone", lineAr[5].Trim('\"'));
+            Session.Add("Mail", lineAr[6].Trim('\"'));
 
-            if (_listDetailsUser[1] != null)
-                Session.Add("Surname", _listDetailsUser[1]);
-            else
-                Session.Add("Surname", "N/A");
-
-            if (_listDetailsUser[2] != null)
-                Session.Add("Title", _listDetailsUser[2]);
-            else
-                Session.Add("Title", "N/A");
-
-            if (_listDetailsUser[3] != null)
-                Session.Add("OfficePhone", _listDetailsUser[3]);
-            else
-                Session.Add("OfficePhone", "N/A");
-
-            if (_listDetailsUser[4] != null)
-                Session.Add("Mail", _listDetailsUser[4]);
-            else
-                Session.Add("Mail", "N/A");
-                              
-            ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'VisitCard.aspx', null, 'height=700,width=1000,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
+            ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'VisitCard.aspx', null, 'height=300,width=1000,status=no,toolbar=no,scrollbars=no,menubar=no,location=no,resizable=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
             // open a pop up window at the center of the page.
         }
 

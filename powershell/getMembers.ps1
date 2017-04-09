@@ -22,19 +22,17 @@ Function List_Members
 {	
 	Clear-Content $Sortie
 	
-	$KeyWordsForSearch = "*$KeyWordsForSearch*"
+	$KeyWordsForSearch = "$KeyWordsForSearch"
 	
-	$Groups = Get-ADGroup -Filter {(GroupCategory -eq "Distribution")-and (Name -like $KeyWordsForSearch)} `
-	-SearchBase "OU=GroupesDistributions,OU=Messagerie,DC=Neuronesit,DC=priv" `
-	-property members `
-	| Select members
-	
+	$Groups = Get-ADGroupMember -Identity $KeyWordsForSearch | get-aduser | where {$_.enabled -like "True" } | select-object distinguishedName
+			
 	foreach($Item in $Groups)
 	{	
-		$Item.members -replace ',',"`r`n" | Out-File $Sortie		
+		$Item.distinguishedName -replace ',',"`r`n" | Out-File -append $Sortie		
 	}
+	
 	$output = select-string $Sortie -pattern "CN=" | foreach {($_.Line)}	
-	$output = $output -split "CN=" | ? {$_.trim() -ne "" } | Sort-Object $_ | out-file $Sortie	
+	$output = $output -split "CN=" | ? {$_.trim() -ne "" } | Sort-Object $_ | out-file $Sortie		
 }
 #--------------------------------------------------------------------------
 #PROGRAMME PRINCIPAL

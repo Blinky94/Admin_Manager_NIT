@@ -10,8 +10,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-             <div id="owner_details_area" class="details" runat="server">
+        <div id="VisitCardArea" class="VisitCardArea" runat="server">
+            <div id="owner_details_area" runat="server">
                 <!-- photo zone area -->
                 <div id="photo_area" class="photo_area" runat="server"></div>
                 <!-- details zone area -->
@@ -20,13 +20,13 @@
                         <p>First Name : </p>
                         <p>Last Name : </p>
                         <p>Job : </p>
-                        <p>Phone : </p>                                                                       
+                        <p>Phone : </p>
                         <p>Email : </p>
-                    </div>  
-                                 
+                    </div>
+
                     <asp:TextBox ID="details" class="txtbox_details" runat="server" TextMode="MultiLine">                          
-                    </asp:TextBox>                              
-                </div>                                                           
+                    </asp:TextBox>
+                </div>
             </div>             
         </div>
     </form>

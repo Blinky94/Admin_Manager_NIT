@@ -10,7 +10,7 @@
 #VARIABLES
 #--------------------------------------------------------------------------
  $User = $args[0]
- $Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + $User + ".jpg"
+ $Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Images\" + $User + ".jpg"
 #--------------------------------------------------------------------------
 #FONCTION DE LANCEMENT DU PROGRAMME
 #--------------------------------------------------------------------------

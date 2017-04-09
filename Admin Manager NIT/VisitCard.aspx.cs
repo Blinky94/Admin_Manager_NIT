@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace Admin_Manager_NIT
 {
     public partial class VisitCard : System.Web.UI.Page
     {
+        string scriptGetUserPhoto = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\GetBinariesToPhoto.ps1";
+        string _path = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Images\";
         private string surName;
         private string givenName;
         private string title;
@@ -18,7 +21,6 @@ namespace Admin_Manager_NIT
         string memberPhoto = string.Empty;
         string ownerPhoto = string.Empty;
         int index = 0;
-        private string nameSelected;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,14 +39,29 @@ namespace Admin_Manager_NIT
         /// </summary>
         /// <param name="currentImage"></param>
         /// <param name="photo_area"></param>
-        protected void PhotosLoading(string currentImage, System.Web.UI.HtmlControls.HtmlControl photo_area)
+        protected void PhotosLoading(string currentImage, HtmlControl photo_area)
         {
             photo_area.Controls.Clear();
-            System.Web.UI.WebControls.Image img = new System.Web.UI.WebControls.Image();
-            img.ImageUrl = currentImage; // setting the path to the image
-            img.Width = 125;
-            img.ID = currentImage + Convert.ToString(index++);
+            Image img = new Image()
+            {
+                ImageUrl = currentImage, // setting the path to the image
+                Width = 170,
+                ID = currentImage + Convert.ToString(index++)
+            };
             photo_area.Controls.Add(img);
+        }
+
+        /// <summary>
+        /// Test if file exist in specific folder
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        protected bool IsFileExistInFolder(string path)
+        {
+            if (System.IO.File.Exists(path))
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
@@ -54,7 +71,15 @@ namespace Admin_Manager_NIT
         /// <param name="e"></param>
         protected void OpenVisitCard()
         {
-            ownerPhoto = "~/Images/CAZE-SULFOURT FREDERIC.jpg";
+            ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptGetUserPhoto), surName);
+
+            if (IsFileExistInFolder(_path + surName + ".jpg"))
+                ownerPhoto = "~/Images/" + surName + ".jpg";
+            else
+                ownerPhoto = "~/Images/Empty.jpg";
+
+            // ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + ownerPhoto.ToString() + "');", true);
+
             PhotosLoading(ownerPhoto, photo_area);
 
             details.Text = string.Empty;//Empty textbox for refreshing the information
