@@ -29,6 +29,29 @@ namespace Admin_Manager_NIT
         string ownerPhoto = string.Empty;
         string wordsToSearch;
         string _DL_Selected;
+        string currentUserLogin;
+
+        string hexActivate = "#0c3b19";
+        string hexInactivate = "#849686";
+
+        /// <summary>
+        /// Method to activate or desactivate
+        /// button fonctionnalities
+        /// </summary>
+        /// <param name="isActivate"></param>
+        protected void ActivateDesactivate_Button(bool isActivate,HyperLink control)
+        {
+            if(isActivate)
+            {
+                control.Enabled = true;
+                control.BackColor = System.Drawing.ColorTranslator.FromHtml(hexActivate);
+            }
+            else
+            {
+                control.Enabled = false;
+                control.BackColor = System.Drawing.ColorTranslator.FromHtml(hexInactivate);
+            }
+        }
 
         /// <summary>
         /// Load_Page to load the page with or without dynamic controls
@@ -42,7 +65,12 @@ namespace Admin_Manager_NIT
 
             if (!IsPostBack){}
             else
-                SelectButton_OnClick(sender, e);     
+                SelectButton_OnClick(sender, e);  
+            
+            currentUserLogin = (string)Session["login"];
+            Add_Owner_Button.BackColor = System.Drawing.ColorTranslator.FromHtml(hexActivate);
+
+            //ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + "current user name : " + currentUserLogin + "');", true);
         }
 
         /// <summary>
@@ -53,7 +81,6 @@ namespace Admin_Manager_NIT
         /// <param name="e"></param>
         protected void GoButton_OnClick(object sender, EventArgs e)
         {           
-            //ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + wordsToSearch + "');", true);
             mailingList.Items.Clear();
 
             if (SearchDLTextBox.Text.Length != 0)     
@@ -73,13 +100,46 @@ namespace Admin_Manager_NIT
         }
 
         /// <summary>
+        /// Method to Add new Owner
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void AddOwner_OnClick(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception error)
+            {
+                ClientScript.RegisterStartupScript(GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
+            }
+        }
+
+        /// <summary>
+        /// Method to Delete Owner
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DeleteOwner_OnClick(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception error)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
+            }
+        }
+
+        /// <summary>
         /// Make an Email to the list Owners of a specific Distribution List
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void RequestOwnerShipButton_OnClick(object sender,EventArgs e)
         {
-            //Variables
             string _subjectToOwner = "Request to Owner NAM/NIT";
             string _finalListMailOwners = string.Empty;       
 

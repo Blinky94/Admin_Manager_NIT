@@ -21,7 +21,7 @@
             <div id="Search_table">
                 <p>
                     <label>Search :</label>
-                    <asp:TextBox class="mailingList" ID="SearchDLTextBox" runat="server" OnTextChanged="SearchTextBox_TextChanged" />
+                    <asp:TextBox class="mailingList" ID="SearchDLTextBox" runat="server" OnTextChanged="SearchTextBox_TextChanged" />                 
                     <a href="#" class="Seachbutton" id="GoButton" runat="server" onserverclick="GoButton_OnClick">GO !</a>
                 </p>
             </div>
@@ -64,16 +64,16 @@
                         <asp:TableHeaderRow ID="TableHeaderOwners" BackColor="LightBlue" runat="server">
                         </asp:TableHeaderRow>
                     </asp:Table>
-                     
+
                     <div class="button_class_owners">
                         <div id="add_button_owners">
-                            <a href="#" class="button">Add</a>
+                            <asp:LinkButton ID="Add_Owner_Button" class="button" runat="server" onClick="AddOwner_OnClick" Text="Add" />
                         </div>
                         <div id="Request_button_OwnerShip">
-                            <a href="#" class="button" runat="server" onserverclick="RequestOwnerShipButton_OnClick">Request OwnerShip</a>
+                            <asp:LinkButton ID="request_OwnerShip" class="button" runat="server" OnClick="RequestOwnerShipButton_OnClick" Text="Request OwnerShip" />
                         </div>
                         <div id="del_button_owners">
-                            <a href="#" class="button">Delete</a>
+                            <asp:LinkButton ID="Del_Owner_Button" class="button" runat="server" onClick="DeleteOwner_OnClick" Text="Delete" />
                         </div>
                     </div>
 

@@ -20,7 +20,7 @@ namespace Admin_Manager_NIT
         protected void Page_Load(object sender, EventArgs e)
         {
             //Display mail from, mail to, subject and body for the email
-            fromEmail = (string)(Session["fromEmail"]);
+            fromEmail = (string)(Session["login"]);
             mailFrom.Text = fromEmail;
 
             // foreach(string name in listMailOwners)

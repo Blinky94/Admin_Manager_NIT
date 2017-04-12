@@ -14,9 +14,10 @@
       <body>  
          <form id="form1" runat="server">
             <div id="container">
-                  <div class="banner">
-                       <img class="resize_fit_center" style="margin:0px auto;display:block" src="/Images/Neurones_banner.png"  alt="HTML5 Icon"/>
-                  </div>
+                <div class="banner">
+                    <img src="" runat="server" id="banner_NIT" class="banner_NIT" alt="" />
+                    <a href="#" id="logout" class="button" runat="server" onserverclick="Logout_OnClick">Logout</a>
+                </div>
       
                   <div id="navbar"> 
                         <!-- empty area -->
@@ -24,40 +25,40 @@
 
                   <div id="masterPageMContainer">
                         <div id="menu">
-                                <ul class="menuClass">                                                              
-                                    <li><a href="#">Mailing List</a>
-                                          <ul>
-                                                <li><a href="#">View</a></li>
-                                                <li><a href="#">Edit</a></li>
-                                                <li><a href="#">Create</a></li> 
-                                                <li><a href="#">Delete</a></li>              
-                                          </ul>
-                                    </li>
-                                    <li><a href="#">Exchange Email</a>
-                                          <ul>
-                                                <li><a href="#">View</a></li>
-                                                <li><a href="#">Edit</a></li>
-                                                <li><a href="#">Create</a></li> 
-                                                <li><a href="#">Delete</a></li>    
-                                          </ul>
-                                    </li>
-                                    <li><a href="#">Account Active Directory</a>
-                                          <ul>
-                                                <li><a href="#">View</a></li>
-                                                <li><a href="#">Edit</a></li>
-                                                <li><a href="#">Create</a></li> 
-                                                <li><a href="#">Delete</a></li>    
-                                          </ul>
-                                    </li>
-                                    <li><a href="#">PowerShell Scripts</a>
-                                          <ul>
-                                                <li><a href="#">View</a></li>
-                                                <li><a href="#">Edit</a></li>
-                                                <li><a href="#">Create</a></li> 
-                                                <li><a href="#">Delete</a></li>  
-                                          </ul>
-                                    </li> 
-                              </ul>    
+                            <ul class="menuClass">
+                                <li><a href="#">Mailing List</a>
+                                    <ul>
+                                        <li><a href="DL_View.aspx" id="View_Link" runat="server" onserverclick="ViewLink_OnClick">View</a></li>
+                                        <li><a href="#" id="Edit_Link" runat="server" onserverclick="EditLink_OnClick">Edit</a></li>
+                                        <li><a href="#">Create</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Exchange Email</a>
+                                    <ul>
+                                        <li><a href="#">View</a></li>
+                                        <li><a href="#">Edit</a></li>
+                                        <li><a href="#">Create</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Account Active Directory</a>
+                                    <ul>
+                                        <li><a href="#">View</a></li>
+                                        <li><a href="#">Edit</a></li>
+                                        <li><a href="#">Create</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">PowerShell Scripts</a>
+                                    <ul>
+                                        <li><a href="#">View</a></li>
+                                        <li><a href="#">Edit</a></li>
+                                        <li><a href="#">Create</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </li>
+                            </ul>    
                         </div>
 
                         <div id="MainContent">

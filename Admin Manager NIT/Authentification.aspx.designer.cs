@@ -22,6 +22,15 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl body_Authent;
         
         /// <summary>
+        /// Contrôle authentification.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label authentification;
+        
+        /// <summary>
         /// Contrôle lblErreur.
         /// </summary>
         /// <remarks>
@@ -67,12 +76,12 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.WebControls.TextBox txtPass;
         
         /// <summary>
-        /// Contrôle connexion_button.
+        /// Contrôle connexion.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button connexion_button;
+        protected global::System.Web.UI.WebControls.Button connexion;
     }
 }

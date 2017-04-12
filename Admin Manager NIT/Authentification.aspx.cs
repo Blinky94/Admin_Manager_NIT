@@ -26,7 +26,9 @@ namespace Admin_Manager_NIT
             {
                 if (Request.QueryString["erreur"] != null)
                 {
-                   // lblErreur.Text = "You must be loged to access to the site's fonctionnalities !";
+                    lblErreur.Text = string.Empty;
+                    txtLogin.Text = string.Empty;
+                    txtPass.Text = string.Empty;
                 }             
             }
         }
@@ -40,8 +42,7 @@ namespace Admin_Manager_NIT
         /// <param name="password"></param>
         /// <returns></returns>
         protected void ConnectTo_LDAP(string login, string password)
-        {
-            string getLogin=string.Empty, getPassword = string.Empty;
+        {          
             try
             {
                 LdapConnection connection = new LdapConnection(sDomain);
@@ -50,16 +51,17 @@ namespace Admin_Manager_NIT
                 connection.Bind();
 
                 lblErreur.Text = string.Empty;
-                Session["login"] = getLogin;
-                Session["password"] = getPassword;
 
+                Session["login"] = login;
+                Session["password"] = password;
                 Response.Redirect("DL_View.aspx");
             }
             catch (LdapException lexc)
             {
                 String error = lexc.ServerErrorMessage;
                 lblErreur.Text = string.Empty;
-                lblErreur.Text += lexc.ServerErrorMessage;
+                lblErreur.Text = "Error login or password !";
+                //lblErreur.Text += lexc.ServerErrorMessage;
             }
             catch (Exception exc)
             {
@@ -71,8 +73,8 @@ namespace Admin_Manager_NIT
         /// <summary>
         /// Methods to connect to LDAP
         /// return to DL_view.aspx if authenticate
-        /// else return error login/password
         /// </summary>
+        /// else return error login/password
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Connexion_Click(object sender,EventArgs e)
@@ -83,18 +85,7 @@ namespace Admin_Manager_NIT
             getLogin = txtLogin.Text;
             getPassword = txtPass.Text;
 
-            ConnectTo_LDAP(getLogin,getPassword);
-
-           
-               // Session["login"] = getLogin;
-              //  Session["password"] = getPassword;
-
-              //  Response.Redirect("DL_View.aspx");
-            
-           // else
-           // {
-           //     lblErreur.Text = "login or password incorrect !";
-           // }
+            ConnectTo_LDAP(getLogin,getPassword);       
         }
     }
 }

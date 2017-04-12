@@ -2,6 +2,13 @@
 #Mars 2017
 #Neurones IT
 #Programme Powershell pour lister les Owners d'un Groupe Distribution en paramètre
+#Group Type                         Value
+#Global distribution group          2
+#Domain local distribution group    4
+#Universal distribution group       8
+#Global security group              -2147483646
+#Domain local security group        -2147483644
+#Universal security group           -2147483640
 #--------------------------------------------------------------------------
 # MODULE ACTIVE DIRECTORY
 #--------------------------------------------------------------------------
@@ -10,8 +17,11 @@
 #VARIABLES
 #--------------------------------------------------------------------------
  $KeyWordsForSearch = $args[0]
- $Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "outputowner.txt"
- $tmp = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "tmp.txt"
+ #Final file with Owners list
+ $outputowner = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "outputowner.txt"
+ #Temporary files to take groups eventually, and treat them after
+ $tmp_CoManagedOwners = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "tmp_CoManagedOwners.txt"
+ $tmp_ManagedByOwners = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "tmp_ManagedByOwners.txt"
 #--------------------------------------------------------------------------
 #FONCTION DE RECHERCHE DE LISTAGE DES MEMBRES D'UN GROUPE DE SECURITE
 #--------------------------------------------------------------------------
@@ -24,11 +34,11 @@ Function Get_Members_From_SecurityGroup()
 	-SearchBase $OU `
 	| Select name
 
-	$rtn = (Get-ADGroupMember -Identity "$($outPutGroup.name)" -Recursive)
+	$rtn = (Get-ADGroupMember -Identity "$($outPutGroup.name)" -Recursive | get-aduser | where {$_.enabled -like "True" } )
 
 	foreach($Item in $rtn)
 	{	
-		$Item.name | Out-File -append $Sortie		
+		if($Item.name -ne $KeyWordsForSearch){$Item.name | out-file -append $outputowner}	
 	}			
 }
 #--------------------------------------------------------------------------
@@ -43,11 +53,11 @@ Function Get_Members_From_DistributionGroup()
 	-SearchBase $OU `
 	| Select name
 
-	$rtn = (Get-ADGroupMember -Identity "$($outPutGroup.name)" -Recursive)
+	$rtn = (Get-ADGroupMember -Identity "$($outPutGroup.name)" -Recursive | get-aduser | where {$_.enabled -like "True" } )
 
 	foreach($Item in $rtn)
 	{	
-		$Item.name | Out-File -append $Sortie		
+		if($Item.name -ne $KeyWordsForSearch){$Item.name | out-file -append $outputowner}	
 	}			
 }
 #--------------------------------------------------------------------------
@@ -59,55 +69,40 @@ Function Start-Commands{List_Owners}
 #--------------------------------------------------------------------------
 Function List_Owners
 {			
-	Clear-Content $Sortie
-	Clear-Content $tmp	
+	Clear-Content $outputowner
+	Clear-Content $tmp_ManagedByOwners
+	Clear-Content $tmp_CoManagedOwners
 
 	$KeyWordsForSearch = "*$KeyWordsForSearch*"
 	
-	$outPut = get-adgroup -Filter {(GroupCategory -eq "Distribution") -and (Name -like $KeyWordsForSearch)} `
-	-SearchBase "OU=GroupesDistributions,OU=Messagerie,DC=Neuronesit,DC=priv" `
+	$outPut = get-adgroup -SearchBase "OU=GroupesDistributions,OU=Messagerie,DC=Neuronesit,DC=priv" `
+	-Filter {(GroupCategory -eq "Distribution") -and (Name -like $KeyWordsForSearch)} `
 	-property ManagedBy, MsExchCoManagedByLink `
 	| select ManagedBy,MsExchCoManagedByLink
 	
 	foreach($Item in $outPut)
 	{	
-		$Item.ManagedBy -replace ',',"`r`n" | Out-File $Sortie		
+		$Item.ManagedBy -replace ',',"`r`n" | Out-File $tmp_ManagedByOwners		
 	}
-	$output2 = select-string $Sortie -pattern "CN=" | foreach {($_.Line)}	
-	$output2 = $output2 -split "CN=" | ? {$_.trim() -ne "" } | out-file $Sortie		
+
+	$output2 = select-string $tmp_ManagedByOwners -pattern "CN=" | foreach {($_.Line)}	
+	$output2 = $output2 -split "CN=" | ? {$_.trim() -ne "" } | out-file $tmp_ManagedByOwners			
 	
-	foreach($Item in $outPut)
-	{	
-		$Item.MsExchCoManagedByLink -replace ',',"`r`n" | Out-File $tmp		
-	}
-	$output2 = select-string $tmp -pattern "CN=" | foreach {($_.Line)}	
-	$output2 = $output2 -split "CN=" | ? {$_.trim() -ne "" } | Sort-Object $_ | out-file -append $Sortie		
-	
-	foreach($line in Get-Content $Sortie)
+	foreach($line in Get-Content $tmp_ManagedByOwners)
 	{
-		$outPutUser = get-aduser -Filter {(Name -like $line)} `
-		-SearchBase "OU=Utilisateurs,DC=Neuronesit,DC=priv" `
-		-properties OfficePhone,UserPrincipalName,GivenName,Surname,Title  `
-		| select OfficePhone,UserPrincipalName,GivenName,Surname,Title 		
+		$outPutUser = get-aduser -SearchBase "OU=Utilisateurs,DC=Neuronesit,DC=priv" `
+		-Filter {(Name -like $line) } -properties * | where {$_.enabled -like "True" }
 		
-		if($outPutUser -eq $null)
-		{		
-			write-host "pas d'user c'est un groupe !"		
-			#Get-Content $Sortie | Where-Object {$_ -notmatch $line} | Set-Content $Sortie
-			
+		
+		if(!$outPutUser)
+		{				
 			#Get the GroupType
 			$typeGroup = Get-ADGroup -Filter {Name -like $line} `
 			-SearchBase "DC=Neuronesit,DC=priv" `
 			-Properties GroupType `
-			|Select GroupType
-					
-			#Group Type                         Value
-			#Global distribution group          2
-			#Domain local distribution group    4
-			#Universal distribution group       8
-			#Global security group              -2147483646
-			#Domain local security group        -2147483644
-			#Universal security group           -2147483640
+			|Select GroupType											
+			
+			$KeyWordsForSearch = $line
 			
 			if($typeGroup.GroupType -eq "2"){Get_Members_From_DistributionGroup}
 			elseif($typeGroup.GroupType -eq "4"){Get_Members_From_DistributionGroup}
@@ -116,7 +111,44 @@ Function List_Owners
 			elseif($typeGroup.GroupType -eq "-2147483644"){Get_Members_From_SecurityGroup}
 			elseif($typeGroup.GroupType -eq "-2147483640"){Get_Members_From_SecurityGroup}	
 		}
+		
+		if($line -ne $KeyWordsForSearch){$line | out-file -append $outputowner}				
 	}
+	
+	foreach($Item in $outPut)
+	{	
+		$Item.MsExchCoManagedByLink -replace ',',"`r`n" | Out-File $tmp_CoManagedOwners		
+	}
+	$output2 = select-string $tmp_CoManagedOwners -pattern "CN=" | foreach {($_.Line)}	
+	$output2 = $output2 -split "CN=" | ? {$_.trim() -ne "" } | Sort-Object $_ | out-file $tmp_CoManagedOwners	
+
+	foreach($line2 in Get-Content $tmp_CoManagedOwners)
+	{
+		$outPutUser = get-aduser -SearchBase "OU=Utilisateurs,DC=Neuronesit,DC=priv" `
+		-Filter {(Name -like $line2)} -properties * | where {$_.enabled -like "True" } `
+		
+		
+				
+		if(!$outPutUser)
+		{				
+			#Get the GroupType
+			$typeGroup = Get-ADGroup -Filter {Name -like $line2} `
+			-SearchBase "DC=Neuronesit,DC=priv" `
+			-Properties GroupType `
+			|Select GroupType
+			
+			$KeyWordsForSearch = $line2
+			
+			if($typeGroup.GroupType -eq "2"){Get_Members_From_DistributionGroup}
+			elseif($typeGroup.GroupType -eq "4"){Get_Members_From_DistributionGroup}
+			elseif($typeGroup.GroupType -eq "8"){Get_Members_From_DistributionGroup}
+			elseif($typeGroup.GroupType -eq "-2147483646"){Get_Members_From_SecurityGroup}
+			elseif($typeGroup.GroupType -eq "-2147483644"){Get_Members_From_SecurityGroup}
+			elseif($typeGroup.GroupType -eq "-2147483640"){Get_Members_From_SecurityGroup}	
+		}
+
+		if($line2 -ne $KeyWordsForSearch){$line2 | out-file -append $outputowner}	
+	}	
 }
 #--------------------------------------------------------------------------
 #PROGRAMME PRINCIPAL

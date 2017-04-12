@@ -112,6 +112,33 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.WebControls.TableHeaderRow TableHeaderOwners;
         
         /// <summary>
+        /// Contrôle Add_Owner_Button.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Add_Owner_Button;
+        
+        /// <summary>
+        /// Contrôle request_OwnerShip.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton request_OwnerShip;
+        
+        /// <summary>
+        /// Contrôle Del_Owner_Button.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Del_Owner_Button;
+        
+        /// <summary>
         /// Contrôle title_members.
         /// </summary>
         /// <remarks>
