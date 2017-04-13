@@ -184,6 +184,24 @@ div.spacer{
     text-decoration: none;
     position: relative;
 }
+
+.disabledButton {
+    box-shadow: 0px 0px 2px 0px #3dc21b;
+    background: #849686;
+    border-radius: 5px;
+    border: 2px solid azure;
+    display: inline-block;
+    cursor:default;
+    color: #ffffff;
+    font-family: 'Trocchi', serif;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 15px 7px;
+    text-decoration: none;
+    position: relative;
+}
+}
 /*Add,Del, Request OwnerShipbuttons in result reacting on mouse over*/
 .button:hover {
     filter: progid:DXImageTransform.Microsoft.gradient(start);
@@ -210,16 +228,15 @@ div.spacer{
 /*Result Area of search process---------------------------------------------------------------------------------------*/
 #result_area {
     background: #006333;
-    border: solid 1px #fff;
     position: relative;
     height: auto;
     color: #e7fff1;
-    line-height: 5px;
+    line-height: 17px;
 }
 /*----------------------------------------LIST ARRAY-----------------------------------------*/
 .headertable {
     font-family: 'Trocchi', serif;
-    color: #666;
+    color:green;
     font-size: 20px;
     background: #eaebec;
     border: #ccc 1px solid;
@@ -297,15 +314,15 @@ thead, tbody {
     overflow-y: auto;
 }
 .table tbody {
-    height: 435px;
+    height: 427px;
     max-height: 427px;
-    overflow-y:auto;
-    overflow-x:hidden;
+    overflow-y:scroll;
+    overflow-x: hidden;
     width: auto;
 }
 /*Owners List Button Area--------------------------------------------------------------------------*/
 /*Area which manage all the owners buttons*/
-.button_class_owners {
+.button_class {
     background: transparent;
     height: auto;
     width: 100%;
@@ -335,7 +352,7 @@ thead, tbody {
 }
 /*Members List Button Area-------------------------------------------------------------------------*/
 /*Area which manage all the members buttons*/
-.button_class_members {
+.button_class {
     background: transparent;
     height: auto;
     width: 100%;
@@ -345,13 +362,22 @@ thead, tbody {
 #add_button_members {
     background: transparent;
     float: left;
-    width: 50%;
+    width: 33.33%;
+    position:relative;
     text-align: center;
 }
 #del_button_members {
     background: transparent;
-    float: right;
-    width: 50%;
+    float: left;
+    width: 33.34%;
+    position: relative;
+    text-align: center;
+}
+#Request_button_MemberShip {
+    background: transparent;
+    float: left;
+    width: 33.32%;
+    position: relative;
     text-align: center;
 }
 /*Members List column--------------------------------------------------------------------------------------------*/
@@ -379,8 +405,8 @@ thead, tbody {
     border: solid 1px #fff;
     height: auto;
     width: 49%;
-    float: right;
-    margin-bottom: 50px;
+    float: left;  
+    margin-left:18px;
 }
 /*Details area DL-----------------------------------------------------------------------------------------------------*/
 .details {

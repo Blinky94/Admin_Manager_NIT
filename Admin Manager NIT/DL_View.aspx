@@ -54,18 +54,18 @@
 
                 <div id="owners_list_array">
                     <asp:Table class="headertable" ID="HeaderOwner" runat="server">
-                        <asp:TableHeaderRow ID="headerowners" BackColor="LightBlue" runat="server">
-                            <asp:TableHeaderCell Scope="Column" Text="Owner Email Address" Width="500" />
-                            <asp:TableHeaderCell Scope="Column" Text="View" />
+                        <asp:TableHeaderRow ID="headerowners" BackColor="white" runat="server">
+                            <asp:TableHeaderCell Scope="Column" Text="Owners List" Width="500" />
+                            <asp:TableHeaderCell Scope="Column" Text="View" Width="71"/>
                         </asp:TableHeaderRow>
                     </asp:Table>
 
                     <asp:Table class="table" ID="tablOwnersControl" runat="server">
-                        <asp:TableHeaderRow ID="TableHeaderOwners" BackColor="LightBlue" runat="server">
+                        <asp:TableHeaderRow ID="TableHeaderOwners" BackColor="white" runat="server">
                         </asp:TableHeaderRow>
                     </asp:Table>
 
-                    <div class="button_class_owners">
+                    <div class="button_class">
                         <div id="add_button_owners">
                             <asp:LinkButton ID="Add_Owner_Button" class="button" runat="server" onClick="AddOwner_OnClick" Text="Add" />
                         </div>
@@ -93,27 +93,29 @@
                 <div id="members_list_array">
 
                     <asp:Table class="headertable" ID="HeaderMember" runat="server">
-                        <asp:TableHeaderRow ID="headermembers" BackColor="LightBlue" runat="server">
-                            <asp:TableHeaderCell Scope="Column" Text="Member Email Address" Width="500" />
-                            <asp:TableHeaderCell Scope="Column" Text="View" />
+                        <asp:TableHeaderRow ID="headermembers" BackColor="white" runat="server">
+                            <asp:TableHeaderCell Scope="Column" Text="Members List" Width="500" />
+                            <asp:TableHeaderCell Scope="Column" Text="View" Width="71"/>
                         </asp:TableHeaderRow>
                     </asp:Table>
 
                     <asp:Table class="table" ID="tableMembersControl" runat="server">
-                        <asp:TableHeaderRow ID="TableHeaderMembers" BackColor="LightBlue" runat="server">
+                        <asp:TableHeaderRow ID="TableHeaderMembers" BackColor="white" runat="server">
                         </asp:TableHeaderRow>
                     </asp:Table>
 
-                    <div class="button_class_members">
+                    <div class="button_class">
                         <div id="add_button_members">
-                            <a href="#" class="button">Add</a>
+                            <asp:LinkButton ID="Add_Member_Button" class="button" runat="server" OnClick="AddMember_OnClick" Text="Add" />
+                        </div>
+                        <div id="Request_button_MemberShip">
+                            <asp:LinkButton ID="Request_MemberShip" class="button" runat="server" OnClick="RequestMemberShipButton_OnClick" Text="Request MemberShip" />
                         </div>
                         <div id="del_button_members">
-                            <a href="#" class="button">Delete</a>
+                            <asp:LinkButton ID="Del_Member_Button" class="button" runat="server" OnClick="DeleteMember_OnClick" Text="Delete" />
                         </div>
                     </div>
                     <!-- end button_class_members -->
-
                 </div>
                 <!-- end list members_list_array -->
             </div>

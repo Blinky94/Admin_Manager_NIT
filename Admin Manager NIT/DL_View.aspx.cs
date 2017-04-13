@@ -15,15 +15,13 @@ namespace Admin_Manager_NIT
         string scriptGetMailListDL_NoArg = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getDistributionList_no_arg.ps1";
         string scriptToClearFile = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\ClearFileContent.ps1";
         string scripGetUserDetails = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getUserDetails.ps1";
-
         string fileWithOwners = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputowner.txt";
         string fileWithMembers = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputmember.txt";
         string fileoutputDistribution = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputDistribution.txt";
         string emailType = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\EmailType\Email_To_Member.txt";
         string fileWithOwnersMail = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\getOwnerMail.txt";
         string scriptgetOwnerMail = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\getOwnerMail.ps1";
-        string fileWithUserDetails = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outPutUserDetails.csv";
-       
+        string fileWithUserDetails = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outPutUserDetails.csv"; 
         List<string> listOutPutDL = new List<string>(); 
         string memberPhoto = string.Empty;
         string ownerPhoto = string.Empty;
@@ -31,25 +29,61 @@ namespace Admin_Manager_NIT
         string _DL_Selected;
         string currentUserLogin;
 
-        string hexActivate = "#0c3b19";
-        string hexInactivate = "#849686";
+        /// <summary>
+        /// Method to test if currentUser is in the current Owner List
+        /// </summary>
+        /// <param name="listMailOwners"></param>
+        /// <returns></returns>
+        protected bool IsCurrentUserInOwnersList(List<string> listMailOwners)
+        {
+            bool _isuserIsOwnerList = false;
+
+            foreach (string mail in listMailOwners)
+                if (mail == currentUserLogin)
+                    return _isuserIsOwnerList = true;
+                else
+                    return _isuserIsOwnerList = false;
+
+            return _isuserIsOwnerList;
+        }
+
+        /// <summary>
+        /// Method to return Mails from Owners list
+        /// </summary>
+        /// <returns></returns>
+        protected List<string> GetMailFromOwners()
+        {
+            //Clean the fileWithOwnersMail
+            ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptToClearFile), fileWithOwnersMail);
+
+            //Find mail in AD with owners names in file
+            foreach (string elem in ReadFileOutPut.GetLineFromFile(fileWithOwners))
+                ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptgetOwnerMail), elem);
+
+            List<string> _listMailOwners = ReadFileOutPut.GetLineFromFile(fileWithOwnersMail);
+
+            //Remove duplicated mails
+            _listMailOwners = _listMailOwners.Distinct().ToList<string>();
+
+            return _listMailOwners;
+        }
 
         /// <summary>
         /// Method to activate or desactivate
         /// button fonctionnalities
         /// </summary>
         /// <param name="isActivate"></param>
-        protected void ActivateDesactivate_Button(bool isActivate,HyperLink control)
+        protected void ActivateDesactivate_Button(bool isActivate,LinkButton control)
         {
-            if(isActivate)
+            if(isActivate == true)
             {
                 control.Enabled = true;
-                control.BackColor = System.Drawing.ColorTranslator.FromHtml(hexActivate);
+                control.CssClass = "button";
             }
             else
             {
                 control.Enabled = false;
-                control.BackColor = System.Drawing.ColorTranslator.FromHtml(hexInactivate);
+                control.CssClass = "disabledButton";
             }
         }
 
@@ -60,17 +94,43 @@ namespace Admin_Manager_NIT
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            currentUserLogin = (string)Session["login"];
+
             if (Session["login"] == null)
                 Response.Redirect("Authentification.aspx?erreur=1");
 
             if (!IsPostBack){}
             else
-                SelectButton_OnClick(sender, e);  
-            
-            currentUserLogin = (string)Session["login"];
-            Add_Owner_Button.BackColor = System.Drawing.ColorTranslator.FromHtml(hexActivate);
+            {
+                SelectButton_OnClick(sender, e);        
+            }
+            List<string> listOwners = GetMailFromOwners();
 
-            //ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + "current user name : " + currentUserLogin + "');", true);
+            bool _IsCurrentInOwnerList = false;
+
+            if (listOwners.Count > 0)
+            {
+                foreach (string mail in listOwners)
+                    if (mail.ToLower() == currentUserLogin.ToLower())
+                        _IsCurrentInOwnerList = true;
+
+                if (_IsCurrentInOwnerList)
+                {
+                    //ActivateDesactivate_Button(true, request_OwnerShip);
+                    ActivateDesactivate_Button(true, Add_Owner_Button);
+                    ActivateDesactivate_Button(true, Del_Owner_Button);
+                    ActivateDesactivate_Button(true, Del_Member_Button);
+                    ActivateDesactivate_Button(true, Add_Member_Button);
+                }
+                else
+                {
+                   // ActivateDesactivate_Button(false, request_OwnerShip);
+                    ActivateDesactivate_Button(false, Add_Owner_Button);
+                    ActivateDesactivate_Button(false, Del_Owner_Button);
+                    ActivateDesactivate_Button(false, Del_Member_Button);
+                    ActivateDesactivate_Button(false, Add_Member_Button);
+                }
+            }
         }
 
         /// <summary>
@@ -117,6 +177,38 @@ namespace Admin_Manager_NIT
         }
 
         /// <summary>
+        /// Make an Email to the list Owners of a specific Distribution List
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void RequestOwnerShipButton_OnClick(object sender, EventArgs e)
+        {
+            string _subjectToOwner = "Request to Owner NAM/NIT";
+            string _finalListMailOwners = string.Empty;
+
+            try
+            {
+                List<string> _listMailOwners = GetMailFromOwners();
+
+                //Make list email owners with emailTo format ";"
+                foreach (string elem in _listMailOwners)
+                    _finalListMailOwners += elem + ";";
+
+                //Send info to Email.aspx page
+                Session.Add("_listMailOwners", _finalListMailOwners);
+                Session.Add("subjectEmail", _subjectToOwner);
+                Session.Add("body", ReadFileOutPut.GetLineFromFile(emailType));
+
+                // open a pop up window at the center of the page.
+                ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'Email.aspx', null, 'height=700,width=1000,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
+            }
+            catch (Exception error)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
+            }
+        }
+
+        /// <summary>
         /// Method to Delete Owner
         /// </summary>
         /// <param name="sender"></param>
@@ -134,48 +226,71 @@ namespace Admin_Manager_NIT
         }
 
         /// <summary>
+        /// Method to Add new Owner
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void AddMember_OnClick(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception error)
+            {
+                ClientScript.RegisterStartupScript(GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
+            }
+        }
+
+        /// <summary>
         /// Make an Email to the list Owners of a specific Distribution List
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void RequestOwnerShipButton_OnClick(object sender,EventArgs e)
+        protected void RequestMemberShipButton_OnClick(object sender, EventArgs e)
         {
-            string _subjectToOwner = "Request to Owner NAM/NIT";
-            string _finalListMailOwners = string.Empty;       
+            string _subjectToOwners = "Request to Owners NAM/NIT";
+            string _finalListMailOwners = string.Empty;
 
             try
             {
-                //Clear file with owners mail list
-                ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptToClearFile), fileWithOwnersMail);
+                List<string> _listMailOwners = GetMailFromOwners();
 
-                //Find mail in AD with owners names in file
-                foreach (string elem in ReadFileOutPut.GetLineFromFile(fileWithOwners))
-                    ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptgetOwnerMail), elem);
-
-                List<string> _listMailOwners = ReadFileOutPut.GetLineFromFile(fileWithOwnersMail);
-
-                //Remove duplicated mails
-                _listMailOwners = _listMailOwners.Distinct().ToList<string>();
-
-                //Presentation of mails with ";" like in mail
+                //Make list email owners with emailTo format ";"
                 foreach (string elem in _listMailOwners)
                     _finalListMailOwners += elem + ";";
 
                 //Send info to Email.aspx page
-                Session.Add("fromEmail", "frederic.caze-sulfourt@neurones.net");
-                Session.Add("_listMailOwners", _finalListMailOwners);
-                Session.Add("subjectEmail", _subjectToOwner);
+                Session.Add("fromEmail", currentUserLogin);
+                Session.Add("_listMails", _finalListMailOwners);
+                Session.Add("subjectEmail", _subjectToOwners);
                 Session.Add("body", ReadFileOutPut.GetLineFromFile(emailType));
-                
+
                 // open a pop up window at the center of the page.
                 ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'Email.aspx', null, 'height=700,width=1000,status=yes,toolbar=no,scrollbars=yes,menubar=no,location=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
             }
             catch (Exception error)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
-            }                  
+            }
         }
 
+        /// <summary>
+        /// Method to Delete Owner
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void DeleteMember_OnClick(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception error)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
+            }
+        }
         /// <summary>
         /// Method Event Handler when click on "Go!" Button
         /// Generate Owners List in the result DropDownList
@@ -251,9 +366,15 @@ namespace Admin_Manager_NIT
                 {
                     TableRow tr = new TableRow();
                     table.Rows.Add(tr);
+                   
+                    TableCell checkBocCell = new TableCell();
+                    checkBocCell.Width = 20;
+                    CheckBox checkBox = new CheckBox();
+                    checkBocCell.Controls.Add(checkBox);
 
                     TableCell identityCell = new TableCell();
-
+                    identityCell.Width = 500;
+                    identityCell.HorizontalAlign = HorizontalAlign.Left;
                     identityCell.Text = list[i - 1];
                     _ID++;
                     identityCell.ID = _ID.ToString();
@@ -267,7 +388,7 @@ namespace Admin_Manager_NIT
 
                     TableCell imageCell = new TableCell();
                     imageCell.Controls.Add(img);
-
+                    tr.Cells.Add(checkBocCell);
                     tr.Cells.Add(identityCell);
                     tr.Cells.Add(imageCell);
                 }
