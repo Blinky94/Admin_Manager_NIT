@@ -344,14 +344,44 @@ namespace Admin_Manager_NIT
             Session.Add("OfficePhone", lineAr[5].Trim('\"'));
             Session.Add("Mail", lineAr[6].Trim('\"'));
 
-            ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'VisitCard.aspx', null, 'height=300,width=1000,status=no,toolbar=no,scrollbars=no,menubar=no,location=no,resizable=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
             // open a pop up window at the center of the page.
+            ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'VisitCard.aspx', null, 'height=300,width=1000,status=no,toolbar=no,scrollbars=no,menubar=no,location=no,resizable=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
         }
 
         /// <summary>
-        /// Generate the table dynamically with the powerShell scripts for the Owners
+        /// Method to get checkbox selected in a specific table in parameter
         /// </summary>
-        public void GenerateTable(string script, string listSelected, string fileWith_, Table table, int _ID)
+        /// <param name="table"></param>
+        protected void GetUsersSelectedFromTable(Table table,CheckBox chk)
+        {
+            string tot = string.Empty;
+           
+            if(table.Rows != null)
+            {
+                foreach (TableRow row in table.Rows)
+                {
+                    if(row.Cells.Count > 0)
+                    {
+                         chk = row.Cells[0].Controls[0] as CheckBox;
+                                             
+                        if(chk.Checked)
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + row.Cells[1].Text.ToString() + "');", true);
+                        }                                             
+                    }              
+                }
+            }        
+        }     
+
+        /// <summary>
+        /// Generate the table dynamically with the powerShell scripts for the Owners or Members
+        /// </summary>
+        /// <param name="script"></param>
+        /// <param name="listSelected"></param>
+        /// <param name="fileWith_"></param>
+        /// <param name="table"></param>
+        /// <param name="_ID"></param>
+        protected void GenerateTable(string script, string listSelected, string fileWith_, Table table, int _ID)
         {
             List<string> list = new List<string>();
 
@@ -370,6 +400,11 @@ namespace Admin_Manager_NIT
                     TableCell checkBocCell = new TableCell();
                     checkBocCell.Width = 20;
                     CheckBox checkBox = new CheckBox();
+                    checkBox.AutoPostBack = true;
+                    checkBox.EnableViewState = true;
+                    checkBox.CheckedChanged += new EventHandler(CheckBox_Clicked);
+                    _ID++;
+                    checkBox.ID = _ID.ToString();
                     checkBocCell.Controls.Add(checkBox);
 
                     TableCell identityCell = new TableCell();
@@ -397,6 +432,19 @@ namespace Admin_Manager_NIT
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
             }
+        }
+
+        string tkk = string.Empty;
+
+        /// <summary>
+        /// Method EventHandler of CheckBox changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void CheckBox_Clicked(object sender,EventArgs e)
+        {
+            CheckBox chk = (CheckBox)sender;
+            GetUsersSelectedFromTable(tablOwnersControl, chk);
         }
 
         /// <summary>
