@@ -1,7 +1,7 @@
 #FrÃ©dÃ©ric CAZE-SULFOURT
 #Avril 2017
 #Neurones IT
-#Programme Powershell pour recuperer les details d'un utilisateur donné passé en paramètre
+#Programme Powershell pour recuperer les details d'un utilisateur donne passe en parametre
 #--------------------------------------------------------------------------
 # MODULE ACTIVE DIRECTORY
 #--------------------------------------------------------------------------
@@ -11,6 +11,7 @@
 #--------------------------------------------------------------------------
  $allArgs = $PsBoundParameters.Values + $args
  $SortieCSV = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "outPutUserDetails.csv"
+ $traceLog = "C:\Users\FCazesulfourt\Desktop\Export_CSV_Entretiens_Professionnels\logs\LogPowershell_ScritpOutput.txt"
 #--------------------------------------------------------------------------
 #FONCTION DE LANCEMENT DU PROGRAMME
 #--------------------------------------------------------------------------
@@ -20,28 +21,47 @@ Function Start-Commands{Get_User_Details}
 #--------------------------------------------------------------------------
 Function Get_User_Details
 {			
-	Clear-content $SortieCSV
+	Try{						
+			"`r ---------------------------------------------------------"  | Out-File -Append $traceLog
+			"`r Script de recuperation de toutes les informations d'un user de l'AD... TraÃ§age des log du script "  | Out-File -Append $traceLog
+			"`r --------------------------------------------------------- "  | Out-File -Append $traceLog
+			$FormattedDate = Get-Date -Format "yyyy-MM-dd HH:mm:ss `r ---------------------------------------------------------" 
+			$FormattedDate | Out-File -Append $traceLog
+			"`r script Name : getUserDetails.ps1" | Out-File -Append $traceLog
+			"`r parametre : " + $KeyWordsForSearch + "`r" | Out-File -Append $traceLog		
 	
-	$allArgs = "*$allArgs*"
+		Clear-content $SortieCSV
 		
-	$outPutUser = get-aduser -Filter {(Name -like $allArgs)} `
-	-SearchBase "DC=Neuronesit,DC=priv" `
-	-properties OfficePhone,Mail,GivenName,Surname,Title  `
-	| select OfficePhone,Mail,GivenName,Surname,Title 
-				
-	foreach($item in $outPutUser)
-	{		
-		if($item.GivenName -eq $null){$item.GivenName = "N/A"}
-		if($item.Surname -eq $null){$item.Surname = "N/A"}
-		if($item.Title -eq $null){$item.Title = "N/A"}		
-		if($item.OfficePhone -eq $null){$item.OfficePhone = "N/A"}
-		if($item.Mail -eq $null){$item.Mail = "N/A"}
-		
-		$item |  Export-Csv -Path $SortieCSV -Delimiter ";" -NoTypeInformation -Encoding UTF8	
+		$allArgs = "*$allArgs*"
+			
+		$outPutUser = get-aduser -Filter {(Name -like $allArgs)} `
+		-SearchBase "DC=Neuronesit,DC=priv" `
+		-properties OfficePhone,Mail,GivenName,Surname,Title  `
+		| select OfficePhone,Mail,GivenName,Surname,Title 
+					
+		foreach($item in $outPutUser)
+		{		
+			if($item.GivenName -eq $null){$item.GivenName = "N/A"}
+			if($item.Surname -eq $null){$item.Surname = "N/A"}
+			if($item.Title -eq $null){$item.Title = "N/A"}		
+			if($item.OfficePhone -eq $null){$item.OfficePhone = "N/A"}
+			if($item.Mail -eq $null){$item.Mail = "N/A"}
+			
+			$item |  Export-Csv -Path $SortieCSV -Delimiter ";" -NoTypeInformation -Encoding UTF8	
+		}	
 	}		
+	Catch{
+		$E = $_.Exception
+		$ErrorMessage = $E.Message
+		$FailedItem = $E.GetType().FullName
+		$line = $_.InvocationInfo.ScriptLineNumber
+		
+		"`r Error type :  $FailedItem `r Error Message :  $ErrorMessage `r line nÂ° : $line" | out-File -Append $traceLog
+		Break
+	}			
 }
 #--------------------------------------------------------------------------
 #PROGRAMME PRINCIPAL
 #--------------------------------------------------------------------------
-clear
 Start-Commands
+"`r The request has been executed properly !" | Out-File -Append $traceLog	

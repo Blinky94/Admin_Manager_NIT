@@ -201,14 +201,13 @@ div.spacer{
     text-decoration: none;
     position: relative;
 }
-}
 /*Add,Del, Request OwnerShipbuttons in result reacting on mouse over*/
 .button:hover {
     filter: progid:DXImageTransform.Microsoft.gradient(start);
     background-color: #009550;
 }
-/*DropListBox Select Distrib List*/
-.mailingList {
+/*Distribution_List*/
+.Distribution_List {
     width: 430px;
     height: 30px;
     text-align: left;

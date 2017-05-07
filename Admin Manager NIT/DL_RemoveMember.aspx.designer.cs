@@ -10,16 +10,7 @@
 namespace Admin_Manager_NIT {
     
     
-    public partial class Master_Page_Admin_Manager_NIT {
-        
-        /// <summary>
-        /// head control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+    public partial class DL_RemoveMember {
         
         /// <summary>
         /// form1 control.
@@ -31,48 +22,39 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// banner_NIT control.
+        /// lblErreur control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage banner_NIT;
+        protected global::System.Web.UI.WebControls.Label lblErreur;
         
         /// <summary>
-        /// logout control.
+        /// DL_ListMembersToRemove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor logout;
+        protected global::System.Web.UI.WebControls.TextBox DL_ListMembersToRemove;
         
         /// <summary>
-        /// View_Link control.
+        /// confirmButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor View_Link;
+        protected global::System.Web.UI.WebControls.LinkButton confirmButton;
         
         /// <summary>
-        /// Edit_Link control.
+        /// cancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Edit_Link;
-        
-        /// <summary>
-        /// ContentPlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.LinkButton cancelButton;
     }
 }

@@ -1,7 +1,7 @@
-#FrÈdÈric CAZE-SULFOURT
-#Mars 2017
+#Fr√©d√©ric CAZE-SULFOURT
+#Mai 2017
 #Neurones IT
-#Programme Powershell pour lister le contenu de l'OU Groupes Distributions
+#Programme Powershell pour rechercher un utilisateur avec un nom pass√© en param√®tre
 #--------------------------------------------------------------------------
 # MODULE ACTIVE DIRECTORY
 #--------------------------------------------------------------------------
@@ -10,48 +10,46 @@
 #VARIABLES
 #--------------------------------------------------------------------------
 $KeyWordsForSearch = $args[0]
-$Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "outputDistribution.txt"
+$Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "GetUser.txt"
 $traceLog = "C:\Users\FCazesulfourt\Desktop\Export_CSV_Entretiens_Professionnels\logs\LogPowershell_ScritpOutput.txt"
 #--------------------------------------------------------------------------
 #FONCTION DE LANCEMENT DU PROGRAMME
 #--------------------------------------------------------------------------
-Function Start-Commands{List_Distribution}
+Function Start-Commands{Search_User}
 #--------------------------------------------------------------------------
-#FONCTION DE LISTAGE DES LISTES DE DISTRIBUTION DANS L'ACTIVE DIRECTORY
+#FONCTION DE LISTAGE DES UTILISATEURS DE L'ACTIVE DIRECTORY
 #--------------------------------------------------------------------------
-Function List_Distribution
+Function Search_User
 {		
-	Try{
+	Try{	
 	
 		"`r ---------------------------------------------------------"  | Out-File -Append $traceLog
-		"`r Script de recuperation des Listes de Distribution dans une OU determinee avec argument... TraÁage des log du script "  | Out-File -Append $traceLog
+		"`r Script de recherche de members dans une DL en execution... Tra√ßage des log du script "  | Out-File -Append $traceLog
 		"`r --------------------------------------------------------- "  | Out-File -Append $traceLog
 		$FormattedDate = Get-Date -Format "yyyy-MM-dd HH:mm:ss `r ---------------------------------------------------------" 
 		$FormattedDate | Out-File -Append $traceLog
-		"`r script Name : getDistributionList.ps1" | Out-File -Append $traceLog
+		"`r script Name : GetUser.ps1" | Out-File -Append $traceLog
 		"`r parametre : " + $KeyWordsForSearch + "`r" | Out-File -Append $traceLog
 		
 		Clear-Content $Sortie
-
-		$KeyWordsForSearch = "*$KeyWordsForSearch*"
-
-		Get-ADGroup -Filter {(GroupCategory -eq "Distribution") -and (Name -like $KeyWordsForSearch)} `
-		-SearchBase "OU=GroupesDistributions,OU=Messagerie,DC=Neuronesit,DC=priv" `
-		| sort name `
-		| select Name -expandproperty name `
-		| Out-File $Sortie	
 		
-		"`r The request has been executed properly !" | Out-File -Append $traceLog	
-	}
-	Catch{
+		if($KeyWordsForSearch -ne "*"){$KeyWordsForSearch = "*$KeyWordsForSearch*"}	
+		
+		get-aduser -SearchBase "OU=Utilisateurs,DC=Neuronesit,DC=priv" `
+			-Filter {(Name -like $KeyWordsForSearch)} -properties * | where {$_.enabled -like "True" } `
+			|select -ExpandProperty Name | out-file $Sortie
+			
+			"`r The request has been executed properly !" | Out-File -Append $traceLog				 
+		}
+		Catch{
 		$E = $_.Exception
 		$ErrorMessage = $E.Message
 		$FailedItem = $E.GetType().FullName
 		$line = $_.InvocationInfo.ScriptLineNumber
 		
-		"`r Error type :  $FailedItem `r Error Message :  $ErrorMessage `r line n∞ : $line" | out-File -Append $traceLog
+		"`r Error type :  $FailedItem `r Error Message :  $ErrorMessage `r line n¬∞ : $line" | out-File -Append $traceLog
 		Break
-	}		
+	}	
 }
 #--------------------------------------------------------------------------
 #PROGRAMME PRINCIPAL

@@ -104,9 +104,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\AddDelete_Style.css" />
     <Content Include="CSS\Authentification.css" />
     <Content Include="CSS\EmailStyle.css" />
     <Content Include="CSS\VisitCardStyles.css" />
+    <Content Include="DL_AdMember.aspx" />
+    <Content Include="DL_AdOwner.aspx" />
+    <Content Include="DL_RemoveMember.aspx" />
     <Content Include="Email.aspx" />
     <Content Include="Images\computer-564136_1280.jpg" />
     <Content Include="Images\lhermitte.jpg" />
@@ -135,6 +139,27 @@
     <Content Include="DL_View.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DL_AdMember.aspx.cs">
+      <DependentUpon>DL_AdMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DL_AdMember.aspx.designer.cs">
+      <DependentUpon>DL_AdMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DL_AdOwner.aspx.cs">
+      <DependentUpon>DL_AdOwner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DL_AdOwner.aspx.designer.cs">
+      <DependentUpon>DL_AdOwner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DL_RemoveMember.aspx.cs">
+      <DependentUpon>DL_RemoveMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DL_RemoveMember.aspx.designer.cs">
+      <DependentUpon>DL_RemoveMember.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Email.aspx.cs">
       <DependentUpon>Email.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -142,6 +167,7 @@
     <Compile Include="Email.aspx.designer.cs">
       <DependentUpon>Email.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Encryptor.cs" />
     <Compile Include="ExecutePowerShellCommand.cs" />
     <Compile Include="GenerateTableMailingList.cs" />
     <Compile Include="MasterPage.Master.cs">
@@ -174,6 +200,7 @@
     <Compile Include="VisitCard.aspx.designer.cs">
       <DependentUpon>VisitCard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WriteLogFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

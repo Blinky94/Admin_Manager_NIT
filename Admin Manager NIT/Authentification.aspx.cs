@@ -53,7 +53,8 @@ namespace Admin_Manager_NIT
                 lblErreur.Text = string.Empty;
 
                 Session["login"] = login;
-                Session["password"] = password;
+                Session["password"] = password;                
+
                 Response.Redirect("DL_View.aspx");
             }
             catch (LdapException lexc)
@@ -63,7 +64,7 @@ namespace Admin_Manager_NIT
                 lblErreur.Text = "Error login or password !";
                 //lblErreur.Text += lexc.ServerErrorMessage;
             }
-            catch (Exception exc)
+            catch 
             {
                 lblErreur.Text = string.Empty;
                 lblErreur.Text += "error logon or password";

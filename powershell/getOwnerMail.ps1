@@ -12,6 +12,7 @@
  $KeyWordsForSearch = $args[0]
  $DefaultMail = "NITSupport@neurones.net"
  $Sortie = "C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\" + "getOwnerMail.txt"
+ $traceLog = "C:\Users\FCazesulfourt\Desktop\Export_CSV_Entretiens_Professionnels\logs\LogPowershell_ScritpOutput.txt"
 #--------------------------------------------------------------------------
 #FONCTION DE LANCEMENT DU PROGRAMME
 #--------------------------------------------------------------------------
@@ -21,22 +22,42 @@ Function Start-Commands{Get_Mail}
 #--------------------------------------------------------------------------
 Function Get_Mail
 {			
-	$KeyWordsForSearch = "*$KeyWordsForSearch*"
+	Try{						
+			"`r ---------------------------------------------------------"  | Out-File -Append $traceLog
+			"`r Script de recuperation de mails d'un owner d'une DL... Traçage des log du script "  | Out-File -Append $traceLog
+			"`r --------------------------------------------------------- "  | Out-File -Append $traceLog
+			$FormattedDate = Get-Date -Format "yyyy-MM-dd HH:mm:ss `r ---------------------------------------------------------" 
+			$FormattedDate | Out-File -Append $traceLog
+			"`r script Name : getOwnerMail.ps1" | Out-File -Append $traceLog
+			"`r parametre : " + $KeyWordsForSearch + "`r" | Out-File -Append $traceLog	
 	
-	$outPut = get-aduser -Filter {(Name -like $KeyWordsForSearch)} `
-	-SearchBase "OU=Utilisateurs,DC=Neuronesit,DC=priv" `
-	-properties mail `
-	| select -ExpandProperty mail
+			$KeyWordsForSearch = "*$KeyWordsForSearch*"
+			
+			$outPut = get-aduser -Filter {(Name -like $KeyWordsForSearch)} `
+			-SearchBase "OU=Utilisateurs,DC=Neuronesit,DC=priv" `
+			-properties mail `
+			| select -ExpandProperty mail
 
-	if($outPut -eq $null)
-	{
-		$outPut = $DefaultMail
-	}
-	write-host $outPut
-	$output | out-file -append $Sortie		
+			if($outPut -eq $null)
+			{
+				$outPut = $DefaultMail
+			}
+		
+			$output | out-file -append $Sortie	
+	}		
+	Catch{
+		$E = $_.Exception
+		$ErrorMessage = $E.Message
+		$FailedItem = $E.GetType().FullName
+		$line = $_.InvocationInfo.ScriptLineNumber
+		
+		"`r Error type :  $FailedItem `r Error Message :  $ErrorMessage `r line n° : $line" | out-File -Append $traceLog
+		Break
+	}	
 }
 #--------------------------------------------------------------------------
 #PROGRAMME PRINCIPAL
 #--------------------------------------------------------------------------
 clear
 Start-Commands
+"`r The request has been executed properly !" | Out-File -Append $traceLog	

@@ -1,9 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="DL_View.aspx.cs" Inherits="Admin_Manager_NIT.WebForm1" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <script type="text/javascript">
+        function RefreshPage()
+        {
+            setTimeout(function () {
+                window.location.reload();
+            }, 50000);
+        }
+    </script>
     <p>
         <asp:Label ID="lblSecret" runat="server" Style="font-weight: 700"></asp:Label>
     </p>
@@ -21,8 +27,8 @@
             <div id="Search_table">
                 <p>
                     <label>Search :</label>
-                    <asp:TextBox class="mailingList" ID="SearchDLTextBox" runat="server" OnTextChanged="SearchTextBox_TextChanged" />                 
-                    <a href="#" class="Seachbutton" id="GoButton" runat="server" onserverclick="GoButton_OnClick">GO !</a>
+                    <asp:TextBox class="Distribution_List" ID="SearchDLTextBox" runat="server" OnTextChanged="SearchTextBox_TextChanged" />
+                    <asp:LinkButton ID="GoButton" class="Seachbutton" runat="server" OnClick="Button_Click" Text="GO !" />
                 </p>
             </div>
 
@@ -30,8 +36,8 @@
                 <div class="select_List">
                     <p>
                         <label>Result : </label>
-                        <asp:DropDownList class="mailingList" ID="mailingList" runat="server"></asp:DropDownList>
-                        <a href="#" class="Seachbutton" id="SelectButton" runat="server" onserverclick="SelectButton_OnClick">Select</a>
+                        <asp:DropDownList class="Distribution_List" ID="Distribution_List" runat="server"></asp:DropDownList>
+                        <asp:LinkButton ID="SelectButton" class="Seachbutton" runat="server" OnClick="Button_Click" Text="Select" />
                     </p>
                 </div>
             </div>
@@ -56,24 +62,24 @@
                     <asp:Table class="headertable" ID="HeaderOwner" runat="server">
                         <asp:TableHeaderRow ID="headerowners" BackColor="white" runat="server">
                             <asp:TableHeaderCell Scope="Column" Text="Owners List" Width="500" />
-                            <asp:TableHeaderCell Scope="Column" Text="View" Width="71"/>
+                            <asp:TableHeaderCell Scope="Column" Text="View" Width="71" />
                         </asp:TableHeaderRow>
                     </asp:Table>
 
-                    <asp:Table class="table" ID="tablOwnersControl" runat="server">
+                    <asp:Table class="table" ID="tableOwnersControl" runat="server">
                         <asp:TableHeaderRow ID="TableHeaderOwners" BackColor="white" runat="server">
                         </asp:TableHeaderRow>
                     </asp:Table>
 
                     <div class="button_class">
                         <div id="add_button_owners">
-                            <asp:LinkButton ID="Add_Owner_Button" class="button" runat="server" onClick="AddOwner_OnClick" Text="Add" />
+                            <asp:LinkButton ID="Add_Owner_Button" class="button" runat="server" OnClick="Button_Click" Text="Add" />
                         </div>
                         <div id="Request_button_OwnerShip">
-                            <asp:LinkButton ID="request_OwnerShip" class="button" runat="server" OnClick="RequestOwnerShipButton_OnClick" Text="Request OwnerShip" />
+                            <asp:LinkButton ID="request_OwnerShip" class="button" runat="server" OnClick="Button_Click" Text="Request OwnerShip" />
                         </div>
                         <div id="del_button_owners">
-                            <asp:LinkButton ID="Del_Owner_Button" class="button" runat="server" onClick="DeleteOwner_OnClick" Text="Delete" />
+                            <asp:LinkButton ID="Del_Owner_Button" class="button" runat="server" OnClick="Button_Click" Text="Delete" />
                         </div>
                     </div>
 
@@ -95,7 +101,7 @@
                     <asp:Table class="headertable" ID="HeaderMember" runat="server">
                         <asp:TableHeaderRow ID="headermembers" BackColor="white" runat="server">
                             <asp:TableHeaderCell Scope="Column" Text="Members List" Width="500" />
-                            <asp:TableHeaderCell Scope="Column" Text="View" Width="71"/>
+                            <asp:TableHeaderCell Scope="Column" Text="View" Width="71" />
                         </asp:TableHeaderRow>
                     </asp:Table>
 
@@ -106,16 +112,16 @@
 
                     <div class="button_class">
                         <div id="add_button_members">
-                            <asp:LinkButton ID="Add_Member_Button" class="button" runat="server" OnClick="AddMember_OnClick" Text="Add" />
+                            <asp:LinkButton ID="Add_Member_Button" class="button" runat="server" OnClick="Button_Click" Text="Add" />
                         </div>
                         <div id="Request_button_MemberShip">
-                            <asp:LinkButton ID="Request_MemberShip" class="button" runat="server" OnClick="RequestMemberShipButton_OnClick" Text="Request MemberShip" />
+                            <asp:LinkButton ID="Request_MemberShip" class="button" runat="server" OnClick="Button_Click" Text="Request MemberShip" />
                         </div>
                         <div id="del_button_members">
-                            <asp:LinkButton ID="Del_Member_Button" class="button" runat="server" OnClick="DeleteMember_OnClick" Text="Delete" />
-                        </div>
+                            <asp:LinkButton ID="Del_Member_Button" class="button" runat="server" OnClick="Button_Click" Text="Delete" />
+                        </div>                     
                     </div>
-                    <!-- end button_class_members -->
+                    <!-- end button_class_members -->        
                 </div>
                 <!-- end list members_list_array -->
             </div>

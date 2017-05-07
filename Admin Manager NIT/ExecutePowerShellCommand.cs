@@ -13,16 +13,20 @@ namespace Admin_Manager_NIT
     /// </summary>
     public static class ExecutePowerShellCommand
     {
+        private static string logFilePowerShell = @"C:\Users\FCazesulfourt\Desktop\Export_CSV_Entretiens_Professionnels\logs\LogPowershell.txt";
+        private static string scriptName = string.Empty;
+
         /// <summary>
         /// Method to load in proper format the powerShell script
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
-        public static string LoadScript(string filename)
+        public static string LoadScript(string _scriptName)
         {
+            scriptName = _scriptName;
             try
             {
-                using (StreamReader sr = new StreamReader(filename))
+                using (StreamReader sr = new StreamReader(_scriptName))
                 {
                     StringBuilder fileContents = new StringBuilder();
 
@@ -39,6 +43,7 @@ namespace Admin_Manager_NIT
             {
                 string errorText = "The file could not be read:";
                 errorText += e.Message + "\n";
+                WriteLogFile.WriteToLogFile(logFilePowerShell, errorText);
                 return errorText;
             }
         }
@@ -63,7 +68,7 @@ namespace Admin_Manager_NIT
             StringBuilder stringBuilder = new StringBuilder();
             foreach (PSObject obj in results)
                 stringBuilder.AppendLine(obj.ToString());
-                    
+    
             return stringBuilder.ToString();
         }
 
@@ -73,7 +78,7 @@ namespace Admin_Manager_NIT
         /// <param name="scriptText"></param>
         /// <returns></returns>
         public static string RunScriptWithArgument(string scriptText,string arg)
-        {
+        {  
             Runspace runspace = RunspaceFactory.CreateRunspace();
 
             runspace.Open();
