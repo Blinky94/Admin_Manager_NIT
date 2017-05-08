@@ -15,18 +15,22 @@ namespace Admin_Manager_NIT
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            DL_ListMembersToRemove.ReadOnly = true;
+
             listMembersToRemove = (string)(Session["ListMembersToRemove"]);
             currentDL = (string)(Session["CurrentDL"]);
+
+            string _finalListToRemove = string.Empty;
+
+            foreach (string member in listMembersToRemove.Split(';'))
+            {
+                DL_ListMembersToRemove.Text +=  member + Environment.NewLine;
+            }
         }
 
         private void CloseCurrentWindow()
         {
             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Close", "window.close();", true);
-        }
-
-        protected void SearchTextBox_TextChanged(object sender, EventArgs e)
-        {
-            //ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + sender.ToString() + "');", true);
         }
 
         private void ConfirmSelectedMemberToRemove()

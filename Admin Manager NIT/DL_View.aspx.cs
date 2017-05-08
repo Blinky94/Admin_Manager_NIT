@@ -462,7 +462,8 @@ namespace Admin_Manager_NIT
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void SearchTextBox_TextChanged(object sender, EventArgs e)
-        {           
+        {
+            Session["ReloadDLPage"] = "false";
             wordsToSearch = SearchDLTextBox.Text;
         }    
     }

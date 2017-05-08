@@ -5,16 +5,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Remove Members</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/AddDelete_Style.css" />  
+    <link rel="stylesheet" type="text/css" href="<%=VirtualPathUtility.ToAbsolute("~/CSS/AddDelete_Style.css")%>" />  
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div id="content_RemoveMember">
             <div>
                 <asp:Label ID="lblErreur" runat="server"></asp:Label>
             </div>
-            <div id="textSearch">
-                <asp:TextBox class="DL_Search" ID="DL_ListMembersToRemove" runat="server" OnTextChanged="SearchTextBox_TextChanged" Font-Size="Medium" />
+            <div id="DL_LabelText">
+                <asp:Label ID="ConfirmText" class="ConfirmTextClass" Text="Do you confirm to remove these users from DL ?" runat="server"></asp:Label>
+            </div>
+            <div id="DL_LabelList">
+                <asp:TextBox class="DL_ListMembersToRemove" ID="DL_ListMembersToRemove" runat="server" TextMode="MultiLine" Font-Size="Medium" />
             </div>
             <div id="ConfirmOrCancel">
                 <div id="confirm">
