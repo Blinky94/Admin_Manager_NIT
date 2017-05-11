@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Mail;
-using System.Web.UI;
 
 namespace Admin_Manager_NIT
 {
     public partial class Email : System.Web.UI.Page
     {
         private string fromEmail;
-        private string _listMailOwners;
+        private string listMailOwners;
         private string subjectEmail;
         private List<string> body;
+        private string smtpClient = "nitcas01.neuronesit.priv";
+        private string finalBody = string.Empty;
 
         /// <summary>
         /// Method Loading Page Email.aspx
@@ -19,27 +20,40 @@ namespace Admin_Manager_NIT
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Display mail from, mail to, subject and body for the email
-            fromEmail = (string)(Session["login"]);
-            mailFrom.Text = fromEmail;
-
-            // foreach(string name in listMailOwners)
-            //     mailTo.Text += name + ";";
-            _listMailOwners = (string)(Session["_listMailOwners"]);
-            mailTo.Text += _listMailOwners;
-
-            subjectEmail = (string)(Session["subjectEmail"]);
-            subject.Text = subjectEmail;
-
-            body = (List<string>)(Session["body"]);
-              
-            email_text.Text += "\n";//For the email body presentation
-            //Restore the complete EmailType used
-            foreach (var word in body)
+            if (!IsPostBack)
             {
-                email_text.Text += word;
+                body = new List<string>();
+                //Display mail from, mail to, subject and body for the email
+                fromEmail = (string)(Session["login"]);
+                mailFrom.Text = fromEmail;
+
+                // foreach(string name in listMailOwners)
+                //     mailTo.Text += name + ";";
+                listMailOwners = (string)(Session["_listMailOwners"]);
+                mailTo.Text += listMailOwners;
+
+                subjectEmail = (string)(Session["subjectEmail"]);
+                subject.Text = subjectEmail;
+
+                body = (List<string>)(Session["body"]);
+
                 email_text.Text += "\n";
-            }
+                                       
+                if(body != null)
+                {
+                    foreach (var word in body)
+                    {
+                        email_text.Text += word;
+                        email_text.Text += "\n";
+                        finalBody += word;
+                        finalBody += "\n";
+                    }
+                }              
+            }    
+            else
+            {
+                SendEmail_OnClick(sender, null);
+            }     
         }
 
         /// <summary>
@@ -47,22 +61,34 @@ namespace Admin_Manager_NIT
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void Send_Email_Click(object sender, EventArgs e)
+        protected void SendEmail_OnClick(object sender, EventArgs e)
         {
-            ClientScriptManager cs = Page.ClientScript;
-            Type csType = this.GetType();
+           // ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + "login : " + (string)Session["login"] + " pass : " + (string)Session["password"] + "');", true);
 
-            MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress(fromEmail);
-            mailMessage.To.Add(_listMailOwners);
-            mailMessage.Subject = subjectEmail;
-            mailMessage.Body = subjectEmail;
-            SmtpClient smtpClient = new SmtpClient("192.168.");
-            smtpClient.EnableSsl = false;
-            smtpClient.Send(mailMessage);
+            string _message = "Email Sent successfully";
+            try
+            {             
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(fromEmail);
+                mail.To.Add(listMailOwners);
+                SmtpClient smtpServer = new SmtpClient(smtpClient);
+                mail.Subject = subjectEmail;
+                mail.Body = finalBody;
+                smtpServer.Credentials = new System.Net.NetworkCredential((string)Session["login"], (string)Session["password"]);
+                smtpServer.EnableSsl = false;
+                //smtpServer.EnableSsl = true;
+                smtpServer.UseDefaultCredentials = false;
+                //smtpServer.Port = 465;
+                smtpServer.Port = 25;
+                smtpServer.Send(mail);
 
-            //Routine to signify the email has been sent                         
-            cs.RegisterStartupScript(csType, "myAlert", "<script language=JavaScript>window.alert('Email sent !');</script>");                     
+                //Routine to signify the email has been sent                         
+                ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + _message.ToString() + "');", true);
+            }
+            catch (Exception error)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + error.ToString() + "');", true);
+            }
         }
     }
 }

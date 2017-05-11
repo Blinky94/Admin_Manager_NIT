@@ -1,75 +1,7 @@
 ﻿body {
-    background-image:linear-gradient(to right, #021a08, #aefbb1);
+    background:#c6c7c7;
     width:100%;  
-    color: #fff;
-    font-family: 'Trocchi', serif;
-    font-size: 25px;
-    font-weight:normal;
-}
-#content{
-    width:1000px;
-    position:center;
-}
-/**************************************************************************************************/
-#search_area{
-    width:auto;
-    background:transparent;
-    height:50px;
-}
-#labelSearch{
-    width:25%;
-    height:40px;
-    background:transparent;
-    float:left;
-    text-align:right;
-
-}
-#textSearch{
-    width:50%;
-    height:100%;
-    background:transparent;
-    float:left;
-    text-align:left;
-}
-.DL_Search{
-    width:500px;
-    height:45px;
-    float:none;
-    font-family: 'Trocchi', serif;
-    font-size: 25px;
-    font-weight:normal;
-}
-#buttonSearch{
-    width:15%;
-    height:100%;
-    background:transparent;
-    float:left;
-}
-/**************************************************************************************************/
-#result_area{
-    margin-top:15px;
-    width:auto;   
-    background:transparent;
-    height:50px;
-}
-#labelResult{
-      width:25%;
-    height:40px;
-    background:transparent;
-    float:left;
-    text-align:right;
-}
-#textResult{
-    width:50%;
-    height:100%;
-    background:transparent;
-    float:left;
-    text-align:left;
-}
-.DL_Select{
-    width:500px;
-    height:45px;
-    float:none;
+    color: #111111;
     font-family: 'Trocchi', serif;
     font-size: 25px;
     font-weight:normal;

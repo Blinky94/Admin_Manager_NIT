@@ -1,0 +1,130 @@
+﻿body {
+    background:#c6c7c7;
+    width:100%;  
+    color: #111111;
+    font-family: 'Trocchi', serif;
+    font-size: 25px;
+    font-weight:normal;
+}
+#AddMemberField{
+    background:transparent;
+    margin-top:30px
+}
+#AddOwnerField{
+    background:transparent;
+    margin-top:30px
+}
+#content{
+    background:#eaebec;
+    width:1000px;
+    position:center;
+}
+/**************************************************************************************************/
+#search_area{
+    width:auto;
+    background:transparent;
+    height:50px;
+}
+#labelSearch{
+    width:25%;
+    height:40px;
+    background:transparent;
+    float:left;
+    text-align:right;
+
+}
+#textSearch{
+    width:50%;
+    height:100%;
+    background:transparent;
+    float:left;
+    text-align:left;
+}
+.DL_Search{
+    width:500px;
+    height:45px;
+    float:none;
+    font-family: 'Trocchi', serif;
+    font-size: 25px;
+    font-weight:normal;
+}
+#buttonSearch{
+    width:15%;
+    height:100%;
+    background:transparent;
+    float:left;
+}
+/**************************************************************************************************/
+#result_area{
+    margin-top:15px;
+    width:auto;   
+    background:transparent;
+    height:50px;
+}
+#labelResult{
+      width:25%;
+    height:40px;
+    background:transparent;
+    float:left;
+    text-align:right;
+}
+#textResult{
+    width:50%;
+    height:100%;
+    background:transparent;
+    float:left;
+    text-align:left;
+}
+.DL_Select{
+    width:500px;
+    height:45px;
+    float:none;
+    font-family: 'Trocchi', serif;
+    font-size: 25px;
+    font-weight:normal;
+}
+/**************************************************************************************************/
+.SearchButton {
+    box-shadow: 0px 0px 2px 0px #3dc21b;
+    background: #0c3b19;
+    border-radius: 5px;
+    border: 2px solid azure;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 12px 7px;
+    text-decoration: none;
+    position: relative;
+    margin-left:10px;
+    width:130px;
+    text-align:center;
+}
+.SearchButton:hover {
+    filter: progid:DXImageTransform.Microsoft.gradient(start);
+    background-color: #009550;
+}
+/**********************************************************************************/
+#ConfirmOrCancel{
+    width:1000px;
+}
+#confirm{
+    margin-top:10px;
+    width:48%;
+    height:100%;
+    background:transparent;
+    text-align:right;
+    float:left;
+    margin-right:10px
+}
+#cancel{
+    width:48%;
+    background:transparent;
+    text-align:left;
+    margin-top:10px;
+    float:left;
+    margin-left:10px
+}

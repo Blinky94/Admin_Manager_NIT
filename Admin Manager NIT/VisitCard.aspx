@@ -11,23 +11,35 @@
 <body>
     <form id="form1" runat="server">
         <div id="VisitCardArea" class="VisitCardArea" runat="server">
-            <div id="owner_details_area" runat="server">
-                <!-- photo zone area -->
-                <div id="photo_area" class="photo_area" runat="server"></div>
-                <!-- details zone area -->
-                <div class="textbox_area" runat="server">
-                    <div class="titles_descriptions" runat="server">
-                        <p>First Name : </p>
-                        <p>Last Name : </p>
-                        <p>Job : </p>
-                        <p>Phone : </p>
-                        <p>Email : </p>
+            <fieldset id="OwnerField">
+                <legend>User Info</legend>
+                <div id="owner_details_area" runat="server">
+                    <!-- photo zone area -->
+                    <div id="photo_area" class="photo_area" runat="server"></div>
+                    <!-- details zone area -->
+                    <div class="textbox_area" runat="server">
+                        <div class="Labels" runat="server">
+                            <div>
+                                <asp:Label class="LabelStyle" runat="server" Text="First Name :"></asp:Label>
+                            </div>
+                            <div>
+                                <asp:Label class="LabelStyle" runat="server" Text="Last Name :"></asp:Label>
+                            </div>
+                            <div>
+                                <asp:Label class="LabelStyle" runat="server" Text="Job :"></asp:Label>
+                            </div>
+                            <div>
+                                <asp:Label class="LabelStyle" runat="server" Text="Phone :"></asp:Label>
+                            </div>
+                            <div>
+                                <asp:Label class="LabelStyle" runat="server" Text="E-mail :"></asp:Label>
+                            </div>
+                        </div>
+                        <asp:TextBox ID="details" class="txtbox_details" runat="server" TextMode="MultiLine">                          
+                        </asp:TextBox>
                     </div>
-
-                    <asp:TextBox ID="details" class="txtbox_details" runat="server" TextMode="MultiLine">                          
-                    </asp:TextBox>
                 </div>
-            </div>             
+            </fieldset>           
         </div>
     </form>
 </body>

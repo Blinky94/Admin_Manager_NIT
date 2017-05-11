@@ -2,8 +2,6 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-
 <head runat="server">
     <title>Master Admin Manager Page</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -13,62 +11,51 @@
 
 <body>
     <form id="form1" runat="server">
-        <div id="container">
-            <div class="banner">
-                <img src="" runat="server" id="banner_NIT" class="banner_NIT" alt="" />
-                <a href="#" id="logout" class="button" runat="server" onserverclick="Logout_OnClick">Logout</a>
+        <div id="MainContainer">
+            <div id="MenuContainer" runat="server">
+                <ul id="menu" runat="server">
+                    <li><a href="#">Mailing List</a>
+                        <ul>
+                            <li><a href="DL_View.aspx" id="View_Link" runat="server" onserverclick="ViewLink_OnClick">View</a></li>
+                            <li><a href="#" id="Edit_Link" runat="server" onserverclick="EditLink_OnClick">Edit</a></li>
+                            <li><a href="#">Create</a></li>
+                            <li><a href="#">Delete</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Exchange Email</a>
+                        <ul>
+                            <li><a href="#">View</a></li>
+                            <li><a href="#">Edit</a></li>
+                            <li><a href="#">Create</a></li>
+                            <li><a href="#">Delete</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Account Active Directory</a>
+                        <ul>
+                            <li><a href="#">View</a></li>
+                            <li><a href="#">Edit</a></li>
+                            <li><a href="#">Create</a></li>
+                            <li><a href="#">Delete</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">PowerShell Scripts</a>
+                        <ul>
+                            <li><a href="#">View</a></li>
+                            <li><a href="#">Edit</a></li>
+                            <li><a href="#">Create</a></li>
+                            <li><a href="#">Delete</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
 
-            <div id="navbar">
-                <!-- empty area -->
+            <div id="ExitContainer" runat="server">
+                <asp:LinkButton ID="logout" class="Seachbutton" runat="server" OnClick="Logout_OnClick" Text="Exit" />
             </div>
 
-            <div id="masterPageMContainer">
-                <div id="menu">
-                    <ul class="menuClass">
-                        <li><a href="#">Mailing List</a>
-                            <ul>
-                                <li><a href="DL_View.aspx" id="View_Link" runat="server" onserverclick="ViewLink_OnClick">View</a></li>
-                                <li><a href="#" id="Edit_Link" runat="server" onserverclick="EditLink_OnClick">Edit</a></li>
-                                <li><a href="#">Create</a></li>
-                                <li><a href="#">Delete</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Exchange Email</a>
-                            <ul>
-                                <li><a href="#">View</a></li>
-                                <li><a href="#">Edit</a></li>
-                                <li><a href="#">Create</a></li>
-                                <li><a href="#">Delete</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Account Active Directory</a>
-                            <ul>
-                                <li><a href="#">View</a></li>
-                                <li><a href="#">Edit</a></li>
-                                <li><a href="#">Create</a></li>
-                                <li><a href="#">Delete</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">PowerShell Scripts</a>
-                            <ul>
-                                <li><a href="#">View</a></li>
-                                <li><a href="#">Edit</a></li>
-                                <li><a href="#">Create</a></li>
-                                <li><a href="#">Delete</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div id="MainContent">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-                </div>
-
-                <div class="spacer">
-                </div>
+            <div id="MainContent">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
         </div>
     </form>
 </body>
-</html>         

@@ -5,12 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Adding Owners</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/AddDelete_Style.css" /> 
+    <link rel="stylesheet" type="text/css" href="../CSS/Add_Style2.css" /> 
 </head>
 <body>
     <form id="form1" runat="server">
-
         <div id="content">
+                <fieldset id="AddOwnerField">
+                <legend>Add Owner</legend>
             <div id="search_area">
                 <div id="labelSearch">
                     <label>Search User in AD : </label>
@@ -43,6 +44,7 @@
                     </div>
                 </div>
             </div>
+                    </fieldset>
         </div>
 
     </form>

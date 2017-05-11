@@ -104,9 +104,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSS\AddDelete_Style.css" />
+    <Content Include="Auth_Page.aspx" />
+    <Content Include="CSS\Add_Style2.css" />
     <Content Include="CSS\Authentification.css" />
-    <Content Include="CSS\EmailStyle.css" />
+    <Content Include="CSS\DL_View_Style.css" />
+    <Content Include="CSS\Mail_Style.css" />
+    <Content Include="CSS\Remove_Style.css" />
+    <Content Include="CSS\Rm_Style.css" />
     <Content Include="CSS\VisitCardStyles.css" />
     <Content Include="DL_AdMember.aspx" />
     <Content Include="DL_AdOwner.aspx" />
@@ -120,7 +124,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="MasterPage.Master" />
-    <Content Include="Authentification.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -139,6 +142,13 @@
     <Content Include="DL_View.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth_Page.aspx.cs">
+      <DependentUpon>Auth_Page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auth_Page.aspx.designer.cs">
+      <DependentUpon>Auth_Page.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DL_AdMember.aspx.cs">
       <DependentUpon>DL_AdMember.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -186,13 +196,6 @@
       <DependentUpon>DL_View.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReadFileOutPut.cs" />
-    <Compile Include="Authentification.aspx.cs">
-      <DependentUpon>Authentification.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Authentification.aspx.designer.cs">
-      <DependentUpon>Authentification.aspx</DependentUpon>
-    </Compile>
     <Compile Include="VisitCard.aspx.cs">
       <DependentUpon>VisitCard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

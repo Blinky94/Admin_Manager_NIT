@@ -16,7 +16,9 @@ namespace Admin_Manager_NIT
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
-        {     
+        {
+            //logout.Attributes["class"] = "notVisible";
+            //menuClass.Attributes["class"] = "notVisible";
             //Empty
         }
 
@@ -31,7 +33,7 @@ namespace Admin_Manager_NIT
             Session.Clear();
             Session.RemoveAll();
             System.Web.Security.FormsAuthentication.SignOut();
-            Response.Redirect("Authentification.aspx",false);
+            Response.Redirect("Auth_Page.aspx",false);
         }
 
         protected void ViewLink_OnClick(object sender,EventArgs e)

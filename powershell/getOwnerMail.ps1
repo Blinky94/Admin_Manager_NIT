@@ -21,8 +21,9 @@ Function Start-Commands{Get_Mail}
 #FONCTION DE RECUPERATION DES MAILS DES OWNERS D'UNE LISTE EN PARAMETRE
 #--------------------------------------------------------------------------
 Function Get_Mail
-{			
-	Try{						
+{				
+	Try{	
+			Clear-Content $Sortie	
 			"`r ---------------------------------------------------------"  | Out-File -Append $traceLog
 			"`r Script de recuperation de mails d'un owner d'une DL... Traçage des log du script "  | Out-File -Append $traceLog
 			"`r --------------------------------------------------------- "  | Out-File -Append $traceLog

@@ -67,31 +67,22 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// title_owners control.
+        /// headOwners control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl title_owners;
+        protected global::System.Web.UI.WebControls.TextBox headOwners;
         
         /// <summary>
-        /// HeaderOwner control.
+        /// headViewOwners control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table HeaderOwner;
-        
-        /// <summary>
-        /// headerowners control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderRow headerowners;
+        protected global::System.Web.UI.WebControls.TextBox headViewOwners;
         
         /// <summary>
         /// tableOwnersControl control.
@@ -139,31 +130,22 @@ namespace Admin_Manager_NIT {
         protected global::System.Web.UI.WebControls.LinkButton Del_Owner_Button;
         
         /// <summary>
-        /// title_members control.
+        /// headMembers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl title_members;
+        protected global::System.Web.UI.WebControls.TextBox headMembers;
         
         /// <summary>
-        /// HeaderMember control.
+        /// headViewMembers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table HeaderMember;
-        
-        /// <summary>
-        /// headermembers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderRow headermembers;
+        protected global::System.Web.UI.WebControls.TextBox headViewMembers;
         
         /// <summary>
         /// tableMembersControl control.
@@ -209,5 +191,41 @@ namespace Admin_Manager_NIT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton Del_Member_Button;
+        
+        /// <summary>
+        /// txtBoxOwner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBoxOwner;
+        
+        /// <summary>
+        /// txtBoxCoManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBoxCoManager;
+        
+        /// <summary>
+        /// txtBoxLD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBoxLD;
+        
+        /// <summary>
+        /// txtBoxMember control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBoxMember;
     }
 }

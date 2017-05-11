@@ -26,7 +26,14 @@ namespace Admin_Manager_NIT
         private string wordsToSearch;
         private string currentUserLogin,password;
         private List<string> list = new List<string>();
-        string path = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\userMdp.txt";
+        //string path = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\userMdp.txt";
+        private string fileWithOwnersOnly = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\tmp_CoManagedOwners.txt";
+        private string fileWithCoManagersOnly = @"C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\tmp_ManagedByOwners.txt";
+        private System.Drawing.Color ownerColor = System.Drawing.Color.LightGoldenrodYellow;
+        private System.Drawing.Color memberColor = System.Drawing.Color.LightBlue;
+        private System.Drawing.Color coManagerColor = System.Drawing.Color.LightGreen;
+        private System.Drawing.Color DLColor = System.Drawing.Color.LightSalmon;
+        private System.Drawing.Color txtColor = System.Drawing.Color.Black;
 
         /// <summary>
         /// Method to activate or desactivate
@@ -64,14 +71,123 @@ namespace Admin_Manager_NIT
                 ActivateDesactivate_Button(true, Del_Owner_Button);
                 ActivateDesactivate_Button(true, Del_Member_Button);
                 ActivateDesactivate_Button(true, Add_Member_Button);
+                ActivateDesactivate_Button(true, request_OwnerShip);
+                ActivateDesactivate_Button(true, Request_MemberShip);
             }
             else //If not, don't activate Add and Delete buttons
             {
                 ActivateDesactivate_Button(false, Add_Owner_Button);
                 ActivateDesactivate_Button(false, Del_Owner_Button);
-                ActivateDesactivate_Button(false, Del_Member_Button);
-                ActivateDesactivate_Button(false, Add_Member_Button);
+                ActivateDesactivate_Button(true, Del_Member_Button);
+                ActivateDesactivate_Button(true, Add_Member_Button);
+                ActivateDesactivate_Button(true, request_OwnerShip);
+                ActivateDesactivate_Button(true, Request_MemberShip);
             }          
+        }
+
+        private void ColorLegends()
+        {
+            txtBoxOwner.BackColor = new System.Drawing.Color();
+            txtBoxOwner.BackColor = ownerColor;
+            txtBoxCoManager.BackColor = new System.Drawing.Color();
+            txtBoxCoManager.BackColor = coManagerColor;
+            txtBoxLD.BackColor = new System.Drawing.Color();
+            txtBoxLD.BackColor = DLColor;
+            txtBoxMember.BackColor = new System.Drawing.Color();
+            txtBoxMember.BackColor = memberColor;     
+        }
+
+        private void ChangeDLRowsColors(Table _table)
+        {
+            foreach (TableRow row in _table.Rows)
+            {
+                if (row.Cells.Count > 0)
+                {
+                    row.Cells[1].BackColor = new System.Drawing.Color();
+                    row.Cells[1].ForeColor = txtColor;
+                    row.Cells[1].BackColor = memberColor;
+                }
+            }
+        }
+
+        private void Differentiate_OwnerFromCoManager(Table _table)
+        {
+            List<string> _listOwners = ReadFileOutPut.GetLineFromFile(fileWithOwnersOnly);
+            List<string> _listCoMangers = ReadFileOutPut.GetLineFromFile(fileWithCoManagersOnly);
+
+            foreach (TableRow row in _table.Rows)
+            {
+                if (row.Cells.Count > 0)
+                {
+                    TableCell _owner = row.Cells[1] as TableCell;
+
+                    foreach (string _elem in _listCoMangers)
+                    {
+                        if (_owner.Text == _elem)
+                        {
+                            row.Cells[1].BackColor = new System.Drawing.Color();
+                            row.Cells[1].BackColor = coManagerColor;
+                            row.Cells[1].ForeColor = txtColor;
+                        }
+                        else
+                        {
+                            row.Cells[1].BackColor = DLColor;
+                            row.Cells[1].ForeColor = txtColor;
+                        }
+                    }
+
+                    foreach (string _elem in _listOwners)
+                    {
+                        if (_owner.Text == _elem)
+                        {
+                            row.Cells[1].BackColor = ownerColor;
+                            row.Cells[1].ForeColor = txtColor;
+                        }                    
+                    }           
+                }
+            }
+        }
+
+        private bool IsOwnerInOwnerList()
+        {
+            bool _isIn = false;
+
+            List<string> _listOwners = ReadFileOutPut.GetLineFromFile(fileWithOwnersMail);
+
+            foreach(string mail in _listOwners)
+            {
+                if (mail == currentUserLogin)
+                {
+                    _isIn = true;
+                    break;
+                }
+            }           
+        
+            return _isIn;
+        }
+
+        private bool IsOwnerIsInOwnerList(Table _table)
+        {
+            List<string> _listOwners = ReadFileOutPut.GetLineFromFile(fileWithOwners);
+
+            bool _isOwnerInTable = false;
+
+            foreach (TableRow row in _table.Rows)
+            {
+                if (row.Cells.Count > 0)
+                {
+                    TableCell _owner = row.Cells[1] as TableCell;
+
+                    foreach (string _elem in _listOwners)
+                    {
+                        if (_owner.Text == _elem)
+                        {
+                            _isOwnerInTable = true;
+                        }
+                    }
+                }
+            }
+            return _isOwnerInTable;
         }
 
         /// <summary>
@@ -87,25 +203,35 @@ namespace Admin_Manager_NIT
             {
                 password = (string)Session["password"];
                 password = Encryptor.MD5Hash(password);
-            }
-            using (StreamWriter sw = File.AppendText(path))
+            }       
+
+           /* using (StreamWriter sw = File.AppendText(path))
             {
                 sw.WriteLine(currentUserLogin + " : " + password);
-            }
+            }*/
            
             if (Session["login"] == null)
-                Response.Redirect("Authentification.aspx?erreur=1");
+                Response.Redirect("Auth_Page.aspx?erreur=1");
+
+            if(Distribution_List.Text.ToString() == String.Empty)
+            {
+                ActivateOrNotButtons(true);
+                ActivateDesactivate_Button(false, request_OwnerShip);
+                ActivateDesactivate_Button(false, Request_MemberShip);
+            }
 
             if (IsPostBack)
-            {
-                if(Distribution_List.Text.ToString() != string.Empty || (string)(Session["ReloadDLPage"]) == "true")
-                {
+            {              
+                if (Distribution_List.Text.ToString() != string.Empty || (string)(Session["ReloadDLPage"]) == "true")
+                {                
+                                        
                     GetUsersFromDistributionList(
                         Distribution_List.Text.ToString(), 
                         tableOwnersControl, 
                         fileWithOwners, 
                         scriptGetOwners, 
                         1);
+                    
                     GetUsersFromDistributionList(
                         Distribution_List.Text.ToString(), 
                         tableMembersControl, 
@@ -161,7 +287,7 @@ namespace Admin_Manager_NIT
         {        
             if ((string)(Session["DistributionList"]) != _arg || (string)(Session["ReloadDLPage"]) == "true")            
                 RunPowerShellScript(_script, _script, _arg);
-            
+
             //Generate OwnersTable
             GenerateTable(_arg, _fileOut, _table, _ID);
         }
@@ -227,8 +353,7 @@ namespace Admin_Manager_NIT
             string _listMail = string.Empty;
 
             _listMail = GetMailFromAllOwners(_listSelected);
-            //_listSelected = GetUsersSelectedFromTable(table, chkOwners);
-            //_listMail = GetEmailsFromSelectedBox(_listSelected);
+
             MakeRequestEmail(_listMail);
         }
 
@@ -272,7 +397,7 @@ namespace Admin_Manager_NIT
             ScriptManager.RegisterStartupScript(this, typeof(string), "OPEN_WINDOW", "var Mleft = (screen.width/2)-(760/2);var Mtop = (screen.height/2)-(700/2);window.open( 'DL_AdMember.aspx', null, 'height=300,width=1000,status=no,toolbar=no,scrollbars=no,menubar=no,location=no,resizable=no,top=\'+Mtop+\', left=\'+Mleft+\'' );", true);
         }
 
-        private void DelMemberFromDistributionList(Table _table)
+        private void RemoveMemberFromDistributionList(Table _table)
         {
             string _listMembersToRemove = GetUsersSelectedFromTable(_table, chkOwners);
             string _currentDL = Distribution_List.Text.ToString();
@@ -331,7 +456,7 @@ namespace Admin_Manager_NIT
                     //To be continued
                     break;
                 case "Del_Member_Button":
-                    DelMemberFromDistributionList(tableMembersControl);
+                    RemoveMemberFromDistributionList(tableMembersControl);
                     break;
             }           
         }     
@@ -409,10 +534,11 @@ namespace Admin_Manager_NIT
             for (int i = 1; i <= list.Count; i++)
             {
                 TableRow tr = new TableRow();
+                //tr.Style.Add("width", "100%");
                 table.Rows.Add(tr);
 
                 TableCell checkBocCell = new TableCell();
-                checkBocCell.Width = 20;
+                //checkBocCell.Style.Add("width", "5%");
                 CheckBox checkBox = new CheckBox();
                 checkBox.AutoPostBack = true;
                 checkBox.EnableViewState = true;
@@ -422,7 +548,7 @@ namespace Admin_Manager_NIT
                 checkBocCell.Controls.Add(checkBox);
 
                 TableCell identityCell = new TableCell();
-                identityCell.Width = 500;
+                //identityCell.Style.Add("width", "auto");
                 identityCell.HorizontalAlign = HorizontalAlign.Left;
                 identityCell.Text = list[i - 1];
                 _ID++;
@@ -432,15 +558,23 @@ namespace Admin_Manager_NIT
                 _ID++;
                 img.Text = list[i - 1];
                 img.ID = _ID.ToString();
+                //img.Style.Add("width", "10%");
                 img.Click += new EventHandler(VisitCard_OnClick);
                 img.Controls.Add(new System.Web.UI.WebControls.Image { ImageUrl = "Images/loupe.png", Width = 20 });
 
                 TableCell imageCell = new TableCell();
+                //imageCell.Style.Add("width", "10%");
                 imageCell.Controls.Add(img);
+
                 tr.Cells.Add(checkBocCell);
                 tr.Cells.Add(identityCell);
                 tr.Cells.Add(imageCell);
             }
+
+            Differentiate_OwnerFromCoManager(tableOwnersControl);
+            ChangeDLRowsColors(tableMembersControl);
+            ColorLegends();
+            ActivateOrNotButtons(IsOwnerInOwnerList());
         }
 
         /// <summary>

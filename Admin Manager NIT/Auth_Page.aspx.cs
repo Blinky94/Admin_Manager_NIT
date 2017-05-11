@@ -11,7 +11,7 @@ using System.Net;
 
 namespace Admin_Manager_NIT
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class Auth_Page : System.Web.UI.Page
     {
         string sDomain = "NITINFRA15.neuronesit.priv";
 
@@ -29,7 +29,7 @@ namespace Admin_Manager_NIT
                     lblErreur.Text = string.Empty;
                     txtLogin.Text = string.Empty;
                     txtPass.Text = string.Empty;
-                }             
+                }
             }
         }
 
@@ -42,19 +42,18 @@ namespace Admin_Manager_NIT
         /// <param name="password"></param>
         /// <returns></returns>
         protected void ConnectTo_LDAP(string login, string password)
-        {          
+        {
             try
             {
                 LdapConnection connection = new LdapConnection(sDomain);
-                NetworkCredential credential = new NetworkCredential(login,password);
+                NetworkCredential credential = new NetworkCredential(login, password);
                 connection.Credential = credential;
                 connection.Bind();
 
                 lblErreur.Text = string.Empty;
 
                 Session["login"] = login;
-                Session["password"] = password;                
-
+                Session["password"] = password;
                 Response.Redirect("DL_View.aspx");
             }
             catch (LdapException lexc)
@@ -64,11 +63,11 @@ namespace Admin_Manager_NIT
                 lblErreur.Text = "Error login or password !";
                 //lblErreur.Text += lexc.ServerErrorMessage;
             }
-            catch 
+            catch
             {
                 lblErreur.Text = string.Empty;
                 lblErreur.Text += "error logon or password";
-            }  
+            }
         }
 
         /// <summary>
@@ -78,7 +77,7 @@ namespace Admin_Manager_NIT
         /// else return error login/password
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void Connexion_Click(object sender,EventArgs e)
+        protected void Connexion_Click(object sender, EventArgs e)
         {
             string getLogin = string.Empty;
             string getPassword = string.Empty;
@@ -86,7 +85,7 @@ namespace Admin_Manager_NIT
             getLogin = txtLogin.Text;
             getPassword = txtPass.Text;
 
-            ConnectTo_LDAP(getLogin,getPassword);       
+            ConnectTo_LDAP(getLogin, getPassword);
         }
     }
 }

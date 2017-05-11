@@ -2,132 +2,165 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript">
-        function RefreshPage()
-        {
-            setTimeout(function () {
-                window.location.reload();
-            }, 50000);
-        }
-    </script>
-    <p>
-        <asp:Label ID="lblSecret" runat="server" Style="font-weight: 700"></asp:Label>
-    </p>
+    <link rel="stylesheet" type="text/css" href="../CSS/DL_View_Style.css" />
+
+    <asp:Label ID="lblSecret" runat="server" Style="font-weight: 700"></asp:Label>
 
     <div class="contentT" id="content">
-        <div id="title_area" class="title">
-            <p>View Mailing List</p>
-        </div>
-
-        <div id="spacing_area">
-            <!-- space between two block -->
-        </div>
-
-        <div id="search_area">
-            <div id="Search_table">
-                <p>
-                    <label>Search :</label>
-                    <asp:TextBox class="Distribution_List" ID="SearchDLTextBox" runat="server" OnTextChanged="SearchTextBox_TextChanged" />
-                    <asp:LinkButton ID="GoButton" class="Seachbutton" runat="server" OnClick="Button_Click" Text="GO !" />
-                </p>
-            </div>
-
-            <div id="List_table">
-                <div class="select_List">
-                    <p>
-                        <label>Result : </label>
-                        <asp:DropDownList class="Distribution_List" ID="Distribution_List" runat="server"></asp:DropDownList>
-                        <asp:LinkButton ID="SelectButton" class="Seachbutton" runat="server" OnClick="Button_Click" Text="Select" />
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div id="spacing_area2">
-            <!-- space between two block -->
-        </div>
-
-        <div id="result_area">
-            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
-            <!--------------------------------------------------------OWNER LIST AREA------------------------------------------------------------------------->
-
-            <div id="owners_list">
-
-                <div id="title_owners" class="title" runat="server">
-                    <p>Owners List</p>
+        <fieldset id="MainField">
+            <legend>View Mailing List</legend>
+            <div id="search_area">
+                <div id="Search_table">
+                    <div id="label_Search">
+                        <label>Search :</label>
+                    </div>
+                    <div id="textBox_Search">
+                        <asp:TextBox class="WordToSearch" ID="SearchDLTextBox" runat="server" OnTextChanged="SearchTextBox_TextChanged" />
+                    </div>
+                    <div id="button_Search">
+                        <asp:LinkButton ID="GoButton" class="Seachbutton" runat="server" OnClick="Button_Click" Text="GO !" />
+                    </div>
                 </div>
 
-                <div id="owners_list_array">
-                    <asp:Table class="headertable" ID="HeaderOwner" runat="server">
-                        <asp:TableHeaderRow ID="headerowners" BackColor="white" runat="server">
-                            <asp:TableHeaderCell Scope="Column" Text="Owners List" Width="500" />
-                            <asp:TableHeaderCell Scope="Column" Text="View" Width="71" />
-                        </asp:TableHeaderRow>
-                    </asp:Table>
-
-                    <asp:Table class="table" ID="tableOwnersControl" runat="server">
-                        <asp:TableHeaderRow ID="TableHeaderOwners" BackColor="white" runat="server">
-                        </asp:TableHeaderRow>
-                    </asp:Table>
-
-                    <div class="button_class">
-                        <div id="add_button_owners">
-                            <asp:LinkButton ID="Add_Owner_Button" class="button" runat="server" OnClick="Button_Click" Text="Add" />
+                <div id="List_table">
+                    <div class="select_List">
+                        <div id="label_Result">
+                            <label>Result : </label>
                         </div>
-                        <div id="Request_button_OwnerShip">
-                            <asp:LinkButton ID="request_OwnerShip" class="button" runat="server" OnClick="Button_Click" Text="Request OwnerShip" />
+                        <div id="textBox_Result">
+                            <asp:DropDownList class="ListResult" ID="Distribution_List" runat="server"></asp:DropDownList>
                         </div>
-                        <div id="del_button_owners">
-                            <asp:LinkButton ID="Del_Owner_Button" class="button" runat="server" OnClick="Button_Click" Text="Delete" />
+                        <div id="button_Result">
+                            <asp:LinkButton ID="SelectButton" class="Seachbutton" runat="server" OnClick="Button_Click" Text="Select" />
                         </div>
                     </div>
-
-                    <!-- end button_class_owners -->
                 </div>
             </div>
-            <!-- end owners_list -->
 
-            <!--------------------------------------------------------MEMBER LIST AREA------------------------------------------------------------------------->
+            <div id="spacing_area2">
+                <!-- space between two block -->
+            </div>
 
-            <div id="members_list">
+            <div id="result_area">
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-                <div id="title_members" class="title" runat="server">
-                    <p>Members List</p>
+                <!--------------------------------------------------------OWNER LIST AREA------------------------------------------------------------------------->
+
+                <div id="owners_list">
+                    <fieldset id="OwnerField">
+                        <legend>Owners List</legend>
+                        <div id="owners_list_array">
+
+                            <div id="headerOwnersContainer">
+                                <div id="headerOwners">
+                                    <asp:TextBox ID="headOwners" CssClass="headertable" Text="Members List" runat="server" />
+                                </div>
+                                <div id="headerOwnersView">
+                                    <asp:TextBox ID="headViewOwners" CssClass="headertable" Text="View" runat="server" />
+                                </div>
+                            </div>
+
+                            <asp:Table class="table" ID="tableOwnersControl" runat="server">
+                                <asp:TableHeaderRow ID="TableHeaderOwners" BackColor="white" runat="server">
+                                </asp:TableHeaderRow>
+                            </asp:Table>
+
+                            <div class="button_class">
+                                <div id="add_button_owners">
+                                    <asp:LinkButton ID="Add_Owner_Button" class="button" runat="server" OnClick="Button_Click" Text="Add" />
+                                </div>
+                                <div id="Request_button_OwnerShip">
+                                    <asp:LinkButton ID="request_OwnerShip" class="button" runat="server" OnClick="Button_Click" Text="Request OwnerShip" />
+                                </div>
+                                <div id="del_button_owners">
+                                    <asp:LinkButton ID="Del_Owner_Button" class="button" runat="server" OnClick="Button_Click" Text="Delete" />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
+                <!-- end owners_list -->
 
-                <div id="members_list_array">
+                <!--------------------------------------------------------MEMBER LIST AREA------------------------------------------------------------------------->
 
-                    <asp:Table class="headertable" ID="HeaderMember" runat="server">
-                        <asp:TableHeaderRow ID="headermembers" BackColor="white" runat="server">
-                            <asp:TableHeaderCell Scope="Column" Text="Members List" Width="500" />
-                            <asp:TableHeaderCell Scope="Column" Text="View" Width="71" />
-                        </asp:TableHeaderRow>
-                    </asp:Table>
+                <div id="members_list">
+                    <fieldset id="MembersField">
+                        <legend>Members List</legend>
+                        <div id="members_list_array">
+                            <div id="headerMembersContainer">
+                                <div id="headerMembers">
+                                    <asp:TextBox ID="headMembers" CssClass="headertable" Text="Members List" runat="server" />
+                                </div>
+                                <div id="headerMembersView">
+                                    <asp:TextBox ID="headViewMembers" CssClass="headertable" Text="View" runat="server" />
+                                </div>
 
-                    <asp:Table class="table" ID="tableMembersControl" runat="server">
-                        <asp:TableHeaderRow ID="TableHeaderMembers" BackColor="white" runat="server">
-                        </asp:TableHeaderRow>
-                    </asp:Table>
+                            </div>
+                            <asp:Table class="table" ID="tableMembersControl" runat="server">
+                                <asp:TableHeaderRow ID="TableHeaderMembers" BackColor="white" runat="server">
+                                </asp:TableHeaderRow>
+                            </asp:Table>
 
-                    <div class="button_class">
-                        <div id="add_button_members">
-                            <asp:LinkButton ID="Add_Member_Button" class="button" runat="server" OnClick="Button_Click" Text="Add" />
+                            <div class="button_class">
+                                <div id="add_button_members">
+                                    <asp:LinkButton ID="Add_Member_Button" class="button" runat="server" OnClick="Button_Click" Text="Add" />
+                                </div>
+                                <div id="Request_button_MemberShip">
+                                    <asp:LinkButton ID="Request_MemberShip" class="button" runat="server" OnClick="Button_Click" Text="Request MemberShip" />
+                                </div>
+                                <div id="del_button_members">
+                                    <asp:LinkButton ID="Del_Member_Button" class="button" runat="server" OnClick="Button_Click" Text="Delete" />
+                                </div>
+                            </div>
+                            <!-- end button_class_members -->
                         </div>
-                        <div id="Request_button_MemberShip">
-                            <asp:LinkButton ID="Request_MemberShip" class="button" runat="server" OnClick="Button_Click" Text="Request MemberShip" />
-                        </div>
-                        <div id="del_button_members">
-                            <asp:LinkButton ID="Del_Member_Button" class="button" runat="server" OnClick="Button_Click" Text="Delete" />
-                        </div>                     
+                    </fieldset>
+                </div>
+                <!-- end result_area -->
+            </div>
+            <!-- End contentT -->
+        </fieldset>
+        <fieldset id="LegendField">
+            <legend>Keys</legend>
+            <div id="Legend">
+                <div id="legendOwner">
+                    <div id="squareOwner">
+                        <asp:TextBox ID="txtBoxOwner" runat="server" Width="50" Height="25" ReadOnly="true" BorderStyle="None" BorderColor="Transparent" />
                     </div>
-                    <!-- end button_class_members -->        
+                    <div id="descriptionOwner">
+                        <label>Owner</label>
+                    </div>
                 </div>
-                <!-- end list members_list_array -->
+
+                <div id="legendCoManager">
+                    <div id="squareCoManager">
+                        <asp:TextBox ID="txtBoxCoManager" runat="server" Width="50" Height="25" ReadOnly="true" BorderStyle="None" BorderColor="Transparent" />
+                    </div>
+                    <div id="descriptionManager">
+                        <label>CoManager(s)</label>
+                    </div>
+                </div>
+
+                <div id="legendLD">
+                    <div id="squareLD">
+                        <asp:TextBox ID="txtBoxLD" runat="server" Width="50" Height="25" ReadOnly="true" BorderStyle="None" BorderColor="Transparent" />
+                    </div>
+                    <div id="descriptionLD">
+                        <label>Owner(s) from Distribution list</label>
+                    </div>
+                </div>
+
+                <div id="legendMember">
+                    <div id="squareMember">
+                        <asp:TextBox ID="txtBoxMember" runat="server" Width="50" Height="25" ReadOnly="true" BorderStyle="None" BorderColor="Transparent" />
+                    </div>
+                    <div id="descriptionMember">
+                        <label>Member(s)</label>
+                    </div>
+                </div>
+
             </div>
-            <!-- end result_area -->
-        </div>
-        <!-- End contentT -->
+        </fieldset>
     </div>
     <!-- end content -->
 

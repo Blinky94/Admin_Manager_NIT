@@ -117,6 +117,7 @@ C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bi
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Admin Manager NIT.dll.config
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Admin Manager NIT.dll
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Admin Manager NIT.pdb
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\AjaxControlToolkit.dll
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -132,8 +133,7 @@ C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bi
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.ApplicationInsights.xml
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.csprojResolveAssemblyReference.cache
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.csproj.ResolveComReference.cache
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.dll
 C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.pdb
-C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\bin\AjaxControlToolkit.dll
-C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.csproj.ResolveComReference.cache
+C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\obj\Debug\Admin Manager NIT.csprojResolveAssemblyReference.cache

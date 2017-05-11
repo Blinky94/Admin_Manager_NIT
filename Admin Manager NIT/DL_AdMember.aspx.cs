@@ -58,8 +58,6 @@ namespace Admin_Manager_NIT
             Session.Add("ReloadDLPage", "true");//allow reloding DL_view.aspx page on demand
             
             CloseCurrentWindow();
-
-           // ScriptManager.RegisterStartupScript(Page, typeof(Page), "closeScript", "clientClose('');", true);
         }
 
         protected void Button_Click(object source, EventArgs args)

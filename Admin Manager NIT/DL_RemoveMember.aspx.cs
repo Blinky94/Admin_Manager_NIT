@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,17 +16,22 @@ namespace Admin_Manager_NIT
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DL_ListMembersToRemove.ReadOnly = true;
+          /*  IEnumerator toto = Page.Session.Keys.GetEnumerator();
+          while(toto.MoveNext())
+            {
+                object elem = toto.Current;
+                ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + elem.GetType().Name.ToString() + "');", true);
+            }*/
 
+            DL_ListMembersToRemove.ReadOnly = true;
+ 
             listMembersToRemove = (string)(Session["ListMembersToRemove"]);
             currentDL = (string)(Session["CurrentDL"]);
-
-            string _finalListToRemove = string.Empty;
-
+        
             foreach (string member in listMembersToRemove.Split(';'))
             {
-                DL_ListMembersToRemove.Text +=  member + Environment.NewLine;
-            }
+                DL_ListMembersToRemove.Text += member + Environment.NewLine;
+            }               
         }
 
         private void CloseCurrentWindow()
@@ -36,15 +42,15 @@ namespace Admin_Manager_NIT
         private void ConfirmSelectedMemberToRemove()
         {
             string _finalstr = string.Empty;
+            ClientScript.RegisterStartupScript(this.GetType(), "yourMessage", "alert('" + listMembersToRemove.ToString() + "');", true);
 
             if (listMembersToRemove != null)
             {
                 foreach (string member in listMembersToRemove.Split(';'))
                 {
                     _finalstr = member + "@" + currentDL;
+                    ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptRemoveMember), _finalstr);
                 }
-
-                ExecutePowerShellCommand.RunScriptWithArgument(ExecutePowerShellCommand.LoadScript(scriptRemoveMember), _finalstr);
                 Session.Add("ReloadDLPage", "true");//allow reloding DL_view.aspx page on demand
                 CloseCurrentWindow();
             }
