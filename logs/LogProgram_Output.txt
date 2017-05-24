@@ -1,0 +1,242 @@
+
+Log Entry : 11:16:49 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à System.Threading.Thread.AbortInternal()
+   à System.Threading.Thread.Abort(Object stateInfo)
+   à System.Web.HttpResponse.AbortCurrentThread()
+   à System.Web.HttpResponse.End()
+   à System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   à System.Web.HttpResponse.Redirect(String url)
+   à Admin_Manager_NIT.WebForm1.Page_Load(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\DL_View.aspx.cs:ligne 280
+-------------------------------
+
+Log Entry : 11:16:59 mercredi 24 mai 2017
+  :
+  :error logon or password
+-------------------------------
+
+Log Entry : 11:16:59 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à Admin_Manager_NIT.Auth_Page.ConnectTo_LDAP(String login, String password) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 72
+   à Admin_Manager_NIT.Auth_Page.Connexion_Click(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 92
+-------------------------------
+
+Log Entry : 11:17:23 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Souesme
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Souesme
+-------------------------------
+
+Log Entry : 11:17:24 mercredi 24 mai 2017
+  :
+  :System.ArgumentOutOfRangeException: L'index était hors limites. Il ne doit pas être négatif et doit être inférieur à la taille de la collection.
+Nom du paramètre : index
+   à System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   à System.Collections.Generic.List`1.get_Item(Int32 index)
+   à Admin_Manager_NIT.WebForm1.VisitCard_OnClick(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\DL_View.aspx.cs:ligne 709
+-------------------------------
+
+Log Entry : 11:19:17 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à System.Threading.Thread.AbortInternal()
+   à System.Threading.Thread.Abort(Object stateInfo)
+   à System.Web.HttpResponse.AbortCurrentThread()
+   à System.Web.HttpResponse.End()
+   à System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   à System.Web.HttpResponse.Redirect(String url)
+   à Admin_Manager_NIT.WebForm1.Page_Load(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\DL_View.aspx.cs:ligne 280
+-------------------------------
+
+Log Entry : 11:19:28 mercredi 24 mai 2017
+  :
+  :error logon or password
+-------------------------------
+
+Log Entry : 11:19:29 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à Admin_Manager_NIT.Auth_Page.ConnectTo_LDAP(String login, String password) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 72
+   à Admin_Manager_NIT.Auth_Page.Connexion_Click(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 92
+-------------------------------
+
+Log Entry : 11:19:50 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Souesme
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Souesme
+-------------------------------
+
+Log Entry : 11:19:56 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Caze-Sulfourt
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Caze-Sulfourt
+-------------------------------
+
+Log Entry : 11:20:08 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Caze-Sulfourt
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Caze-Sulfourt
+-------------------------------
+
+Log Entry : 11:20:15 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Deluard
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Deluard
+-------------------------------
+
+Log Entry : 11:22:43 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à System.Threading.Thread.AbortInternal()
+   à System.Threading.Thread.Abort(Object stateInfo)
+   à System.Web.HttpResponse.AbortCurrentThread()
+   à System.Web.HttpResponse.End()
+   à System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   à System.Web.HttpResponse.Redirect(String url)
+   à Admin_Manager_NIT.WebForm1.Page_Load(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\DL_View.aspx.cs:ligne 280
+-------------------------------
+
+Log Entry : 11:22:53 mercredi 24 mai 2017
+  :
+  :error logon or password
+-------------------------------
+
+Log Entry : 11:22:53 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à Admin_Manager_NIT.Auth_Page.ConnectTo_LDAP(String login, String password) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 72
+   à Admin_Manager_NIT.Auth_Page.Connexion_Click(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 92
+-------------------------------
+
+Log Entry : 11:23:23 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Souesme
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Souesme
+-------------------------------
+
+Log Entry : 11:23:29 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Caze-Sulfourt
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Caze-Sulfourt
+-------------------------------
+
+Log Entry : 11:23:38 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Piernot
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Piernot
+-------------------------------
+
+Log Entry : 11:32:40 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à System.Threading.Thread.AbortInternal()
+   à System.Threading.Thread.Abort(Object stateInfo)
+   à System.Web.HttpResponse.AbortCurrentThread()
+   à System.Web.HttpResponse.End()
+   à System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   à System.Web.HttpResponse.Redirect(String url)
+   à Admin_Manager_NIT.WebForm1.Page_Load(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\DL_View.aspx.cs:ligne 280
+-------------------------------
+
+Log Entry : 11:32:50 mercredi 24 mai 2017
+  :
+  :error logon or password
+-------------------------------
+
+Log Entry : 11:32:50 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à Admin_Manager_NIT.Auth_Page.ConnectTo_LDAP(String login, String password) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 72
+   à Admin_Manager_NIT.Auth_Page.Connexion_Click(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 92
+-------------------------------
+
+Log Entry : 11:33:15 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Souesme
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Souesme
+-------------------------------
+
+Log Entry : 11:33:21 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Deluard
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Deluard
+-------------------------------
+
+Log Entry : 11:33:31 mercredi 24 mai 2017
+  :
+  :System.IO.FileNotFoundException: Le fichier 'C:\NAM\documents\Email_To_Member.txt' est introuvable.
+Nom de fichier : 'C:\NAM\documents\Email_To_Member.txt'
+   à System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   à System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   à System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   à System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   à System.IO.StreamReader..ctor(String path, Encoding encoding)
+   à Admin_Manager_NIT.ReadFileOutPut.GetLineFromFile(String filename) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\ReadFileOutPut.cs:ligne 19
+-------------------------------
+
+Log Entry : 11:35:32 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à System.Threading.Thread.AbortInternal()
+   à System.Threading.Thread.Abort(Object stateInfo)
+   à System.Web.HttpResponse.AbortCurrentThread()
+   à System.Web.HttpResponse.End()
+   à System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   à System.Web.HttpResponse.Redirect(String url)
+   à Admin_Manager_NIT.WebForm1.Page_Load(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\DL_View.aspx.cs:ligne 280
+-------------------------------
+
+Log Entry : 11:35:43 mercredi 24 mai 2017
+  :
+  :error logon or password
+-------------------------------
+
+Log Entry : 11:35:43 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à Admin_Manager_NIT.Auth_Page.ConnectTo_LDAP(String login, String password) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 72
+   à Admin_Manager_NIT.Auth_Page.Connexion_Click(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 92
+-------------------------------
+
+Log Entry : 11:42:25 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à System.Threading.Thread.AbortInternal()
+   à System.Threading.Thread.Abort(Object stateInfo)
+   à System.Web.HttpResponse.AbortCurrentThread()
+   à System.Web.HttpResponse.End()
+   à System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   à System.Web.HttpResponse.Redirect(String url)
+   à Admin_Manager_NIT.WebForm1.Page_Load(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\DL_View.aspx.cs:ligne 280
+-------------------------------
+
+Log Entry : 11:42:36 mercredi 24 mai 2017
+  :
+  :error logon or password
+-------------------------------
+
+Log Entry : 11:42:36 mercredi 24 mai 2017
+  :
+  :System.Threading.ThreadAbortException: Le thread a été abandonné.
+   à Admin_Manager_NIT.Auth_Page.ConnectTo_LDAP(String login, String password) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 72
+   à Admin_Manager_NIT.Auth_Page.Connexion_Click(Object sender, EventArgs e) dans C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\Admin Manager NIT\Auth_Page.aspx.cs:ligne 92
+-------------------------------
+
+Log Entry : 11:43:36 mercredi 24 mai 2017
+  :
+  :Visit Card selected -----------------> : Souesme
+script name : C:\NAM\PowerShellScripts\getUserDetails.ps1
+argument : Souesme
+-------------------------------

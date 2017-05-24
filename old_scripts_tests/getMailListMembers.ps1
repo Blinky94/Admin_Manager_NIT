@@ -1,1 +1,0 @@
-get-childItem C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\MemberList -name | Out-File C:\Users\FCazesulfourt\Documents\NIT_2017\Admin_Manager_NIT\powershell\tmp\outputmember.txt

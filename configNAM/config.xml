@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONFIG>
+	<LOGS_PATH>C:\NAM\logs\</LOGS_PATH>
+	<DOMAIN>NITINFRA15.neuronesit.priv</DOMAIN>
+	<SMTP>nitcas01.neuronesit.priv</SMTP>
+	<SCRIPT_PATH>C:\NAM\PowerShellScripts\</SCRIPT_PATH>
+	<OUTPUT_PATH>C:\NAM\tmp\</OUTPUT_PATH>
+	<DOCUMENTS_PATH>C:\NAM\documents\</DOCUMENTS_PATH>
+	<IMAGES_PATH>C:\NAM\Images\</IMAGES_PATH>
+	<COMPTE_SERVICE>CS_NAM_CoManager@neurones.net</COMPTE_SERVICE>
+	<COMPTE_SERV_PASS>NAM2017</COMPTE_SERV_PASS>
+</CONFIG>

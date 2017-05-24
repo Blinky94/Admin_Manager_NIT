@@ -1,0 +1,438 @@
+﻿body {
+    align-content:center;
+}
+/***********************************************************************************/
+#search_area {
+    position: relative;
+    color: #000000;
+    font-family: 'Trocchi', serif;
+    font-size: 1.1em;
+    font-weight: normal;
+}
+/**********************************/
+#Search_table{
+    background:transparent;
+    width:50%;
+    height:auto;
+    float:left;
+}
+#label_Search{
+    background:transparent;
+    float:left;
+    width:10%;
+    margin-top:5px;
+    text-align:right;
+}
+#textBox_Search{
+    background:transparent;
+    width:70%;
+}
+#button_Search{
+    background:transparent;
+    width:15%;
+    float:right;
+}
+/**********************************/
+#List_table {
+    background: transparent;
+    width: 50%;
+    height: auto;
+    float: left;
+}
+#label_Result{
+    margin-top:5px;
+    background:transparent;
+    float:left;
+    width:10%;
+    text-align:right;
+}
+#textBox_Result{
+    background:transparent;
+    float:left;
+    width:70%;
+}
+#button_Result{
+    background:transparent;
+    float:right;
+    width:15%;
+}
+#RefreshZone{
+    width:5%;
+    height:auto;
+    background:transparent;
+    float:left;
+    text-align:center;
+}
+/**********************************/
+/*Go and Select buttons in search area*/
+.Seachbutton {
+    box-shadow: 0px 0px 1px 0px #3dc21b;
+    background: #0c3b19;
+    border-radius: 2px;
+    border: 1px solid azure;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: 'Trocchi', serif;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 10px 7px;
+    text-decoration: none;
+    position: relative;
+}
+/*Go button reacting on mouse over*/
+.Seachbutton:hover {
+    filter: progid:DXImageTransform.Microsoft.gradient(start);
+    background-color: #009550;
+}
+/*Add,Del, Request OwnerShipbuttons in result area*/
+.button {
+    box-shadow: 0px 0px 2px 0px #3dc21b;
+    background: #0c3b19;
+    border-radius: 5px;
+    border: 2px solid azure;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: 'Trocchi', serif;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 15px 7px;
+    text-decoration: none;
+    position: relative;
+}
+.disabledButton {
+    box-shadow: 0px 0px 2px 0px #3dc21b;
+    background: #849686;
+    border-radius: 5px;
+    border: 2px solid azure;
+    display: inline-block;
+    cursor:default;
+    color: #ffffff;
+    font-family: 'Trocchi', serif;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    padding: 15px 7px;
+    text-decoration: none;
+    position: relative;
+}
+/*Add,Del, Request OwnerShipbuttons in result reacting on mouse over*/
+.button:hover {
+    filter: progid:DXImageTransform.Microsoft.gradient(start);
+    background-color: #009550;
+}
+/*Distribution_List*/
+.ListResult {
+    width: 620px;
+    height: 43px;
+    text-align: left;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+    position: absolute;
+}
+.WordToSearch{
+    width: 612px;
+    height: 35px;
+    text-align: left;
+    font-family: 'Trocchi', serif;
+    font-size: 20px;
+    position: absolute;
+}
+/*Space between Search Area and Result Area*/
+#spacing_area2{
+    background:transparent;
+    clear:both; 
+    height:20px; 
+    display:block;
+    margin-left: 10px;
+}
+/*Result Area of search process---------------------------------------------------------------------------------------*/
+#result_area {
+    background: #006333;
+    position: relative;
+    height: auto;
+    color: #111111;
+    line-height: 17px;
+}
+/**********************************************************************************************/
+/*headers table*/
+.headertable {
+    font-family: 'Trocchi', serif;
+    color:#111111;
+    font-size: 20px;
+    background: #eaebec;
+    border: #ccc 1px solid;
+    width: 100%;
+    text-align:center;
+}
+/*******************************************/
+#headerOwnersContainer{
+    width:95%;
+    position:relative;
+    margin:auto;
+}
+#headerOwners{
+    float:left;
+    width:85%;
+    position:relative;
+}
+#headerOwnersView{
+    float:left;
+    width:15%;
+    position:relative;
+}
+#headOwners{
+    text-align:center;
+}
+/*******************************************/
+#headerMembersContainer{
+    width:95%;
+    position:relative;
+    margin:auto;
+}
+#headerMembers{
+    float:left;
+    width:85%;
+    position:relative;
+}
+#headerMembersView{
+    float:left;
+    width:15%;
+    position:relative;
+}
+#headMembers{
+    text-align:center;
+}
+/***********************************************************************************************/
+.table {
+    font-family: 'Trocchi', serif;
+    color: #111111;
+    font-size: 22px;
+    text-shadow: 1px 1px 0px #fff;
+    background: #eaebec;
+    border: #ccc 1px solid;
+    box-shadow: 0 1px 2px #d1d1d1;
+    width: 95%;
+    height:500px;
+    margin: auto;
+}
+/*Container page table*/
+.table th {
+	padding:5px 0px 10px 20px;
+	border-top:1px solid #fafafa;
+	border-bottom:1px solid #e0e0e0;
+	background: #ededed;
+    text-align:end;
+}
+.table th:first-child {
+	text-align: center;
+}
+.table tr:first-child th:first-child {
+    text-align: center;
+    border-top-left-radius:5px;
+}
+.table tr:first-child th:last-child {
+    border-top-right-radius:5px;
+    text-align:left;
+}
+/*ID column*/
+.table td:first-child {
+    text-align: left;
+    width:auto;
+}
+/*View Column*/
+.table td:last-child {
+    text-align: center;
+    width:11.5%;
+}
+.table td {
+    padding:inherit;
+    border-top: 1px solid #ffffff;
+    border-bottom:1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    background: #fafafa;
+    width:1500px;
+}
+.table tr.even td {
+	background: #f6f6f6;
+}
+.table tr:last-child td {
+	border-bottom:0;
+}
+.table tr:last-child td:first-child {
+	border-bottom-left-radius:3px;
+}
+.table tr:last-child td:last-child {
+	border-bottom-right-radius:3px;
+}
+.table tr:hover td {
+	background: #b4b4b4;
+}
+thead, tbody {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+}
+.table tbody {
+    height: 500px;
+    max-height: 500px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    width: auto;
+}
+/*Owners List Button Area--------------------------------------------------------------------------*/
+/*Area which manage all the owners buttons*/
+.button_class {
+    background: transparent;
+    height: auto;
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
+}
+#add_button_owners {
+    background: transparent;
+    float: left;
+    width: 33.34%;
+    position: relative;
+    text-align: center;
+}
+#del_button_owners {
+    background: transparent;
+    float: left;
+    width: 33.34%;
+    position: relative;
+    text-align: center;
+}
+#Request_button_OwnerShip {
+    background: transparent;
+    float: left;
+    width: 33.32%;
+    position: relative;
+    text-align: center;
+}
+/*Members List Button Area-------------------------------------------------------------------------*/
+/*Area which manage all the members buttons*/
+.button_class {
+    background: transparent;
+    height: auto;
+    width: 100%;
+    margin-top: 15px;
+    position: relative;
+}
+#add_button_members {
+    background: transparent;
+    float: left;
+    width: 33.33%;
+    position:relative;
+    text-align: center;
+}
+#del_button_members {
+    background: transparent;
+    float: left;
+    width: 33.34%;
+    position: relative;
+    text-align: center;
+}
+#Request_button_MemberShip {
+    background: transparent;
+    float: left;
+    width: 33.32%;
+    position: relative;
+    text-align: center;
+}
+/*Members List column--------------------------------------------------------------------------------------------*/
+/*Owner's List LD*/
+#owners_list {
+    background: #b4b4b4;
+    border: solid 1px #fff;
+    height: 100%;
+    width: 49.80%;
+    float: left;
+}
+/*Members's List LD*/
+#members_list {
+    background: #b4b4b4;
+    border: solid 1px #fff;
+    height: 100%;
+    width: 49.80%;
+    float: right;  
+}
+/********************************************************************************************************************/
+#LegendField{
+    background:transparent;
+    width:95%;
+    height:auto;
+    border: solid 1px #fff;
+    margin :auto;
+    font-family: 'Trocchi', serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    position:relative;
+}
+#legendOwner{
+    float:left;
+    width:15%;
+    display:block;
+}
+#squareOwner{
+    width: auto;
+    height: 30px;
+    float:left;
+}
+#descriptionOwner{
+    margin-top:2px;
+    margin-left : 10px;
+    float:left;
+    width:auto;
+}   
+/**********************************************/            
+#legendCoManager{
+    float:left;
+    width:20%;
+}
+#squareCoManager{
+    width: auto;
+    height: 30px;
+    float:left;
+}
+#descriptionManager{
+    margin-top:2px;
+    margin-left : 10px;
+    float:left;
+    width:auto;
+}
+/**********************************************/
+#legendLD{
+    float:left;
+    width:36%;
+}
+#squareLD{
+    width: auto;
+    height: 30px;
+    float:left;
+}
+#descriptionLD{
+    margin-top:2px;
+    margin-left : 10px;
+    float:left;
+    width:auto;
+}
+/**********************************************/
+#legendMember{
+    float:left;
+    width:15%;
+}
+#squareMember{
+    width: auto;
+    height: 30px;
+    float:left;
+}
+#descriptionMember{
+    margin-top:2px;
+    margin-left : 10px;
+    float:left;
+    width:auto;
+}       
