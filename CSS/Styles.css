@@ -1,0 +1,353 @@
+﻿body {
+      background-image:linear-gradient(to right, #0e2218, #aaffd8);
+      height: 100%;
+      margin: 50px;
+      font-size: 15px;
+      position:center;
+}
+#banner{
+      background:transparent;
+      width:auto; 
+      display:block; 
+      height:160px;
+      position:center;
+}
+#container{
+       width:100%;
+       position:center;
+       margin:10px auto;
+       max-width:initial;
+}
+#navbar{
+      width:500px; 
+      display:block; 
+      height:0px;
+}
+#main{
+      width:100%; 
+      display:block;
+}
+#menu{
+    margin-top:0;
+    margin-left:80px;
+    width: 10%;
+    height: auto;
+    position: absolute;
+    outline: 0px solid;
+}
+
+/*Back container*/
+#MainContent{
+      width: 90%;
+      height: 100%;
+      outline: 0px solid;
+      position:absolute;
+      left:550px;
+      background:transparent;
+}
+
+/*
+div.spacer, permet de faire deux colonne dans #container
+*/
+
+div.spacer{
+      clear:both; 
+      height:10px; 
+      display:block;
+}
+
+/*Menu deroulant*/
+.menuClass{
+      padding:0px;
+      margin-left:0px;
+      list-style:none;
+      text-align:center;
+      width:410px;
+}
+
+/*Cellules principales du menu*/
+.menuClass ul {
+      padding:0px;
+      margin:10px;
+      list-style:none;
+      text-align: left;
+}
+
+/*liste principale*/
+.menuClass li {
+      background:#006333;
+      border-radius: 6px;
+      margin-bottom:2px;
+      border:solid 1px #333A40;
+      border-color:azure;
+}
+
+/*Define the height of sub menu*/
+.menuClass li li {
+      max-height:50px;
+      overflow:auto;
+      transition: all .5s;
+      border-radius:0;
+      background: #009550;
+      box-shadow:inset;
+      border:none;
+      margin:0
+}
+
+.menuClass a {
+      display:block;
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 10px;
+      font-family: verdana;
+      font-size:1.2em
+}
+
+.menuClass ul li a, .menuClass li:hover li a {
+      font-size:1em
+}
+
+.menuClass li:hover {
+      background: #132c1a;
+}
+
+.menuClass li li:hover {
+      background: #132c1a;
+}
+
+.menuClass ul li:last-child {
+      border-radius: 0px 0 0px 0px;
+      border:none;
+}
+
+.menuClass li:hover li {
+      max-height: 20em;
+}
+
+/*LD consult page*/
+
+#content{
+      padding-top:15px;
+      padding-left:25px;
+      display:block;
+      background:transparent;
+      width:1205px;
+      height:100%;
+}
+
+#title_area{
+      background:#006333;
+      border:solid 1px #fff;
+      position:inherit;
+      text-align:center;
+      height:auto;
+      color: #fff; 
+      font-family: 'Trocchi', serif; 
+      font-size: 30px; 
+      font-weight: normal; 
+      line-height: 5px; 
+      margin-left: 10px;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+}
+
+#spacing_area{
+      background:transparent;
+      clear:both; 
+      height:10px; 
+      display:block;
+      margin-left: 10px;
+}
+
+#search_area{
+      background:#006333;
+      border:solid 1px #fff;
+      position:inherit;
+      text-align:left;
+      height:auto;
+      color: #fff; 
+      font-family: 'Trocchi', serif; 
+      font-size: 20px; 
+      font-weight: normal; 
+      line-height: 5px; 
+      margin-left: 10px;
+      overflow: hidden;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+}
+
+#titre_search{
+      width:600px;
+      float:left;
+      line-height: 1;
+      text-align:right;
+}
+
+/*DropListBox Select Distrib List*/
+#wgtmsr{
+      background:#a5ada4;
+      margin-left:40px;
+      width:480px;   
+      height:40px;
+      text-align:left;
+      font-family: 'Trocchi', serif; 
+      font-size: 20px; 
+      font-weight: bold;
+      font-style:oblique; 
+}
+
+/*List Membersbox*/
+.styled-select{
+      width: 550px;
+      position: relative;
+      margin: 0 auto;
+      padding: 10px 17px;
+      background: #006333;
+      cursor: pointer;
+      outline: none;
+      float: left;
+}
+
+#spacing_area2{
+      background:transparent;
+      clear:both; 
+      height:10px; 
+      display:block;
+      margin-left: 10px;
+}
+
+#result_area{
+      background:transparent;
+      height:100%;
+      position:inherit;
+      height:100%;
+      color: #fff; 
+      font-family: 'Trocchi', serif; 
+      font-size: 30px; 
+      font-weight: normal; 
+      line-height: 5px; 
+      margin-left: 10px;
+      overflow: hidden;
+}
+
+#owner_LD{
+      border:double;
+      border-color:azure;
+      background:transparent;
+      background-image:url(../Images/visit_card_texture.jpg);
+      float:left;
+      width:49%;
+      height:40%;
+      margin-top:0%;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+}
+
+#title_owner{
+      text-align:center;
+}
+
+/*Photo area Owner*/
+#photo_area{
+      background:transparent;
+      border:double;
+      border-color:azure;
+      height:auto;
+      float:left;
+      width:25%;
+      margin-left:4%;
+      margin-top:7%;
+}
+
+/*Photo position Owner*/
+.avatar { 
+      margin-left:0%;
+}
+
+/*Main area of Owner*/
+#operations_owner{
+      background:transparent;
+      height:200px;
+      width:65%;
+      float:left;
+      font-family: 'Trocchi', serif; 
+      font-size: 20px; 
+}
+
+#operations_owner .edit_class{
+      padding:0;
+      text-align:left;
+      margin-top:30px;
+      margin-left:10px;
+}
+
+#owner_description{
+      margin-top:60px;
+      margin-left:10px;
+      font-family: 'Trocchi', serif; 
+      font-size: 20px; 
+      background:transparent;
+      height:auto;
+      float:left;
+      width:65%;
+}
+
+/*Member area*/
+#member_area{
+      background:transparent;
+      height:auto;
+      width:50%;
+      float:left;
+      font-family: 'Trocchi', serif; 
+      font-size: 30px; 
+}
+
+/*Title Members LD*/
+#title_members_LD{
+      text-align:center;
+      margin-left:50%;
+      background:transparent;
+      height:auto;
+      width:100%;
+}
+
+/*Members's List LD*/
+#members_list{
+      background:#006333;
+      height:61%;
+      width:49%;
+      float:right;
+      border:double;
+      border-color:azure;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+}
+
+/*display array for members in Distribution list*/
+#member_list_array{
+      min-width:265px;
+      max-width:800px;
+      border-width: 3px;
+      border-color: rgba(50, 50, 50, 0.14);
+      margin: 80px 50px 100px 50px;
+      text-align:left;
+      font-family: 'Trocchi', serif; 
+      font-size: 20px; 
+      font-weight: bold;
+      font-style:oblique; 
+}
+
+#footer{
+      background: pink;
+      width:auto;
+      display:block; 
+      height:24px;
+}

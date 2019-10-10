@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="Admin_Manager_NIT.Master_Page_Admin_Manager_NIT" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+      <head runat="server">
+            <title>Master Admin Manager Page</title>
+            <asp:ContentPlaceHolder ID="head" runat="server">
+            </asp:ContentPlaceHolder>
+            <link rel="stylesheet" type="text/css" href="../CSS/Styles.css" />
+         
+      </head>
+
+      <body>  
+         <form id="form1" runat="server">
+            <div id="container">
+                 
+                   <div id="banner">
+                       <img style="margin:0px auto;display:block" src="/Images/Neurones_banner.png"  alt="HTML5 Icon"/>
+                  </div>
+      
+                  <div id="navbar"> 
+                        <!-- empty area -->
+                  </div>
+
+                  <div id="main">
+                        <div id="menu">
+                                <ul class="menuClass">                                                              
+                                    <li><a href="#">Diffusion List Operations</a>
+                                          <ul>
+                                                <li><a href="#">Editing Distribution List</a></li>
+                                                <li><a href="#">Creating Distribution List</a></li>
+                                                <li><a href="#">Deleting Distribution List</a></li>                
+                                          </ul>
+                                    </li>
+                                    <li><a href="#">Exchange Operations</a>
+                                          <ul>
+                                                <li><a href="#">Editing Email Adress</a></li>
+                                                <li><a href="#">Creating Email Adress</a></li>
+                                                <li><a href="#">Deleting Email Adress</a></li>
+                                          </ul>
+                                    </li>
+                                    <li><a href="#">LDAP Operations</a>
+                                          <ul>
+                                                <li><a href="#">Editing Item in LDAP</a></li>
+                                                <li><a href="#">Creating Item in LDAP</a></li>
+                                                <li><a href="#">Deleting Item in LDAP</a></li>
+                                          </ul>
+                                    </li>
+                                    <li><a href="#">PowerShell Scripts Operations</a>
+                                          <ul>
+                                                <li><a href="#">Editing script</a></li>
+                                                <li><a href="#">Creating new script</a></li>
+                                                <li><a href="#">Deleting script</a></li>
+                                          </ul>
+                                    </li> 
+                              </ul>    
+                        </div>
+
+                        <div id="MainContent">
+                               <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                              </asp:ContentPlaceHolder>
+                        </div>
+           
+                        <div class="spacer">
+              
+                        </div>      
+                  </div>           
+            </div>                                
+         </form>
+      </body>
+</html>         
